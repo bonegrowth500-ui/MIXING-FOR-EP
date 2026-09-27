@@ -7,4 +7,5 @@ Lead vocal chain presets for the EP. The target sound is a hybrid of **Lil Uzi V
 | Phase | Goal | Status |
 |---|---|---|
 | 1 | Invent 18 lead vocal sound options | ✅ Done: [vocal-chains/phase-1-sound-options.md](vocal-chains/phase-1-sound-options.md) |
-| 2 | Pick 5 and build each into a full vocal chain preset | ⏳ Waiting on picks |
+| 2 | Lock 5 picks and define spec & scope (28-question interview) | ✅ Done: [vocal-chains/phase-2-spec.md](vocal-chains/phase-2-spec.md) |
+| 3 | Build the 5 full vocal chain presets | ⏳ Waiting on go-ahead |

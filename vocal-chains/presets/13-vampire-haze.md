@@ -15,7 +15,7 @@ Dark, gothic and drenched: an empty cathedral at 3 AM, with the top rolled soft 
 
 | Target | Value |
 |---|---|
-| Tone | Dark and warm (Q24). Low cut at 80 Hz, low-mid warmth +2–3 dB near 220 Hz, top rolled off above about 8 kHz by 4–6 dB. 2–4 kHz stays put so rapped words still read: dark, not buried |
+| Tone | Dark and warm (Q24). Low cut at 80 Hz, low-mid warmth +2–3 dB near 220 Hz. The top is rolled off from about 8 kHz and is roughly 9 dB down at 13 kHz, which outweighs the mic's own +5 dB there. 2–4 kHz stays put so rapped words still read: dark, not buried |
 | Density | 9–11 dB total, with warm tape saturation |
 | Grit | Warm tape on the lead, plus a tape-saturated hall return: the "dirty fog" |
 | Space | The wettest of the five. A dark 2–3 s hall (Vintage style) with 50 ms of pre-delay, ducked by the voice. Near-frozen throws on the last word of key lines (Q23). Wet 5/5 |
@@ -27,14 +27,15 @@ Dark, gothic and drenched: an empty cathedral at 3 AM, with the top rolled soft 
 
 - **Throws on their own return.** A separate near-frozen return lets the main hall stay a tidy 2–3 s. (Phase 1 put freeze and long throws on the hall itself.)
 - **Grainier hall.** Pro-R 2's Vintage style gives the space an older, grainier character before the tape even touches it.
-- **Low-mid bloom control.** A multiband stage keeps the added warmth from turning into boom when room box and long tails stack up.
+- **Low-mid control on both sides.** A multiband stage on the lead keeps the added warmth from blooming into boom on low notes. The hall's own EQ keeps 300–400 Hz out of the long tails.
+- **Throws that step aside.** The near-frozen tail ducks under the next lines (keyed from VOX IN) and swells back in the gaps, so it never buries new words.
 - **Band-limited throws.** The frozen tails are filtered to about 300 Hz–5 kHz, so they never cloud the low end or hiss.
 
 ## Track map
 
 | Track | Gets audio from | Routes to | Sends | Fader (start) |
 |---|---|---|---|---|
-| VOX IN | Lead clips | LEAD | — | 0 dB |
+| VOX IN | Lead clips | LEAD | Sidechain only to FX · THROW (the ducking key) | 0 dB |
 | LEAD | VOX IN | VOX BUS | FX · HALL 100%, FX · THROW 0% (automated only) | 0 dB |
 | DBL IN L / R | Left / right double clips | DBL | — | 0 dB, panned L70 / R70 |
 | DBL | DBL IN L, DBL IN R | VOX BUS | FX · HALL 100% | −8 dB |
@@ -48,7 +49,7 @@ Dark, gothic and drenched: an empty cathedral at 3 AM, with the top rolled soft 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
 | 1 | Pro-Q | Low Cut 60 Hz, 12 dB/oct · Zero Latency | Rumble only |
-| 2 | Pro-G | Vocal style · Threshold −45 dB · Ratio 2:1 · Range 6 dB · Attack 1 ms · Hold 50 ms · Release 150 ms · Lookahead 2 ms | In a sound this wet, breaths turn into long, ghostly tails. Taking them down here keeps them out of the hall |
+| 2 | Pro-G | Vocal style · Threshold −35 dB · Ratio 2:1 · Range 6 dB · Attack 1 ms · Hold 50 ms · Release 150 ms · Lookahead 2 ms | In a sound this wet, breaths turn into long, ghostly tails. The threshold sits just above typical breaths, so they dip by up to 6 dB before reaching the hall while words don't. Lower it if word tails get clipped |
 | 3 | Auto-Tune Artist | Alto/Tenor · song's key and scale · Retune Speed 15 · Humanize 20 · Flex-Tune 20 · Natural Vibrato 0 · Formant off · Classic Mode off | Quick correction that still lets the melancholy slides through |
 
 ## LEAD
@@ -60,9 +61,9 @@ Dark, gothic and drenched: an empty cathedral at 3 AM, with the top rolled soft 
 | 3 | Pro-Q | Bell 220 Hz, Q 0.7, +2.5 dB | Warm body for the gothic weight |
 | 4 | Saturn 2 | 1 band · Warm Tape · Drive 25% · Mix 60% · HQ on · Level to match | Thickens the darkness (Phase 1). Warm Tape adds lows and gently softens the very top |
 | 5 | Pro-C | Opto style · Ratio 3:1 · Attack 10 ms · Release Auto · Knee 18 dB · Threshold about −19 dB, for 2–3 dB GR · Gain to level-match | A steady level into the hall means steady tails |
-| 6 | Pro-Q | High Shelf 8 kHz, Q 0.7, −5 dB · High Cut 14 kHz, 12 dB/oct | The dark half of the tone curve (Q24), leaving 2–4 kHz alone |
+| 6 | Pro-Q | High Shelf 8 kHz, Q 0.7, −5 dB · High Cut 10 kHz, 12 dB/oct | The dark half of the tone curve (Q24). About −9 dB at 13 kHz, but only about −0.5 dB at 4 kHz, so the words stay clear |
 | 7 | Pro-DS | Single Vocal · Split Band · Threshold −32 dB, for 3–5 dB on S's · Range 10 dB · detection 4.5–10 kHz · Lookahead 5 ms | S's in a long hall and in the throws turn into splashes, so they're caught before the sends. The detection sits a little lower to match the darker tone |
-| 8 | Pro-MB | Band 1: 150–450 Hz · Compress mode · Range −4 dB · Ratio 3:1 · Attack 10 ms · Release 150 ms. Band 2: 2.5–5 kHz · Compress mode · Range −3 dB · Ratio 3:1 · Attack 2 ms · Release 80 ms. Negative Range = downward. Each threshold set so the band only acts when it builds | Warmth, room box and long tails can add up to boom (band 1). Band 2 catches upper-mid spikes |
+| 8 | Pro-MB | Band 1: 150–450 Hz · Compress mode · Range −4 dB · Ratio 3:1 · Attack 10 ms · Release 150 ms. Band 2: 2.5–5 kHz · Compress mode · Range −3 dB · Ratio 3:1 · Attack 2 ms · Release 80 ms. Negative Range = downward. Each threshold set so the band only acts when it builds | Keeps the added warmth and room box from blooming into boom on low notes, before any of it reaches the hall (band 1). Band 2 catches upper-mid spikes |
 | 9 | Pro-Q | Bell 1.2 kHz, Q 1.0, −1 dB | Takes a little forwardness out of the mids, so the lead leans back into the beat without losing the 2–4 kHz words |
 | 10 | Pro-L 2 | Transparent style · Gain about +10 dB, adjusted until the loudest lines show 1–2 dB GR · Output −3.0 dBFS · Lookahead 3 ms | Keeps what goes into the hall and throws consistent |
 
@@ -84,7 +85,7 @@ None. This preset's character lives in the space, so it doesn't need a parallel 
 |---|---|---|---|
 | 1 | Pro-R 2 | Vintage style · Space 2.5 s · Decay Rate 100% · Predelay 50 ms · Brightness −50% · Character 40% · Distance 50% · Thickness 50% · Stereo Width 100% · Mix 100% · Ducking about 8 dB | The long dark hall (Q23). Heavy ducking keeps the words clear through a 5/5-wet sound (D15) |
 | 2 | Saturn 2 | 1 band · Warm Tape · Drive 35% · Mix 100% · HQ on · Level to match | Turns the tail into Phase 1's dirty fog |
-| 3 | Pro-Q | Low Cut 200 Hz, 12 dB/oct · Low Cut 400 Hz on Side only · High Cut 6 kHz, 12 dB/oct · Zero Latency | Dark, out of the low end, with mono lows (D7) |
+| 3 | Pro-Q | Low Cut 250 Hz, 12 dB/oct · Bell 350 Hz, Q 1.0, −3 dB · Low Cut 400 Hz on Side only · High Cut 6 kHz, 12 dB/oct · Zero Latency | Dark, with mono lows (D7). The 350 Hz dip keeps the wettest hall of the five from turning to mud, since it's fed a warm, boosted lead and then saturated |
 
 **Level:** fader at −8 dB.
 
@@ -92,12 +93,13 @@ None. This preset's character lives in the space, so it doesn't need a parallel 
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-R 2 | Vintage style · Space at maximum (about 10 s) · Decay Rate 400% (use 200% if that's your maximum) · Predelay 0 ms · Brightness −60% · Character 30% · Distance 60% · Thickness 40% · Stereo Width 100% · Mix 100% · Ducking off · Freeze off | A tail long enough to feel frozen, on key line endings only (Q23) |
+| 1 | Pro-R 2 | Vintage style · Space at maximum (about 10 s) · Decay Rate 200% · Predelay 0 ms · Brightness −60% · Character 30% · Distance 60% · Thickness 40% · Stereo Width 100% · Mix 100% · Ducking off · Freeze off | A tail of around 20 s, long enough to feel frozen, on key line endings only (Q23). Freeze is there for an endless ending |
 | 2 | Pro-Q | Low Cut 300 Hz, 24 dB/oct · High Cut 5 kHz, 24 dB/oct · Zero Latency | Frozen tails stay out of the low end and don't hiss |
+| 3 | Pro-C | Clean style · Ratio 4:1 · Attack 5 ms · Release 400 ms · Knee 12 dB · Threshold set for 6–8 dB GR while you sing · side chain External, keyed from VOX IN (foundation §2, "Ducking a return") | The frozen tail steps under the next lines and swells back in the gaps. Pro-R 2's own Ducking can't do this, because the throw's input is silent once the word has passed (D15) |
 
-**Level:** fader at −10 dB. LEAD's send to this track sits at 0% except during throws.
+**Level:** fader at −10 dB. LEAD's send to this track sits at 0% except during throws, and VOX IN feeds it a sidechain-only key for slot 3.
 
-**Buildable:** yes. Pro-R 2's Space, Decay Rate, Vintage style, Brightness, Thickness, Ducking and Freeze, and Saturn 2's Warm Tape, are all confirmed (foundation §1).
+**Buildable:** yes. Pro-R 2's Space, Decay Rate, Vintage style, Brightness, Thickness, Ducking and Freeze, Saturn 2's Warm Tape and Pro-C's external side chain are confirmed (foundation §1). Ducking's unit is a Check item: if your knob reads in %, see §5.6.
 
 ## Buses
 
@@ -116,7 +118,7 @@ VOX GROUP stays empty.
 | 1 | Pro-Q | Low Cut 120 Hz, 12 dB/oct · Bell 400 Hz, Q 1.4, dynamic −4 dB · Zero Latency | The lead carries the body |
 | 2 | Pro-C | Classic style · Ratio 6:1 · Attack 3 ms · Release 80 ms · Knee 9 dB · Threshold about −17 dB, for 5–7 dB GR · Gain to level-match | Tighter than the lead, so the doubles blend |
 | 3 | Saturn 2 | 1 band · Warm Tape · Drive 25% · Mix 60% · HQ on · Level to match | Matches the lead's grain |
-| 4 | Pro-Q | High Shelf 7 kHz, −6 dB · Bell 3 kHz, Q 1.0, −1.5 dB | Darker than the lead, so the lead stays in front |
+| 4 | Pro-Q | High Shelf 7 kHz, −6 dB · Bell 3 kHz, Q 1.0, −1.5 dB · High Cut 8 kHz, 12 dB/oct | Darker than the lead at every frequency, so the lead stays in front |
 | 5 | Pro-DS | Single Vocal · Split Band · Threshold −32 dB · Range 12 dB · detection 4.5–10 kHz | S's stack up across takes, and the hall exaggerates them |
 | 6 | Pro-L 2 | Transparent style · Output −3.0 dBFS · Gain about +10 dB, for 1–2 dB GR · Lookahead 3 ms | Brings the doubles up to the lead's level, so the −8 dB fader really puts them 6–10 dB under (D23) |
 
@@ -126,9 +128,9 @@ VOX GROUP stays empty.
 
 | # | Move | Track › Parameter | From → To | When | Why |
 |---|---|---|---|---|---|
-| 1 | Cathedral throw | LEAD › send to FX · THROW | 0% → 100% → 0% | The last word of key lines: open just before the word, close right after it | The signature moment (Q23). Only that word feeds the frozen tail |
+| 1 | Cathedral throw | LEAD › send to FX · THROW | 0% → 100% → 0% | The last word of key lines: open just before the word, close right after it | The signature moment (Q23). Only that word feeds the frozen tail, which then ducks under the next lines on its own |
 | 2 | Hall eases | LEAD › send to FX · HALL | 100% → 60% → 100% | Dense rap lines | Keeps words readable in the fastest bars |
-| 3 | Endless ending (optional) | FX · THROW › Pro-R 2 Freeze | Off → on | Right after the song's final word enters the throw | Lets the last tail hang forever |
+| 3 | Endless ending (optional) | FX · THROW › Pro-R 2 Freeze, then FX · THROW › fader | Freeze off → on, then the fader down to −∞ over the last 2–4 bars | Right after the song's final word enters the throw | The last tail hangs, then fades before the song ends. Freeze sits inside the plugin, so automate it through Tools › Last tweaked (§5.3) |
 
 ## Ear checks
 
@@ -136,6 +138,6 @@ Added in Step 5.
 
 ## Translation notes
 
-- **Quiet listening:** this preset's biggest risk, because it's the wettest. Every word still has to read at low volume. Step 4 checks it.
+- **Quiet listening:** this preset's biggest risk, because it's the wettest. At very low volume, if words blur, pull FX · HALL down 2 dB first.
 - **Small speakers:** with the top rolled off, presence matters even more on phones. That's why 2–4 kHz is protected.
 - **Mono:** the hall and the throws are the stereo elements. Check they don't go hollow.

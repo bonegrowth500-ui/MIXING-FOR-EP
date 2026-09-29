@@ -20,8 +20,8 @@ Glossy, very bright and expensive: a hard-tuned lead right in your face, with cr
 | Grit | Hidden. Saturn is blended in parallel inside the plugin, adding loudness with no audible dirt |
 | Space | A soft 1/8 ping-pong bed that ducks while you sing and blooms in the gaps (Q20), 16–20 dB under the lead. A short bright plate of about 1 s, kept low. Wet 2/5 |
 | Width | Lead mono. The widest doubles of the five (L/R 90), the ping-pong's motion, and an octave-up ghost layer chorused wide, 14–18 dB under the lead |
-| Placement | On top, most upfront: the most presence and density of the five |
-| Tune | Hard: retune 0–3, with the lowest humanize and Flex-Tune of the five |
+| Placement | On top, most upfront: the most presence of the five |
+| Tune | Hard: retune 0, the fastest of the five, with humanize and Flex-Tune at the bottom of the foundation's base range |
 
 ## Upgrades (Q27)
 
@@ -38,7 +38,7 @@ Glossy, very bright and expensive: a hard-tuned lead right in your face, with cr
 | PAR · OCT UP | LEAD | VOX BUS | FX · PLATE 100% | −14 dB |
 | DBL IN L / R | Left / right double clips | DBL | — | 0 dB, panned L90 / R90 |
 | DBL | DBL IN L, DBL IN R | VOX BUS | FX · DELAY 100%, FX · PLATE 100% | −8 dB |
-| FX · DELAY | Sends | VOX GROUP | — | −16 dB |
+| FX · DELAY | Sends | VOX GROUP | — | −12 dB |
 | FX · PLATE | Sends | VOX GROUP | — | −20 dB |
 | VOX BUS | LEAD, PAR · OCT UP, DBL | VOX GROUP | — | 0 dB |
 | VOX GROUP | VOX BUS, FX tracks | Master | — | Set against the beat, with peaks at or below −6 dBFS |
@@ -50,8 +50,8 @@ Sends are post-fader, so tracks that sit lower (DBL, PAR) automatically feed the
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
 | 1 | Pro-Q | Low Cut 60 Hz, 12 dB/oct · Zero Latency | Rumble only. Nothing vocal lives below 60 Hz |
-| 2 | Pro-G | Vocal style · Threshold −45 dB · Ratio 2:1 · Range 6 dB · Attack 1 ms · Hold 50 ms · Release 150 ms · Lookahead 2 ms | A bright chain makes breaths bright too. This takes them down by up to 6 dB without touching words. Lower the threshold if word tails get clipped |
-| 3 | Auto-Tune Artist | Alto/Tenor · song's key and scale · Retune Speed 0 · Humanize 5 · Flex-Tune 5 · Natural Vibrato 0 · Formant off · Classic Mode off | Instant snap for the gloss. The lowest Humanize and Flex-Tune of the five keep even rapped lines locked |
+| 2 | Pro-G | Vocal style · Threshold −35 dB · Ratio 2:1 · Range 6 dB · Attack 1 ms · Hold 50 ms · Release 150 ms · Lookahead 2 ms | A bright chain makes breaths bright too. The threshold sits just above typical breaths, so they dip by up to 6 dB while words don't. Lower it if word tails get clipped |
+| 3 | Auto-Tune Artist | Alto/Tenor · song's key and scale · Retune Speed 0 · Humanize 10 · Flex-Tune 10 · Natural Vibrato 0 · Formant off · Classic Mode off | Instant snap for the gloss. Humanize and Flex-Tune at the bottom of the base range keep rapped lines locked without audible stepping |
 
 ## LEAD
 
@@ -81,7 +81,7 @@ Sends are post-fader, so tracks that sit lower (DBL, PAR) automatically feed the
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
 | 1 | Auto-Tune Artist | Alto/Tenor · Chromatic · Retune Speed 50 · Flex-Tune 100 · Humanize 0 · Transpose +12 · Formant on · Throat 100 | Shifts up an octave without re-tuning. Formant keeps it a voice, not a chipmunk (D20) |
-| 2 | Pro-Q | Low Cut 400 Hz, 24 dB/oct · High Shelf 9 kHz, −3 dB · Zero Latency | Shimmer only: no low-mid clutter, no hiss |
+| 2 | Pro-Q | Low Cut 400 Hz, 24 dB/oct · High Shelf 9 kHz, −3 dB · Zero Latency · Output 0 dB (don't level-match: the fader math counts on this cut) | Shimmer only: no low-mid clutter, no hiss |
 | 3 | Pro-C | Clean style · Ratio 4:1 · Attack 5 ms · Release 80 ms · Knee 12 dB · Threshold about −12 dB, for 4–6 dB GR · Gain to level-match | A ghost has to stay constant |
 | 4 | Vintage Chorus | Mode I · Mix 50% | Phase 1's "tucked wide". Mode I is the gentlest, widest Juno setting |
 
@@ -95,17 +95,18 @@ Sends are post-fader, so tracks that sit lower (DBL, PAR) automatically feed the
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Timeless 3 | Sync on · 1/8 on both sides · Ping Pong on, starting left · Feedback 30% · Filters: High Pass 400 Hz, Low Pass 7 kHz · Stretch mode · Dry off · Wet 0 dB · envelope follower → Wet level, about −12 dB of range · EF attack short, release about 300 ms | Q20: ducks up to 12 dB under the words and blooms in the gaps (D15). The filters keep repeats out of the body and away from S's |
+| 1 | Timeless 3 | Sync on · 1/8 on both sides · Ping Pong on, starting left · Feedback 30% · Filters: High Pass 400 Hz, Low Pass 7 kHz · Stretch mode · Dry off · Wet 0 dB · envelope follower → Wet level, about −12 dB of range · EF attack short, release about 150 ms | Q20: ducks up to 12 dB under the words and blooms in the gaps (D15). The short release lets the first repeat after a line come through, since a 1/8 note is only about 200 ms at trap tempos. The filters keep repeats out of the body and away from S's |
 | 2 | Pro-Q | Low Cut 300 Hz, 12 dB/oct · Low Cut 500 Hz on Side only · Zero Latency | Clean repeats with mono lows (D7) |
 
-**Level:** fader at −16 dB. The first repeat should sit 16–20 dB under the lead.
+**Level:** fader at −12 dB. The 400 Hz high-pass takes about 4 dB off the repeats, so they land 16–20 dB under the lead.
 
 ### FX · PLATE
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-R 2 | Plate style · Space 1.0 s · Decay Rate 100% · Predelay 20 ms · Brightness +20% · Character 30% · Distance 30% · Thickness 20% · Stereo Width 100% · Mix 100% · Ducking off | Phase 1's short bright plate: sheen, not space |
-| 2 | Pro-Q | Low Cut 250 Hz, 12 dB/oct · Low Cut 400 Hz on Side only · Zero Latency | Keeps the plate off the body, with mono lows |
+| 1 | Pro-DS | Allround · Wide Band · detection 5–10 kHz · Threshold set for 6–8 dB on S's | A bright plate turns every S into a splash. This cleans what the lead, doubles and ghost send before it reaches the plate |
+| 2 | Pro-R 2 | Plate style · Space 1.0 s · Decay Rate 100% · Predelay 20 ms · Brightness +20% · Character 30% · Distance 30% · Thickness 20% · Stereo Width 100% · Mix 100% · Ducking off | Phase 1's short bright plate: sheen, not space |
+| 3 | Pro-Q | Low Cut 250 Hz, 12 dB/oct · Low Cut 400 Hz on Side only · Zero Latency | Keeps the plate off the body, with mono lows |
 
 **Level:** fader at −20 dB. You should feel it more than hear it.
 
@@ -140,8 +141,8 @@ No throws here: Q20 chose a soft bed.
 | # | Move | Track › Parameter | From → To | When | Why |
 |---|---|---|---|---|---|
 | 1 | Ghost opens | PAR · OCT UP › fader | −14 dB → −10 dB | Hooks, with 1-beat ramps in and out | More gloss where it counts, cleaner verses |
-| 2 | Air lift | LEAD › Fresh Air High Air | 55% → 65% | Hooks | Extra shine on the hook |
-| 3 | Bed dips | LEAD › send to FX · DELAY | 100% → 50% | Dense rap lines | Keeps fast bars clear |
+| 2 | Air lift | LEAD › Fresh Air High Air | 55% → 65% | Hooks | Extra shine on the hook. It's a control inside the plugin, so automate it through Tools › Last tweaked (§5.3) |
+| 3 | Bed dips | FX · DELAY › fader | −12 dB → −18 dB | Dense rap lines | Keeps fast bars clear. Riding the return also catches the doubles' echoes, and it doesn't weaken the envelope follower's ducking the way a lower send would |
 
 ## Ear checks
 

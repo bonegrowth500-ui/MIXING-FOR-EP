@@ -87,7 +87,7 @@ If a manual can't be reached, the sheets use only controls I'm certain exist, an
 
 ---
 
-## Step 3 · Dial-In
+## Step 3 · Dial-In ✅
 
 *Write every setting, in an order where each preset builds on the last.*
 
@@ -179,12 +179,14 @@ Judgment calls made inside the spec where it leaves room. New ones get added as 
 | D12 | Each sheet is complete for its song. The foundation holds only shared procedures. | One preset per song means one sheet per song. |
 | D13 | VOX IN always holds exactly three slots: rumble cut → gentle expander → Auto-Tune Artist. | Covers what every branch needs and nothing more, so all branches stay pitch- and phase-locked. |
 | D14 | FX returns route to VOX GROUP, not VOX BUS. | Keeps the bus glue from pumping reverb and delay tails. |
-| D15 | *(Refined in Step 2.)* Returns duck themselves where the plugin can: Pro-R 2's Ducking knob, or Timeless 3's envelope follower on its Mix. When a sheet uses Pro-C ducking instead, the key comes from VOX IN over a sidechain-only connection. | No extra routing in the common case. The VOX IN key avoids zeroing LEAD's audio send. |
+| D15 | *(Refined in Step 2.)* Returns duck themselves where the plugin can: Pro-R 2's Ducking knob, or Timeless 3's envelope follower on its Wet level. When a sheet uses Pro-C ducking instead, the key comes from VOX IN over a sidechain-only connection. | No extra routing in the common case. The VOX IN key avoids zeroing LEAD's audio send. |
 | D16 | Auto-Tune runs in the Modern algorithm (Classic Mode off) unless a sheet says otherwise. | Classic turns off Flex-Tune, Formant, Throat and Transpose. |
 | D17 | Levels are set with the audio clip channels' volume knobs. Only whole-section clips get normalized, never short phrase clips one by one. *(Refines D10.)* | Keeps the contrast between quiet and loud lines. |
 | D18 | *(Refined in Step 2. Refines D5.)* Parallel tracks pick zero latency wherever it costs nothing audible: Pro-Q on Zero Latency, lookahead at 0. Distortion stages keep Saturn's HQ oversampling on, and FL's automatic PDC handles that latency. | Keeps parallel layers locked without making the distortion grainy. |
 | D19 | Each double gets its own front-end track (DBL IN L / DBL IN R: rumble cut, expander, Auto-Tune) and is panned there. Both then feed DBL for the shared character chain. A single double uses DBL IN L, centered. | Auto-Tune follows one voice at a time. Two takes summed on one track can't each lock to the lead's notes. |
 | D20 | Transposing tracks (the demon and the octave layers) run Auto-Tune on Chromatic with minimal correction and Formant on. Only VOX IN and the DBL IN tracks need the song's key. | Their input is already tuned, so they only shift pitch. Fewer places to set a key means fewer per-song mistakes. |
+| D21 | Sends sit at 100% unless a sheet sets another percentage, and return faders set the wet level. Routes are post-fader, so doubles and parallel layers feed the returns less on their own. | FL's send knob reads in percent and its dB mapping isn't confirmed. Faders read in dB, so they're exact. |
+| D22 | When a return's send already sits at 100%, a throw rides that return's fader instead (Phantom Twin). A return built only for throws rides its send up from 0% (Vampire Haze). | A send can't go past 100%, and a dedicated throw return stays silent until it's needed. |
 
 ---
 

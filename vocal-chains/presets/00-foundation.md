@@ -55,13 +55,14 @@ This environment's network policy blocked the manufacturers' sites, so confirmat
 | **Pro-DS** | Single Vocal / Allround. Wide Band / Split Band (linear phase). Threshold (down to −INF in Single Vocal), Range, detection HP/LP filters, Lookahead up to 15 ms, stereo link with mid/side | Confirmed |
 | **Pro-L 2** | Styles: Transparent, Punchy, Dynamic, Allround, Aggressive, Modern, Safe, Bus | Confirmed |
 | | Gain, Output Level (ceiling), Lookahead, Attack, Release, True Peak | Known |
-| **Pro-G** | Styles: Classic, Clean, Vocal, Guitar, Upward, plus Ducking. Threshold, Ratio, Range, Attack, Hold, Release, Knee, Lookahead | Confirmed |
+| **Pro-G** | Styles: Classic, Clean, Vocal, Guitar, Upward, plus Ducking. Threshold, Ratio (1:1 to ∞:1, acting as a gate above about 5:1), Range (the maximum attenuation), Attack, Hold, Release, Knee, Lookahead | Confirmed |
 | **Pro-MB** | Up to 6 bands. Downward and upward compression and expansion | Confirmed |
 | | Which sign of Range gives upward vs. downward: Check. Sheets only use downward compression | Check |
 | **Saturn 2** | 28 styles. Names confirmed: Warm Tape, Clean Tube, Warm Tube · "Subtle" versions of Tape, Tube and Saturation · Transformer: Subtle, Gentle, Warm · Amp: British Rock, British Pop, American Tweed, American Plexi · FX: Foldback, Breakdown | Confirmed (exact label wording: Check) |
-| | Per band: Drive, Feedback, Dynamics (left = gate/expand, right = compress), Tone (bass/mid/treble/presence), Mix, Level (−inf to +36 dB). Up to 6 bands | Confirmed |
-| **Timeless 3** | Two delay lines, 5 ms–5 s, host sync (type "d" or "t" for dotted/triplet). Tape / Stretch time modes. Ping Pong (start L or R). Feedback, Cross Feedback Mix, feedback invert. Six feedback-path filters. Feedback FX: Drive, Lo-Fi, Diffuse, Dynamics, Pitch. Mix. Modulation, including an envelope follower | Confirmed |
-| **Pro-R 2** | Space (stepless room model + decay time). Decay Rate 50–200%. Style (includes Plate and Vintage). Predelay 0–500 ms with sync. Character, Brightness, Distance, Thickness, Stereo Width, Mix. Ducking, Auto Gate, Freeze | Confirmed |
+| | Per band: Drive in % (output compensates automatically as Drive rises), Feedback, Dynamics (left = gate/expand, right = compress), Tone (bass/mid/treble/presence), Mix in %, Level (−inf to +36 dB). Up to 6 bands | Confirmed |
+| **Timeless 3** | Two delay lines, 5 ms–5 s, host sync (type "d" or "t" for dotted/triplet). Tape / Stretch time modes. Ping Pong (start L or R). Feedback, Cross Feedback Mix, feedback invert. Six feedback-path filters. Feedback FX: Drive, Lo-Fi, Diffuse, Dynamics, Pitch. Dry and Wet levels. Modulation, including an envelope follower whose attack and release you set by dragging its envelope dots. Ducking = the envelope follower pulling the Wet level down | Confirmed |
+| **Pro-R 2** | Space (stepless room model + decay time, from about 0.2 s up to about 10 s). Decay Rate 25–400% of the Space's decay. Style (includes Plate and Vintage). Predelay 0–500 ms with sync. Character, Distance, Thickness, Stereo Width and Mix in %, Brightness in ±%. Ducking (a range knob that triggers on the plugin's own input), Auto Gate, Freeze | Confirmed |
+| | Ducking's unit. Whether every version reaches 400% Decay Rate (one source says 50–200%). Sheets note a 200% fallback | Check |
 | | Decay-rate EQ, post EQ | Known |
 
 ### FL Studio
@@ -69,14 +70,14 @@ This environment's network policy blocked the manufacturers' sites, so confirmat
 | Feature | Notes | Status |
 |---|---|---|
 | Mixer slots | 10 effect slots per track | Known |
-| Routes | Post-fader. The send knob appears above a route's switch once it's on | Confirmed |
+| Routes | Post-fader. The send knob appears above a route's switch once it's on, and reads 0–100%. Its dB mapping wasn't confirmed, so the sheets set return levels with faders, which read in dB (D21) | Confirmed |
 | Fruity Send | A pre-fader tap from inside a track's effect stack | Confirmed |
 | Sidechain to this track | Makes a connection with its audio send at zero, so it only carries a sidechain key | Confirmed |
 | Sidechain into VST plugins | Plugin wrapper settings (cog, top-left) → map the sidechain input. In the FabFilter plugin, set the side chain to External | Confirmed (panel wording: Check) |
 | Stereo separation knob | Center = off. Turn right to merge to mono | Confirmed |
 | Plugin delay compensation | Automatic mode in the mixer menu. Covers sends and wet/dry paths | Confirmed (menu wording: Check) |
 | Audio clips | Channel Settings → Precomputed effects → Normalize (peaks to 0 dB). Channel volume knob in the Channel Rack | Confirmed |
-| Pitcher | Speed, key/scale, formant, and a harmonizer with up to 4 voices driven by MIDI | Confirmed |
+| Pitcher | Modes include MIDI (pitch set by incoming notes), Octaves and Harmonize (up to 4 voices). Speed, a formant (gender) control, key/scale, and a low-frequency detection setting (about 80 Hz for lower voices, 110 Hz for higher) | Confirmed |
 | NewTone | Detects and edits notes, and exports them as a MIDI score to a channel | Confirmed |
 | Vintage Chorus | Juno-6 chorus. Modes I / II / I+II, plus free delay times, LFO rate/shape and wet polarity | Confirmed |
 | Automation clips | Right-click any control → Create automation clip | Known |
@@ -88,6 +89,8 @@ These couldn't be pinned down here and get re-checked in Step 4B:
 - Auto-Tune Artist's maximum Retune Speed and the ends of the Throat range
 - Pro-MB's Range sign
 - FL's wording for the sidechain wrapper panel and the PDC menu
+- Pro-R 2's Ducking unit and its maximum Decay Rate
+- The scales on Pitcher's Speed and formant controls, and the name of Vintage Chorus's wet/dry control
 
 ---
 
@@ -128,7 +131,7 @@ LEAD / DBL sends ─► FX returns ───────────────
 
 ### Ducking a return
 
-Most returns duck themselves (D15). Pro-R 2 has a Ducking knob, and Timeless 3 can pull its own Mix down with its envelope follower. Both react to the signal arriving at the return, so they need no extra routing.
+Most returns duck themselves (D15). Pro-R 2 has a Ducking knob, and Timeless 3 can pull its own Wet level down with its envelope follower. Both react to the signal arriving at the return, so they need no extra routing.
 
 When a sheet uses Pro-C ducking instead:
 1. Select VOX IN, right-click the switch under the FX track, and choose **Sidechain to this track**.
@@ -306,16 +309,27 @@ Run it once per preset after dialing in, then once per song.
 Every preset sheet uses these sections, in this order:
 1. **Header:** identity and placement (D6)
 2. **Per-song setup** (D11)
-3. **Track map:** the template tracks it uses, routes and send levels
-4. **VOX IN:** the three slots, with this preset's Auto-Tune settings
-5. **LEAD:** all 10 slots as Slot · Plugin · Settings · Why
-6. **Parallel tracks**
-7. **FX returns**
-8. **Buses**
-9. **DBL:** the DBL IN tracks and the DBL chain
-10. **Key moves**
-11. **Ear checks** (added in Step 5)
-12. **Translation notes**
+3. **Sound targets and upgrades**
+4. **Track map:** the template tracks it uses, routes, send levels and starting faders
+5. **VOX IN:** the three slots, with this preset's Auto-Tune settings
+6. **LEAD:** all 10 slots as Slot · Plugin · Settings · Why
+7. **Parallel tracks**
+8. **FX returns**
+9. **Buses**
+10. **DBL:** the DBL IN tracks and the DBL chain
+11. **Key moves**
+12. **Ear checks** (added in Step 5)
+13. **Translation notes**
+
+### 5.6 · Reading the settings
+
+- **GR** means gain reduction on the loudest lines. Each threshold is a starting point for the GR written next to it.
+- **Level-match** means setting the plugin's output so bypassing it doesn't change loudness.
+- **Dynamic EQ bands** use threshold Auto. If your Pro-Q has no Auto, set the threshold so the band only moves on the loudest lines.
+- **Faders** are starting values. The blend tests in §4 fine-tune them for your voice.
+- **Sends** sit at 100% unless a sheet says otherwise, and return faders set the wet level (D21).
+- **Ramps** in key moves are the automation clip's shape: "1-beat ramp" means the move takes one beat to get there.
+- **Optional extras** from Pro-Q 4 and Pro-C 3 are never needed (D1).
 
 ---
 

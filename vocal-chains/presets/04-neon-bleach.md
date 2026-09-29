@@ -2,8 +2,14 @@
 
 Glossy, very bright and expensive: a hard-tuned lead right in your face, with crystalline air on top.
 
-**Status:** blueprint (Step 2). Settings get dialed in during Step 3.
-**Placement:** on top, the most upfront of the five (D6) · **Tune:** Hard · **Builds on:** [foundation](00-foundation.md)
+**Status:** dialed in (Step 3). Stress-tested in Step 4.
+**Placement:** on top, the most upfront of the five (D6) · **Tune:** Hard · **Builds on:** [foundation](00-foundation.md) (see §5.6 for how to read the settings)
+
+## Per-song setup
+
+1. **Input level:** loudest lines peak around −10 dBFS on VOX IN, DBL IN L and DBL IN R (foundation §4).
+2. **Key and scale:** set the song's key on the Auto-Tune in VOX IN, DBL IN L and DBL IN R. PAR · OCT UP stays on Chromatic (D20).
+3. **Key moves:** place the three moves in [Key moves](#key-moves).
 
 ## Sound targets
 
@@ -23,65 +29,63 @@ Glossy, very bright and expensive: a hard-tuned lead right in your face, with cr
 - **Harsh-zone clamp.** A dynamic band on 3–5 kHz after the de-esser catches loud notes that go glassy under hard tune.
 - **Ghost layer built as an octave up.** Phase 1's ghost harmony becomes an octave-up layer. It always lands in key and needs no per-song setup (D11).
 
-## Per-song setup
-
-1. **Input level:** loudest lines peak around −10 dBFS on VOX IN (foundation §4).
-2. **Key and scale:** set the song's key on the Auto-Tune in VOX IN, DBL IN L and DBL IN R. PAR · OCT UP stays on Chromatic (D20).
-3. **Key moves:** place the hook lifts and the bed dips.
-
 ## Track map
 
-| Track | Gets audio from | Routes to | Sends |
-|---|---|---|---|
-| VOX IN | Lead clips | LEAD | — |
-| LEAD | VOX IN | VOX BUS, PAR · OCT UP | FX · DELAY, FX · PLATE |
-| PAR · OCT UP | LEAD | VOX BUS | FX · PLATE, a little |
-| DBL IN L / R | Left / right double clips | DBL, panned L90 / R90 | — |
-| DBL | DBL IN L, DBL IN R | VOX BUS | FX · DELAY and FX · PLATE, 6 dB below LEAD's sends |
-| FX · DELAY | Sends | VOX GROUP | — |
-| FX · PLATE | Sends | VOX GROUP | — |
-| VOX BUS | LEAD, PAR · OCT UP, DBL | VOX GROUP | — |
-| VOX GROUP | VOX BUS, FX tracks | Master | — |
+| Track | Gets audio from | Routes to | Sends | Fader (start) |
+|---|---|---|---|---|
+| VOX IN | Lead clips | LEAD | — | 0 dB |
+| LEAD | VOX IN | VOX BUS, and PAR · OCT UP at 100% | FX · DELAY 100%, FX · PLATE 100% | 0 dB |
+| PAR · OCT UP | LEAD | VOX BUS | FX · PLATE 100% | −18 dB |
+| DBL IN L / R | Left / right double clips | DBL | — | 0 dB, panned L90 / R90 |
+| DBL | DBL IN L, DBL IN R | VOX BUS | FX · DELAY 100%, FX · PLATE 100% | −8 dB |
+| FX · DELAY | Sends | VOX GROUP | — | −16 dB |
+| FX · PLATE | Sends | VOX GROUP | — | −20 dB |
+| VOX BUS | LEAD, PAR · OCT UP, DBL | VOX GROUP | — | 0 dB |
+| VOX GROUP | VOX BUS, FX tracks | Master | — | Set against the beat, with peaks at or below −6 dBFS |
+
+Sends are post-fader, so tracks that sit lower (DBL, PAR) automatically feed the returns less.
 
 ## VOX IN
 
-| Slot | Plugin | Job | Why |
+| Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-Q | Rumble cut | Foundation standard |
-| 2 | Pro-G | Gentle expander | A very bright chain makes breaths bright too. Taking them down early keeps them from sparkling |
-| 3 | Auto-Tune Artist | Hard tune in the song's key | Every note snaps. The gloss starts here |
+| 1 | Pro-Q | Low Cut 60 Hz, 12 dB/oct · Zero Latency | Rumble only. Nothing vocal lives below 60 Hz |
+| 2 | Pro-G | Vocal style · Threshold −45 dB · Ratio 2:1 · Range 6 dB · Attack 1 ms · Hold 50 ms · Release 150 ms · Lookahead 2 ms | A bright chain makes breaths bright too. This takes them down by up to 6 dB without touching words. Lower the threshold if word tails get clipped |
+| 3 | Auto-Tune Artist | Alto/Tenor · song's key and scale · Retune Speed 0 · Humanize 5 · Flex-Tune 5 · Natural Vibrato 0 · Formant off · Classic Mode off | Instant snap for the gloss. The lowest Humanize and Flex-Tune of the five keep even rapped lines locked |
 
 ## LEAD
 
-| Slot | Plugin | Job | Why |
+| Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-Q | Corrective: low cut, box, resonances | A very bright chain exaggerates every resonance, so they go first |
-| 2 | Pro-C | Compressor 1: fast FET-style grab | Grabs peaks instantly for the dense, glossy sound (Phase 1) |
-| 3 | Pro-Q | Tone: body support | Body first, before the brightness |
-| 4 | Saturn 2 | Hidden parallel saturation (band Mix) | Loudness and density without audible dirt (Phase 1's Ken DNA) |
-| 5 | Pro-C | Compressor 2: smooth opto leveling | Glues each line into a steady, expensive level (Phase 1) |
-| 6 | Fresh Air | Dynamic air and presence | Air that follows the voice (upgrade) |
-| 7 | Pro-Q | Gentle static air shelf | Finishes Phase 1's big air shelf on top of Fresh Air |
-| 8 | Pro-DS | De-esser | Every brightness stage is behind it, so it catches all the lifted S's (Phase 1) |
-| 9 | Pro-Q | Dynamic control, 3–5 kHz | Clamps loud notes that turn glassy, only when they spike (upgrade) |
-| 10 | Pro-L 2 | Peak control | Holds the most upfront lead of the five flat |
+| 1 | Pro-Q | Low Cut 80 Hz, 18 dB/oct · Bell 400 Hz, Q 1.4, dynamic −3 dB · optional: a narrow dynamic cut on any ringing resonance · Zero Latency | A very bright chain exaggerates box and resonances, so they're handled first |
+| 2 | Pro-C | Punch style · Ratio 6:1 · Attack 0.5 ms · Release 50 ms · Knee 6 dB · Threshold about −16 dB, for 4–6 dB GR · Gain to level-match | Phase 1's fast FET-style grab |
+| 3 | Pro-Q | Bell 200 Hz, Q 0.8, +2 dB | Body before brightness, so the gloss doesn't thin a thin voice further |
+| 4 | Saturn 2 | 1 band · Clean Tube · Drive 20% · Mix 25% · HQ on · Level to match | Hidden parallel density: louder, never audibly dirty. Clean Tube leans bright, which suits this preset |
+| 5 | Pro-C | Opto style · Ratio 3:1 · Attack 10 ms · Release Auto · Knee 18 dB · Threshold about −20 dB, for 3–4 dB steady GR · Gain to level-match | Phase 1's smooth opto leveling, for an even, expensive line |
+| 6 | Fresh Air | Mid Air 25% · High Air 55% · Trim to level-match | The dynamic air: a strong top (Q19) and modest presence, since the mic already has presence |
+| 7 | Pro-Q | High Shelf 12 kHz, Q 0.7, +2 dB | Finishes the air. With Fresh Air, that's about +4–6 dB of top end beyond the mic's own |
+| 8 | Pro-DS | Single Vocal · Split Band · Threshold −30 dB, for 3–6 dB on S's · Range 10 dB · detection 5–12 kHz · Lookahead 5 ms | Catches the S's both air stages lifted |
+| 9 | Pro-Q | Bell 3.8 kHz, Q 1.5, dynamic −3 dB | Clamps loud notes that turn glassy under hard tune, only when they spike |
+| 10 | Pro-L 2 | Modern style · Gain +2 dB, raised until the loudest lines show 1–3 dB GR · Output −3.0 dBFS · Lookahead 2 ms | Holds the most upfront lead of the five flat |
 
-**Order notes:** both brightness stages (6, 7) sit before the de-esser (8), so it sees the final top end. The harsh-zone clamp (9) comes after the de-esser, so it only deals with glassy notes, not S's. This moves de-essing and dynamic control one slot later than the foundation template to make room for the second air stage.
+**Density check:** about 5 + 1.5 + 3.5 + 2 dB on the loudest lines, roughly 12 dB total (target 11–13).
+
+**Order notes:** both brightness stages (6, 7) sit before the de-esser (8), so it sees the final top end. The harsh-zone clamp (9) comes after the de-esser, so it only deals with glassy notes, not S's. This moves de-essing and dynamic control one slot later than the foundation template, to make room for the second air stage.
 
 ## Parallel tracks
 
 ### PAR · OCT UP (the ghost layer)
 
-**Feed:** LEAD. The layer inherits the finished gloss, compression and de-essing before it's shifted, so it arrives as a bright, controlled voice.
+**Feed:** LEAD, with the route at 100%. The layer inherits the finished gloss, compression and de-essing before it's shifted, so it arrives as a bright, controlled voice.
 
-| Slot | Plugin | Job | Why |
+| Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Auto-Tune Artist | Transpose +12, Formant on, Chromatic, minimal correction | An octave up that stays a voice, not a chipmunk. Always in key (D20) |
-| 2 | Pro-Q | High-pass ~400 Hz, tame the harsh top, Zero Latency | Shimmer only, no low-mid clutter |
-| 3 | Pro-C | Steady level | A ghost has to stay constant |
-| 4 | Vintage Chorus | Wide stereo spread | Phase 1's "tucked wide". The lead stays mono |
+| 1 | Auto-Tune Artist | Alto/Tenor · Chromatic · Retune Speed 50 · Flex-Tune 100 · Humanize 0 · Transpose +12 · Formant on · Throat 100 | Shifts up an octave without re-tuning. Formant keeps it a voice, not a chipmunk (D20) |
+| 2 | Pro-Q | Low Cut 400 Hz, 24 dB/oct · High Shelf 9 kHz, −3 dB · Zero Latency | Shimmer only: no low-mid clutter, no hiss |
+| 3 | Pro-C | Clean style · Ratio 4:1 · Attack 5 ms · Release 80 ms · Knee 12 dB · Threshold about −12 dB, for 4–6 dB GR · Gain to level-match | A ghost has to stay constant |
+| 4 | Vintage Chorus | Mode I · wet/dry around the middle | Phase 1's "tucked wide". Mode I is the gentlest, widest Juno setting |
 
-**Level:** 14–18 dB under LEAD at VOX BUS.
+**Level:** fader at −18 dB, which is its verse level. The key move lifts it to −14 dB on hooks. Both stay inside the ghost range (foundation §4).
 
 **Buildable:** yes. Transpose +12 is within Auto-Tune's ±12, Formant needs the Modern algorithm (D16), and Vintage Chorus is FL stock (foundation §1).
 
@@ -89,49 +93,54 @@ Glossy, very bright and expensive: a hard-tuned lead right in your face, with cr
 
 ### FX · DELAY (the soft bed)
 
-| Slot | Plugin | Job | Why |
+| Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Timeless 3 | 1/8 ping-pong with HP/LP filtering. The envelope follower pulls the Mix down while you sing | Q20: ducks under the words and blooms in the gaps (D15) |
-| 2 | Pro-Q | Low cut, lows kept mono | D7 |
+| 1 | Timeless 3 | Sync on · 1/8 on both sides · Ping Pong on, starting left · Feedback 30% · Filters: High Pass 400 Hz, Low Pass 7 kHz · Stretch mode · Dry off · Wet 0 dB · envelope follower → Wet level, about −12 dB of range · EF attack short, release about 300 ms | Q20: ducks up to 12 dB under the words and blooms in the gaps (D15). The filters keep repeats out of the body and away from S's |
+| 2 | Pro-Q | Low Cut 300 Hz, 12 dB/oct · Low Cut 500 Hz on Side only · Zero Latency | Clean repeats with mono lows (D7) |
+
+**Level:** fader at −16 dB. The first repeat should sit 16–20 dB under the lead.
 
 ### FX · PLATE
 
-| Slot | Plugin | Job | Why |
+| Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-R 2 | Plate style, about 1 s, bright | Phase 1's short bright plate |
-| 2 | Pro-Q | Low cut ~250 Hz | Keeps the plate off the body |
+| 1 | Pro-R 2 | Plate style · Space 1.0 s · Decay Rate 100% · Predelay 20 ms · Brightness +20% · Character 30% · Distance 30% · Thickness 20% · Stereo Width 100% · Mix 100% · Ducking off | Phase 1's short bright plate: sheen, not space |
+| 2 | Pro-Q | Low Cut 250 Hz, 12 dB/oct · Low Cut 400 Hz on Side only · Zero Latency | Keeps the plate off the body, with mono lows |
+
+**Level:** fader at −20 dB. You should feel it more than hear it.
 
 ## Buses
 
-- **VOX BUS:** one slot. Pro-C, Bus style, 1–2 dB of glue.
-- **VOX GROUP:** empty.
+| Track | Slot | Plugin | Settings | Why |
+|---|---|---|---|---|
+| VOX BUS | 1 | Pro-C | Bus style · Ratio 2:1 · Attack 30 ms · Release Auto · Knee 12 dB · Threshold about −12 dB, for 1–2 dB GR · Gain to level-match | Glues the lead, ghost and doubles into one gloss |
+
+VOX GROUP stays empty.
 
 ## DBL
 
-**DBL IN L / DBL IN R:** the foundation front end (rumble cut, gentle expander, Auto-Tune matching VOX IN), panned L90 / R90.
+**DBL IN L / DBL IN R:** the VOX IN chain exactly (same three slots, same settings), faders at 0 dB, panned L90 / R90.
 
-| Slot | Plugin | Job | Why |
+| Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-Q | Low cut ~120 Hz, box | The lead carries the body |
-| 2 | Pro-C | Tighter compression than the lead | Steady doubles blend better |
-| 3 | Saturn 2 | Hidden saturation, as on the lead | Matching density |
-| 4 | Fresh Air | Set lower than the lead | Bright, but a step behind |
-| 5 | Pro-DS | Harder de-essing | Very bright doubles stack S's fastest |
-| 6 | Pro-Q | Tone offset: less 3–5 kHz and air | Keeps the lead in front |
+| 1 | Pro-Q | Low Cut 120 Hz, 18 dB/oct · Bell 400 Hz, Q 1.4, dynamic −3 dB · Zero Latency | The lead carries the body |
+| 2 | Pro-C | Punch style · Ratio 8:1 · Attack 1 ms · Release 60 ms · Knee 6 dB · Threshold about −18 dB, for 6–8 dB GR · Gain to level-match | Tighter than the lead, so the doubles blend |
+| 3 | Saturn 2 | 1 band · Clean Tube · Drive 20% · Mix 25% · HQ on · Level to match | The same density as the lead |
+| 4 | Fresh Air | Mid Air 15% · High Air 35% · Trim to level-match | Bright, but a step behind the lead |
+| 5 | Pro-DS | Single Vocal · Split Band · Threshold −32 dB · Range 12 dB · detection 5–12 kHz | Very bright doubles stack S's fastest |
+| 6 | Pro-Q | Bell 4 kHz, Q 1.0, −2 dB · High Shelf 10 kHz, −2 dB | Tone offset that keeps the lead in front |
 
-**Level:** 6–10 dB under LEAD. **Sends:** FX · DELAY and FX · PLATE, 6 dB below LEAD's.
+**Level:** fader at −8 dB (6–10 dB under LEAD). **Sends:** FX · DELAY and FX · PLATE at 100%. Because sends are post-fader, they automatically land 6–10 dB below LEAD's.
 
 ## Key moves
 
 No throws here: Q20 chose a soft bed.
 
-| # | Move | Track › Parameter | When | Why |
-|---|---|---|---|---|
-| 1 | Ghost opens | PAR · OCT UP › fader | Hooks | More gloss where it counts, cleaner verses |
-| 2 | Air lift | LEAD › Fresh Air High Air | Hooks | Extra shine on the hook |
-| 3 | Bed dips | LEAD › send to FX · DELAY | Dense rap lines | Keeps fast bars clear |
-
-From/to values are set in Step 3.
+| # | Move | Track › Parameter | From → To | When | Why |
+|---|---|---|---|---|---|
+| 1 | Ghost opens | PAR · OCT UP › fader | −18 dB → −14 dB | Hooks, with 1-beat ramps in and out | More gloss where it counts, cleaner verses |
+| 2 | Air lift | LEAD › Fresh Air High Air | 55% → 65% | Hooks | Extra shine on the hook |
+| 3 | Bed dips | LEAD › send to FX · DELAY | 100% → 50% | Dense rap lines | Keeps fast bars clear |
 
 ## Ear checks
 

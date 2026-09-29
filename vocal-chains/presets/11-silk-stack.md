@@ -9,7 +9,7 @@ Lush, wide and choir-like: the lead blooms into harmonies made from itself, with
 
 1. **Input level:** loudest lines peak around −10 dBFS on VOX IN, DBL IN L and DBL IN R (foundation §4).
 2. **Key and scale:** set the song's key on the Auto-Tune in VOX IN, DBL IN L and DBL IN R. PAR · OCT stays on Chromatic (D20), and Pitcher follows the 3rd line instead of a key.
-3. **The 3rd line:** see [Making the 3rd line](#making-the-3rd-line-per-song).
+3. **The 3rd line:** once VOX IN's Auto-Tune is set, see [Making the 3rd line](#making-the-3rd-line-per-song).
 4. **Key moves:** after the blend (foundation §4), place the harmony rides and the hall swells (see [Key moves](#key-moves)).
 
 ## Sound targets
@@ -20,7 +20,7 @@ Lush, wide and choir-like: the lead blooms into harmonies made from itself, with
 | Density | 8–10 dB total: the smoothest of the five, led by opto compression |
 | Grit | Warm tube, with no audible dirt |
 | Space | A lush long hall of about 3 s with 70 ms of pre-delay and light ducking. The harmonies sit further back in it than the lead. Wet 4/5 |
-| Width | The widest of the five. Lead mono and solid, harmonies chorused wide and panned apart (3rd L35, octave R35), doubles at L/R 80, hall fully wide |
+| Width | The widest of the five. Lead mono and solid, harmonies chorused wide and panned apart (3rd L35, octave R35), doubles at L/R 80, hall at full stereo |
 | Placement | Balanced: clear, but embedded in the harmonies and the hall |
 | Tune | Medium: retune 25–40, humanize and Flex-Tune 20–30 |
 | Harmonies | 3rd up at 8–10 dB under the lead, octave down at 10–12 dB under. Sung lines only |
@@ -96,7 +96,7 @@ Plus one Channel Rack channel, **3RD LINE**: a MIDI Out channel that holds the 3
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pitcher | MIDI mode · Speed about halfway · formant control on, nudged slightly toward the male side · low-frequency setting 80 Hz · MIDI input port matching 3RD LINE | Moves the lead to its in-key 3rd, note by note. Halfway speed glides between notes the way Medium tuning does, where fully up jumps in steps. The formant nudge offsets the upward shift, so the harmony doesn't sound smaller than you |
+| 1 | Pitcher | MIDI on, in Octaves mode · Port (bottom left) matching 3RD LINE · Speed about halfway · Formant on · Gender nudged slightly toward male · low-frequency setting 80 Hz | Moves the lead to the exact note in the 3rd line, octave included. Plain MIDI mode keeps only the note name, so a 3rd that crosses into the next octave could land a 6th below. Halfway speed glides between notes the way Medium tuning does, where fully up jumps in steps. Gender toward male offsets the upward shift, so the harmony doesn't sound smaller than you |
 | 2 | Pro-Q | Low Cut 200 Hz, 18 dB/oct · Bell 3.5 kHz, Q 1.0, −2 dB · Output 0 dB | Sits behind the lead |
 | 3 | Pro-C | Vocal style · Ratio 3:1 · Attack 10 ms · Release 100 ms · Knee 12 dB · Threshold about −10 dB, for 3–4 dB GR · Gain to level-match | Support layers stay put |
 | 4 | Vintage Chorus | Mode II · Mix 50% · H Pass 250 Hz | A different mode from PAR · OCT, so the two harmonies spread instead of stacking |
@@ -105,24 +105,26 @@ Plus one Channel Rack channel, **3RD LINE**: a MIDI Out channel that holds the 3
 
 ### Making the 3rd line (per song)
 
-1. Add a MIDI Out channel named 3RD LINE. Set its port and Pitcher's MIDI input port to the same number (port 10, for example).
-2. Render the tuned lead as a stem that starts at bar 1: File › Export › WAV file, tick **Split mixer tracks**, and keep the VOX IN file. Its notes are the ones Auto-Tune actually sang, and its timing lines up with the song.
-3. Load the stem into NewTone. Select 3RD LINE in the Channel Rack, then send NewTone's notes to the piano roll as a MIDI score. Place that pattern in the Playlist at bar 1.
+1. Add a MIDI Out channel named 3RD LINE. On PAR · 3RD's Pitcher, turn MIDI on and set the Port display (bottom left) to the same number as MIDI Out's port (port 10, for example).
+2. Render the tuned lead as a stem that starts at bar 1. First clear any Playlist time selection (your 8-bar loop), because a selection renders only that range. Then File › Export › WAV file, check that it renders the full song, tick **Split mixer tracks**, and keep the VOX IN file. Its notes are the ones Auto-Tune actually sang, and its timing lines up with the song.
+3. Load the stem into NewTone. In the Channel Rack, select 3RD LINE and pick an empty pattern, then send NewTone's notes to the piano roll as a score. Place that pattern in the Playlist at bar 1.
 4. In the piano roll, delete detection blips (anything shorter than about a 1/16 note) and fix any note that doesn't match what you hear. The harmony copies every mistake left here.
-5. Select all notes and move them up 4 semitones. With the song's scale highlighted, move any note that lands outside the key down 1 semitone. That leaves a true in-key 3rd above every note. Then run Tools › Quick legato, so each note runs into the next with no gaps inside a phrase.
-6. Delete the notes on rap sections.
+5. Select all notes and move them up 4 semitones. With the song's scale highlighted (the piano roll's scale helper), move any note that lands outside the key down 1 semitone. That leaves a true in-key 3rd above every note. Run Tools › Quick legato, so each note runs into the next with no gaps inside a phrase. Then, with snap off (hold Alt while dragging), move all notes about 10–20 ms earlier, so Pitcher catches the start of each note.
+6. Delete the notes on rap sections, and trim any sung note that Quick legato stretched into a rap.
 
 If the lead's takes change later, render a new stem and redo the line.
 
 **Fallback** (if Pitcher tracks your voice poorly): load the same VOX IN stem into NewTone, raise each note to its in-key 3rd (the step 5 rule), export the result and drop it on the Playlist at bar 1. It lands on its own channel. Point that channel at PAR · 3RD and remove LEAD's route to PAR · 3RD. The stem already carries VOX IN's tuning and expander, but it skips LEAD, so the slots change to:
 1. Pro-Q: Low Cut 200 Hz, 18 dB/oct · Bell 3.5 kHz, Q 1.0, −2 dB · Output 0 dB
-2. Pro-C: Vocal · Ratio 4:1 · about 6 dB GR · Gain to level-match
-3. Saturn 2: Warm Tube · Drive 25% · Mix 40%
-4. Pro-DS: Single Vocal · Threshold −30 dB · Range 8 dB
-5. Pro-L 2: Transparent · Output −3.0 dBFS · Gain about +10 dB, for 1–2 dB GR. It stands in for LEAD's limiter, so the −6 dB fader still lands 8–10 dB under
+2. Pro-C: Vocal style · Ratio 4:1 · Attack 10 ms · Release 100 ms · Knee 12 dB · Threshold for about 6 dB GR · Gain to level-match
+3. Saturn 2: as LEAD slot 4
+4. Pro-DS: as LEAD slot 7, but Threshold −30 dB
+5. Pro-L 2: Transparent style · Gain for 1–2 dB GR (roughly +13 dB here) · Output −3.0 dBFS · Lookahead 3 ms
 6. Vintage Chorus: Mode II · Mix 50% · H Pass 250 Hz
 
-**Buildable:** yes. Pitcher's MIDI mode takes its pitch from the MIDI Out notes, NewTone exports notes as a MIDI score, and Vintage Chorus and Auto-Tune's transpose are confirmed (foundation §1). The "up 4, then pull out-of-key notes down 1" rule gives exact 3rds in major and natural minor keys. Harmonic minor has one exception: the raised 7th's 3rd comes out 1 semitone high, so move it down (in A minor, G♯ takes B, not C).
+Here Pro-L 2 comes after the EQ, so it wins back the EQ's 3 dB trim. Start the fader at −9 dB instead of −6, and run key move 1 from −9 dB.
+
+**Buildable:** yes. With MIDI on in Octaves mode, Pitcher takes each note and its octave from the MIDI Out notes. NewTone exports notes as a score, and Vintage Chorus and Auto-Tune's transpose are confirmed (foundation §1). The "up 4, then pull out-of-key notes down 1" rule gives exact 3rds in major and natural minor keys. Harmonic minor has one exception: the raised 7th's 3rd comes out 1 semitone high, so move it down (in A minor, G♯ takes B, not C).
 
 ## FX returns
 
@@ -130,8 +132,8 @@ If the lead's takes change later, render a new stem and redo the line.
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-R 2 | Modern style · Space 3.0 s · Decay Rate 100% · Predelay 70 ms · Brightness −10% · Character 30% · Distance 40% · Thickness 20% · Stereo Width 100% · Mix 100% · Ducking about 4 dB | Phase 1's lush hall. Pre-delay and light ducking keep the words upfront (D15) |
-| 2 | Pro-Q | Low Cut 250 Hz, 12 dB/oct · Low Cut 400 Hz on Side only · High Shelf 9 kHz, −3 dB · Output 0 dB | A silky, clean tail with mono lows. Vampire Haze gets the dirty one |
+| 1 | Pro-R 2 | Modern style · Space 3.0 s · Decay Rate 100% · Predelay 70 ms · Brightness −10% · Character 30% · Distance 40% · Thickness 20% · Stereo Width 50% · Mix 100% · Ducking about 4 dB | Phase 1's lush hall. Pre-delay and light ducking keep the words upfront (D15). 50% is full stereo |
+| 2 | Pro-Q | Low Cut 250 Hz, 12 dB/oct · Low Cut 400 Hz, 12 dB/oct, on Side only · High Shelf 9 kHz, −3 dB · Output 0 dB | A silky, clean tail with mono lows. Vampire Haze gets the dirty one |
 
 **Level:** fader at −10 dB.
 
@@ -162,16 +164,16 @@ VOX GROUP stays empty.
 
 | # | Move | Track › Parameter | From → To | When | Why |
 |---|---|---|---|---|---|
-| 1 | Harmony ride | PAR · OCT and PAR · 3RD › faders | −8 dB and −6 dB → off (−∞), then back | Off for rap sections, back for sung lines, with 1-beat ramps | Keeps the stack on the melodies. The 3RD line is already empty there, so this also covers anything Pitcher passes through without notes |
-| 2 | Hall swell | LEAD › send to FX · HALL | 50% → 100% → 50% | Last line of each hook | The hook exhales into the hall |
+| 1 | Harmony ride | PAR · OCT and PAR · 3RD › faders | −8 dB and −6 dB → off (−∞), then back | Off for rap sections, back for sung lines. Put each 1-beat ramp in the gap between sections, so the faders reach −∞ before the first rap word and are back by the first sung word | Keeps the stack on the melodies. The 3RD line is already empty there, so this also covers anything Pitcher passes through without notes |
+| 2 | Hall swell | LEAD › send to FX · HALL | 50% → 100% → 50% | Last line of each hook: a 1-beat ramp up into the line, back to 50% right after its last word | The hook exhales into the hall |
 
 ## Ear checks
 
-Build in this order, one stage at a time, and switch each stage off and on to hear what it adds (foundation §5.7).
+Build in this order, one stage at a time (foundation §5.7).
 
 | # | Stage | You should hear |
 |---|---|---|
-| 1 | Template and input (foundation §2, §4) | The loudest lines peak around −10 dBFS on VOX IN. Mute LEAD for a moment and the full-level lead should disappear. If it keeps playing, VOX IN still routes to Master |
+| 1 | Template and input (foundation §2, §4, §5.7) | The loudest lines peak around −10 dBFS on VOX IN. With the unbuilt tracks muted, mute LEAD for a moment and the vocal should go silent. If it keeps playing, VOX IN still routes to Master |
 | 2 | VOX IN 1–3 | Notes land in tune, but slides stay smooth and silky. Breaths dip a little, words don't |
 | 3 | LEAD 1 · Pro-Q | Box eases on close words, and the natural weight stays |
 | 4 | LEAD 2 · Pro-C | A gentle hold on peaks. Still soft, no snap |
@@ -182,28 +184,28 @@ Build in this order, one stage at a time, and switch each stage off and on to he
 | 9 | LEAD 7 · Pro-DS | S's soften smoothly, with no lisp |
 | 10 | LEAD 8 · Pro-Q | Belted notes stay smooth |
 | 11 | LEAD 9 · Pro-Q | A little warmer and more embedded, with the words still clear |
-| 12 | LEAD 10 · Pro-L 2 | The lead comes up about 10 dB, with no audible limiting |
+| 12 | LEAD 10 · Pro-L 2 | The lead comes up about 10 dB, with no audible limiting. If Master clips, pull VOX GROUP down for now. The blend sets it properly |
 | 13 | PAR · OCT 1, fader at 0 dB for the check | A natural lower voice an octave down, not a monster |
 | 14 | PAR · OCT 2–4 | Low-mid weight with no sub mud, soft on top and steady, spreading wide to the right |
-| 15 | PAR · 3RD 1, fader at 0 dB for the check | An in-key 3rd above every sung note, gliding between notes like the lead. A wrong note means the 3RD LINE needs a fix |
+| 15 | PAR · 3RD 1: load Pitcher, make the 3rd line (see Making the 3rd line), fader at 0 dB for the check | An in-key 3rd above every sung note, gliding between notes like the lead. A wrong note means the 3RD LINE needs a fix |
 | 16 | PAR · 3RD 2–4 | It sits behind the lead, steady, spreading wide to the left |
-| 17 | Both harmonies, back at −8 / −6 dB | The stack adds size and color without pulling focus, and the lead stays clear (the support test) |
-| 18 | FX · HALL | A lush 3 s hall that starts just after each word and dips slightly while you sing. The harmonies sit deeper in it than the lead |
-| 19 | VOX BUS | Lead and harmonies sing as one choir |
-| 20 | DBL IN L / R | Each double snaps to the same notes as the lead, wide on its side |
-| 21 | DBL | Warm, wide doubles a step behind the lead, 6–10 dB under |
-| 22 | Blend (foundation §4) | Balanced: the lead clear but embedded in the harmonies and the hall |
+| 17 | Both harmonies, back at −8 / −6 dB | On the sung bars, the stack adds size and color without pulling focus, and the lead stays clear (the support test). The harmonies leave the raps at the key moves |
+| 18 | FX · HALL | A lush 3 s hall that blooms about 70 ms behind the start of each word and dips slightly while you sing. The harmonies sit deeper in it than the lead |
+| 19 | DBL IN L / R, with DBL's fader at 0 dB for the check | Each double snaps to the same notes as the lead, wide on its side. Mute DBL for a moment and both doubles should go silent. If they keep playing, a DBL IN track still routes to Master |
+| 20 | DBL, fader back at −8 dB | Warm, wide doubles just behind the lead, 6–10 dB under |
+| 21 | VOX BUS | Lead, harmonies and doubles sing as one choir |
+| 22 | Blend (foundation §4) | Judged on the sung bars: the lead clear but embedded in the harmonies and the hall |
 | 23 | Key moves | The harmonies drop out on raps and return on melodies. The last hook line exhales into the hall |
 | 24 | Translation (foundation §5.4) | Every check in [Translation notes](#translation-notes) passes |
 
 ## Translation notes
 
-Run the checks in foundation §5.4. What to watch for in this preset:
+Run the checks in foundation §5.4. A fix on a control with key moves goes into its automation clip (foundation §5.3). What to watch for in this preset:
 
 | Check | Watch for | Fix |
 |---|---|---|
 | **Mono (biggest risk)** | The harmonies thinning or swirling as the choruses fold. The hall narrowing is fine | Lower both choruses' Mix toward 30% |
-| Quiet | The hall washing over words | Lower FX · HALL 2 dB |
+| Quiet | The hall washing over words | Lower FX · HALL's fader 2 dB |
 | Small speaker | A dull lead once the warmth below 300 Hz fades | Ease LEAD slot 9's tilt to −1 dB |
-| Loud | Low-mid build-up from the lead and the octave. The octave's high-pass already keeps it off the 808 | Lower PAR · OCT's clip 1–2 dB |
-| Headphones | A 3rd that lands on a wrong note or smears between notes | Fix the note in 3RD LINE. If it smears, turn Pitcher's Speed up a little |
+| Loud | Low-mid build-up from the lead and the octave. The octave's high-pass already keeps it off the 808 | Lower PAR · OCT's automation clip 1–2 dB on the sung sections |
+| Headphones | A 3rd that lands on a wrong note, changes note late or smears | Fix wrong notes in 3RD LINE, and nudge late ones a little earlier. If it still smears, turn Pitcher's Speed up a little |

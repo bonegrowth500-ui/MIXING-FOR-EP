@@ -88,7 +88,7 @@ Sends are post-fader. The demon's send leaves an already quiet track, so FX · V
 | 5 | Pro-Q | Low Cut 150 Hz, 24 dB/oct · High Cut 3 kHz, 24 dB/oct · Output 0 dB | Keeps the twin under the lead's presence and out of the beat's sub |
 | 6 | Pro-L 2 | Aggressive style · Gain about +8 dB, adjusted for 2–3 dB GR · Output −6.0 dBFS · Lookahead 0 ms | A ceiling, so the twin can never poke out on a loud word (Q17). Aggressive suits a distorted source and works without lookahead |
 
-**Level:** fader at −15 dB. Adjust until it passes the ghost test (foundation §4): 12–18 dB under LEAD. Mono (D7).
+**Level:** fader at −15 dB. Adjust until it passes the ghost test (foundation §4): 12–18 dB under LEAD. On the peak meters this start already reads about 18 dB under, because the demon is squashed flat and ends at a −6 dBFS ceiling. It sounds closer than it reads, so trust the ghost test over the meters. Mono (D7).
 
 **Buildable:** yes. Transpose −12 is Auto-Tune's limit. Formant and Throat need the Modern algorithm (D16), and Throat 120 sits inside the 80–140 range the sheets allow (foundation §1).
 
@@ -98,9 +98,9 @@ Sends are post-fader. The demon's send leaves an already quiet track, so FX · V
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-DS | Allround · Wide Band · Threshold set for 6–8 dB on S's · Range 12 dB · detection 5–10 kHz · Lookahead 5 ms | The repeats stay bright, but S's don't echo. The lead's own de-essing is set for the dry voice, and a repeated S stands out far more |
-| 2 | Timeless 3 | Sync on · Left 1/4, Right dotted 1/8 · Ping Pong off · Feedback 25% · Stretch mode · Filters: High Pass 300 Hz, Low Pass 9 kHz · Dry off · Wet 0 dB · ducking: envelope follower → Wet level, about −9 dB, attack short, release about 250 ms (foundation §2, "Ducking a return") | Phase 1's bright delay. The two times give it stereo movement, and it ducks softly so the angel stays clean (D15). Timeless's High Pass already keeps the repeats off the body |
-| 3 | Pro-Q | Low Cut 500 Hz on Side only · Output 0 dB | Mono lows (D7) |
+| 1 | Pro-DS | Allround · Wide Band · Threshold about −22 dB, for 6–8 dB on S's · Range 12 dB · detection 5–10 kHz · Lookahead 5 ms | The repeats stay bright, but S's don't echo. The lead's own de-essing is set for the dry voice, and a repeated S stands out far more |
+| 2 | Timeless 3 | Delay Sync on, 1/4 · Delay Offset 75%, so both sides land on a dotted 1/8 · Delay Time Pan ring set to lengthen the left side to 133%, so it lands on 1/4 · Ping Pong off · Feedback 25% · Stretch mode · Filters: High Pass 300 Hz, Low Pass 9 kHz (default slopes) · Mix 100% · Wet Level 0 dB · ducking: envelope follower → Wet Level, about −9 dB, attack short, release about 250 ms (foundation §2, "Ducking a return") | Phase 1's bright delay. The two times give it stereo movement, and it ducks softly so the angel stays clean (D15). Timeless's High Pass already keeps the repeats off the body |
+| 3 | Pro-Q | Low Cut 500 Hz, 12 dB/oct, on Side only · Output 0 dB | Mono lows (D7) |
 
 **Level:** fader at −18 dB, a by-ear starting point, since the filters and the ducking change how loud the repeats read. Set it so they sit about 18 dB under the lead in the gaps.
 
@@ -108,7 +108,7 @@ Sends are post-fader. The demon's send leaves an already quiet track, so FX · V
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-R 2 | Modern style · Space 1.0 s · Decay Rate 100% · Predelay 10 ms · Brightness −40% · Character 20% · Distance 50% · Thickness 30% · Stereo Width 50% · Mix 100% · Ducking off | The demon's own darker, narrower room: Phase 1's "two rooms" |
+| 1 | Pro-R 2 | Modern style · Space 1.0 s · Decay Rate 100% · Predelay 10 ms · Brightness −40% · Character 20% · Distance 50% · Thickness 30% · Stereo Width 25% · Mix 100% · Ducking off | The demon's own darker, narrower room: Phase 1's "two rooms". 25% is about half width (0% is mono, 50% full stereo) |
 | 2 | Pro-Q | Low Cut 200 Hz, 24 dB/oct · High Cut 4 kHz, 12 dB/oct · Output 0 dB | Keeps the room dark and out of the low end |
 
 **Level:** fader at −6 dB, which puts the room about 6 dB under the demon and about 20 dB under the lead. Treat it as a by-ear starting point.
@@ -130,7 +130,7 @@ VOX GROUP stays empty.
 | 1 | Pro-Q | Low Cut 120 Hz, 18 dB/oct · Bell 400 Hz, Q 1.4, dynamic −3 dB | The lead carries the body |
 | 2 | Pro-C | Clean style · Ratio 6:1 · Attack 1 ms · Release 60 ms · Knee 6 dB · Threshold about −18 dB, for 6–8 dB GR · Gain to level-match | Tighter than the lead, so the doubles blend |
 | 3 | Saturn 2 | 1 band · Clean Tube · Drive 15% · Mix 20% · HQ on · Level to match | Matches the lead's density |
-| 4 | Fresh Air | Mid Air 10% · High Air 25% · Trim to level-match | Bright, but a step behind |
+| 4 | Fresh Air | Mid Air 10% · High Air 25% · Trim to level-match | Bright, but just behind the lead |
 | 5 | Pro-DS | Single Vocal · Split Band · Threshold −32 dB, for 5–8 dB on S's · Range 10 dB · detection 5–11 kHz · Lookahead 5 ms | S's stack up across takes |
 | 6 | Pro-Q | Bell 4 kHz, Q 1.0, −2 dB · High Shelf 10 kHz, −2 dB | Tone offset that keeps the lead in front |
 | 7 | Pro-L 2 | Allround style · Gain about +10 dB, for 1–2 dB GR · Output −3.0 dBFS · Lookahead 2 ms | Brings the doubles up to the lead's level, so the −8 dB fader really puts them 6–10 dB under (D23) |
@@ -142,15 +142,15 @@ VOX GROUP stays empty.
 | # | Move | Track › Parameter | From → To | When | Why |
 |---|---|---|---|---|---|
 | 1 | Demon surge | PAR · DEMON › fader | −15 dB → −9 dB → −15 dB | Punchlines and key words, with 1/16-note ramps | Phase 1's signature: the twin steps forward for a moment |
-| 2 | Delay throw | FX · DELAY › fader | −18 dB → −8 dB → −18 dB | Last word of hook lines: up on the word, back down after two repeats | Lifts the angel's line endings. LEAD's send is already at 100%, so the throw rides the return instead (D22) |
+| 2 | Delay throw | FX · DELAY › fader | −18 dB → −8 dB → −18 dB | Last word of hook lines: a 1/16-note ramp up as the word starts, hold until 2 beats after the word ends, then a 1-beat ramp back down | Lifts the angel's line endings. LEAD's send is already at 100%, so the throw rides the return instead (D22) |
 
 ## Ear checks
 
-Build in this order, one stage at a time, and switch each stage off and on to hear what it adds (foundation §5.7).
+Build in this order, one stage at a time (foundation §5.7).
 
 | # | Stage | You should hear |
 |---|---|---|
-| 1 | Template and input (foundation §2, §4) | The loudest lines peak around −10 dBFS on VOX IN. Mute LEAD for a moment and the full-level lead should disappear. If it keeps playing, VOX IN still routes to Master |
+| 1 | Template and input (foundation §2, §4, §5.7) | The loudest lines peak around −10 dBFS on VOX IN. With the unbuilt tracks muted, mute LEAD for a moment and the vocal should go silent. If it keeps playing, VOX IN still routes to Master |
 | 2 | VOX IN 1–3 | Held notes snap hard into key with a glassy edge. Breaths dip a little between lines, words don't |
 | 3 | LEAD 1 · Pro-Q | Boxiness eases on close or low words. Nothing else changes |
 | 4 | LEAD 2 · Pro-C | Spiky rap syllables stop jumping out. Steadier, not squashed |
@@ -161,28 +161,28 @@ Build in this order, one stage at a time, and switch each stage off and on to he
 | 9 | LEAD 7 · Pro-DS | S's back to natural, with the air intact |
 | 10 | LEAD 8 · Pro-Q | Loud high notes stop stinging. Quiet lines are untouched |
 | 11 | LEAD 9 · Pro-Q | A touch more sheen on top and a little more room in the low mids |
-| 12 | LEAD 10 · Pro-L 2 | The lead comes up about 10 dB and holds steady, with no pumping |
-| 13 | PAR · DEMON 1–2, soloed | An octave-down, darker you, with silence between words |
+| 12 | LEAD 10 · Pro-L 2 | The lead comes up about 10 dB and holds steady, with no pumping. If Master clips, pull VOX GROUP down for now. The blend sets it properly |
+| 13 | PAR · DEMON 1–2, with LEAD muted | An octave-down, darker you, with silence between words |
 | 14 | PAR · DEMON 3–4 | Heavy, dark grit that stays even from word to word |
 | 15 | PAR · DEMON 5–6 | A focused growl with no sub and no top, whose level never jumps |
-| 16 | PAR · DEMON, unsoloed at −15 dB | Muted, the lead feels smaller. Unmuted, you don't hear a second voice (the ghost test) |
-| 17 | FX · DELAY | Repeats (1/4 left, dotted 1/8 right) bloom in the gaps and dip while you sing. S's don't echo |
+| 16 | PAR · DEMON at −15 dB, LEAD unmuted | Muted, the lead feels smaller. Unmuted, you don't hear a second voice (the ghost test) |
+| 17 | FX · DELAY | Repeats (1/4 left, dotted 1/8 right) bloom in the gaps and dip while you sing. S's in the repeats sit softer than in the dry lead, never sharper |
 | 18 | FX · VERB | A short, dark room around the twin only. The lead stays dry of it |
-| 19 | VOX BUS | Lead and twin move as one performance, with no pumping |
-| 20 | DBL IN L / R | Each double snaps to the same notes as the lead, on its own side |
-| 21 | DBL | Tight doubles a step darker than the lead, 6–10 dB under. The lead still owns the center |
+| 19 | DBL IN L / R, with DBL's fader at 0 dB for the check | Each double snaps to the same notes as the lead, on its own side. Mute DBL for a moment and both doubles should go silent. If they keep playing, a DBL IN track still routes to Master |
+| 20 | DBL, fader back at −8 dB | Tight doubles just behind the lead and a little darker, 6–10 dB under. The lead still owns the center |
+| 21 | VOX BUS | Lead, twin and doubles move as one performance, with no pumping |
 | 22 | Blend (foundation §4) | The lead on top, the twin felt more than heard, the doubles in support |
-| 23 | Key moves | The twin steps forward on punchlines. Hook endings lift into two delay repeats |
+| 23 | Key moves | The twin steps forward on punchlines. Hook endings lift into the delay |
 | 24 | Translation (foundation §5.4) | Every check in [Translation notes](#translation-notes) passes |
 
 ## Translation notes
 
-Run the checks in foundation §5.4. What to watch for in this preset:
+Run the checks in foundation §5.4. A fix on a control with key moves goes into its automation clip (foundation §5.3). What to watch for in this preset:
 
 | Check | Watch for | Fix |
 |---|---|---|
-| Mono | The lead losing clarity once the doubles and the delay fold onto it. The lead and the twin are mono by design, and the twin's half-width room sits too low to matter | Lower DBL 1 dB, or FX · DELAY's clip 1–2 dB |
-| Quiet | Words sinking into the beat. The twin fading out here is expected | Raise VOX GROUP 1 dB |
+| Mono | The lead losing clarity once the doubles and the delay fold onto it. The lead and the twin are mono by design, and the twin's half-width room sits too low to matter | Lower DBL 1 dB, or FX · DELAY's automation clip 1–2 dB |
+| Quiet | Words sinking into the beat. The twin fading out here is expected | Raise VOX GROUP 1 dB, keeping its peaks at or below −6 dBFS |
 | Small speaker | S's piercing through the bright air. The twin fading to a trace is intended | Lower LEAD slot 7's threshold 2 dB |
-| Loud | Low-mid build-up between the lead's chest and the twin | Lower PAR · DEMON's clip 1–2 dB. If the lead alone gets boomy, set LEAD slot 3 to +2 dB |
-| **Headphones (biggest risk)** | The twin reading as a second voice. Headphones expose it first | Lower PAR · DEMON's clip 2 dB at a time until it passes the ghost test again |
+| Loud | Low-mid build-up between the lead's chest and the twin | Lower PAR · DEMON's automation clip 1–2 dB. If the lead alone gets boomy, set LEAD slot 3 to +1.5 dB |
+| **Headphones (biggest risk)** | The twin reading as a second voice. Headphones expose it first | Lower PAR · DEMON's automation clip 2 dB at a time until you no longer hear a second voice, even if the meters then read more than 18 dB under |

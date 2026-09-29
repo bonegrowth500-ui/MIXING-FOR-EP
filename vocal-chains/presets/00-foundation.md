@@ -61,8 +61,8 @@ This environment's network policy blocked the manufacturers' sites, so confirmat
 | | Attack and Release read 0–100% (program-dependent), not ms | Confirmed |
 | **Saturn 2** | 28 styles. Names confirmed: Warm Tape, Clean Tube, Warm Tube · "Subtle" versions of Tape, Tube and Saturation · Transformer: Subtle, Gentle, Warm · Amp: British Rock, British Pop, American Tweed, American Plexi · FX: Foldback, Breakdown | Confirmed |
 | | Per band: Drive in % (output compensates automatically as Drive rises), Feedback, Dynamics (left = gate/expand, right = compress), Tone (bass/mid/treble/presence), Mix in %, Level (−inf to +36 dB). Up to 6 bands | Confirmed |
-| **Timeless 3** | Two delay lines, 5 ms–5 s, host sync (type "d" or "t" for dotted/triplet). Tape / Stretch time modes. Ping Pong (start L or R). Feedback, Cross Feedback Mix, feedback invert. Six feedback-path filters. Feedback FX: Drive, Lo-Fi, Diffuse, Dynamics, Pitch. Dry and Wet levels. Modulation, including an envelope follower whose attack and release you set by dragging its envelope dots. Ducking = the envelope follower pulling the Wet level down | Confirmed |
-| **Pro-R 2** | Space (stepless room model + decay time, from about 0.2 s up to about 10 s). Decay Rate 25–400% of the Space's decay. Style: Modern, Vintage or Plate. Predelay 0–500 ms with sync. Character, Distance, Thickness, Stereo Width and Mix in %, Brightness in ±%. Ducking (a range knob that triggers on the plugin's own input), Auto Gate, Freeze | Confirmed |
+| **Timeless 3** | One Delay Time knob (5 ms–5 s) sets both sides. With Delay Sync on, it becomes Delay Offset, 50–200% of the synced value. The Delay Time Pan ring lengthens the left or the right side, up to 400%. Tape / Stretch time modes. Ping Pong (start L or R). Feedback, Cross Feedback Mix, feedback invert. Filters in the delay path, which shape the first repeat too. Feedback FX: Drive, Lo-Fi, Diffuse, Dynamics, Pitch. Output: a Mix slider (100% on a return, since there is no Dry control), a Wet Level knob and a Stereo Width slider. Modulation, including an envelope follower whose attack and release you set by dragging its envelope dots. Ducking = the envelope follower pulling the Wet Level down | Confirmed |
+| **Pro-R 2** | Space (stepless room model + decay time, from about 0.2 s up to about 10 s). Decay Rate 25–400% of the Space's decay. Style: Modern, Vintage or Plate. Predelay 0–500 ms with sync. Character, Distance, Thickness and Mix in %, Brightness in ±%. Stereo Width runs from 0% (mono) through 50% (true stereo, full width) and 100% (dual mono) to 120% (sides boosted). The sheets stay at 50% or below. Ducking (a range knob that triggers on the plugin's own input), Auto Gate, Freeze | Confirmed |
 | | Ducking's unit. Whether every version reaches 400% Decay Rate (one source says 50–200%). Sheets note a 200% fallback | Check |
 | | Decay-rate EQ, post EQ | Known |
 
@@ -78,7 +78,7 @@ This environment's network policy blocked the manufacturers' sites, so confirmat
 | Stereo separation knob | Center = off. Turn right to merge to mono | Confirmed |
 | Plugin delay compensation | Automatic mode in the mixer menu. Covers sends and wet/dry paths | Confirmed (menu wording: Check) |
 | Audio clips | Channel Settings → Precomputed effects → Normalize (peaks to 0 dB). Channel volume knob in the Channel Rack | Confirmed |
-| Pitcher | Modes include MIDI (pitch set by incoming notes), Octaves and Harmonize (up to 4 voices). Speed, a formant (gender) control, key/scale, and a low-frequency detection setting (about 80 Hz for lower voices, 110 Hz for higher) | Confirmed |
+| Pitcher | MIDI modes: MIDI (the note name sets the pitch, kept in the voice's own octave), Octaves (the note and its octave both come from the MIDI note) and Harmonize (up to 4 notes). The Port display appears at the bottom left once MIDI is on. Speed, a Formant switch and Gender knob, key/scale, and a low-frequency detection setting (about 80 Hz for lower voices, 110 Hz for higher) | Confirmed |
 | NewTone | Detects and edits notes, and exports them as a MIDI score to a channel | Confirmed |
 | Vintage Chorus | Juno-6 chorus. Modes I / II (Shift+click for I+II), Mix (wet/dry), Time 1 / Time 2, Feedback, H Pass on the wet signal, LR Phase, Invert Wet | Confirmed |
 | Automation clips | Mixer controls: right-click → Create automation clip. Plugin controls: move the control, then Tools › Last tweaked › Create automation clip | Confirmed |
@@ -89,7 +89,7 @@ Step 4 re-checked this list and confirmed six items: Saturn 2's style labels, Au
 - The ends of Auto-Tune Artist's Throat range (the sheets only use 100 and 120)
 - FL's wording for the sidechain wrapper panel and the PDC menu
 - Pro-R 2's Ducking unit and its maximum Decay Rate (the sheets note a fallback)
-- The scales on Pitcher's Speed and formant controls (the sheets describe positions, not numbers)
+- The scales on Pitcher's Speed and Gender knobs (the sheets describe positions, not numbers)
 
 ---
 
@@ -123,25 +123,26 @@ LEAD / DBL sends ─► FX returns ───────────────
 2. In the Channel Rack, point every lead audio clip channel to VOX IN, left doubles to DBL IN L and right doubles to DBL IN R. With a single double, use DBL IN L only.
 3. Select VOX IN, right-click the route switch under LEAD, and choose **Route to this track only**. That removes its Master route. Then left-click the switch under each PAR track it feeds.
 4. Route LEAD to VOX BUS with **Route to this track only**, then left-click the switch under each PAR track fed from LEAD.
-5. Route DBL IN L and DBL IN R to DBL. Pan them with their own mixer pan knobs. A single double stays centered.
+5. Select DBL IN L, right-click the switch under DBL and choose **Route to this track only**. Repeat for DBL IN R. Pan them with their own mixer pan knobs. A single double stays centered.
 6. Use **Route to this track only** for DBL and PAR → VOX BUS, FX → VOX GROUP, and VOX BUS → VOX GROUP. VOX GROUP keeps its Master route.
-7. For sends, select LEAD and left-click the switch under each FX track, then set the level on the knob above it. Routes are post-fader, so moving LEAD's fader moves its sends too.
+7. Add sends last, because **Route to this track only** clears a track's other routes. Select LEAD and left-click the switch under each FX track, then set the level on the knob above it. Do the same for DBL and for any PAR track whose Track map lists sends. Routes are post-fader, so moving a track's fader moves its sends too. Sidechain-only keys also go in now (see Ducking a return).
 8. Leave VOX IN's fader at its default. Everything downstream follows it.
 
 ### Ducking a return
 
-Most returns duck themselves (D15). Pro-R 2 has a Ducking knob, and Timeless 3 can pull its own Wet level down with its envelope follower. Both react to the signal arriving at the return, so they need no extra routing.
+Most returns duck themselves (D15). Pro-R 2 has a Ducking knob, and Timeless 3 can pull its own Wet Level down with its envelope follower. Both react to the signal arriving at the return, so they need no extra routing.
 
 To set up Timeless 3's ducking:
 1. In the modulation section, add an Envelope Follower source.
-2. Drag the source's drag button onto the Wet level knob. That creates a modulation slot.
-3. In the slot, click the +/- button so the follower pulls the Wet level down. Then, while the vocal plays, raise the slot's Level slider until the Wet knob dips by about the sheet's depth (for example −12 dB).
+2. Drag the source's drag button onto the Wet Level knob. That creates a modulation slot.
+3. In the slot, click the +/- button so the follower pulls the Wet Level down. Then, while the vocal plays, raise the slot's Level slider until the Wet Level knob dips by about the sheet's depth (for example −12 dB).
 4. Drag the dots in the follower's envelope display to set attack short and release to the sheet's value.
 
-When a sheet uses Pro-C ducking instead:
+When a sheet uses Pro-C ducking instead (after Wiring it, step 7):
 1. Select VOX IN, right-click the switch under the FX track, and choose **Sidechain to this track**.
 2. On that FX track, open Pro-C, click the wrapper cog (top-left) and map the sidechain input to VOX IN.
 3. In Pro-C's Expert mode, set the side chain to External.
+4. Turn Pro-C's Auto Gain off and leave Gain at 0 dB. A ducker gets no makeup.
 
 The key comes from VOX IN because LEAD already sends audio to the return, and "Sidechain to this track" works by zeroing a connection's audio send.
 
@@ -178,7 +179,7 @@ The key comes from VOX IN because LEAD already sends audio to the return, and "S
 ### Names and colors
 
 - **Names:** VOX IN · LEAD · DBL IN L / DBL IN R · DBL · PAR · DEMON / OCT / OCT UP / 3RD / CRUNCH · FX · DELAY / PLATE / HALL / VERB / ROOM / SLAP / THROW · VOX BUS · VOX GROUP
-- **Colors:** VOX IN grey. LEAD, DBL and PAR in the preset's color (DBL lighter, PAR darker). FX teal. Buses white.
+- **Colors:** VOX IN grey. LEAD, DBL and PAR in one color you pick per preset (DBL lighter, PAR darker). FX teal. Buses white.
 
 ---
 
@@ -238,7 +239,7 @@ Each sheet sets its own total within this range. Smoother presets sit low and gr
 
 ### Blend references
 
-Levels here are measured against LEAD at VOX BUS, on the peak meters and by ear.
+Levels here are measured against LEAD at VOX BUS, on the peak meters and by ear. Heavily compressed layers (the demon, the ghost, the crunch) sound closer than their peaks suggest, so when the meter and the test disagree, the test wins.
 
 | Layer | Level vs. LEAD | Test |
 |---|---|---|
@@ -285,8 +286,8 @@ DBL mirrors the lead's job at lower focus:
 - **De-essing:** harder than the lead (deeper Pro-DS range), because S's stack up across takes.
 - **Compression:** tighter than the lead. A steady level blends better.
 - **Peak control:** the last slot is Pro-L 2 at −3 dBFS, like the lead, so the DBL fader's offset means what it says (D23).
-- **Pan:** a pair at L/R 60–90, set per sheet. A single double uses DBL IN L, centered, with its fader 2–3 dB lower.
-- **Sends:** 6 dB lower than the lead's, to the same returns.
+- **Pan:** a pair at L/R 60–90, set per sheet. A single double uses DBL IN L, centered, with DBL's fader 2–3 dB lower than the sheet's.
+- **Sends:** the levels each sheet lists. DBL's fader puts them 6–10 dB below the lead's, since sends are post-fader. Lead-only effects (a slap, throws, the demon's room) skip the doubles.
 - **Level:** 6–10 dB under LEAD.
 - Doubles never feed PAR tracks.
 
@@ -296,6 +297,7 @@ Each sheet lists 2–4 moves in this form (D9). Draw them only after the blend i
 - For mixer faders and send knobs, right-click the control and choose **Create automation clip**.
 - For a control inside a plugin (Fresh Air, Pro-R 2, Pro-Q, Pro-L 2), move it once, then use **Tools › Last tweaked › Create automation clip**. If that doesn't catch it, find the plugin under Browser › Current project and right-click the parameter there.
 - Keep one clip per control. If two moves touch the same control, draw them in the same clip.
+- In fixes, "X's automation clip" means the clip you drew for that control: move every point by the amount given. If you haven't drawn one, move the control itself.
 - The From values are the sheet's starting levels. If your blend moved a fader, shift the whole move by the same amount (a fader blended 2 dB lower runs the move 2 dB lower).
 
 | # | Move | Track › Parameter | From → To | When | Why |
@@ -336,7 +338,9 @@ Every preset sheet uses these sections, in this order:
 - **GR** means gain reduction on the loudest lines. Each threshold is a starting point for the GR written next to it.
 - **Level-match** means setting the plugin's output so bypassing it doesn't change loudness.
 - **Pro-Q** runs in Zero Latency, its default mode, on every track (D18). A band with no Q listed keeps the default Q.
+- **Dynamic −3 dB** on a Pro-Q band means Gain 0 dB with the band's dynamic range at −3 dB. The band stays flat and cuts up to 3 dB only when the level crosses its threshold.
 - **Dynamic EQ bands** use threshold Auto. If your Pro-Q has no Auto, set the threshold so the band only moves on the loudest lines.
+- **Pro-C:** Auto Gain stays off everywhere, and makeup comes from the Gain knob. "Release Auto" means the Auto release button on, with the Release knob at its default.
 - **Faders** are starting values. The blend tests in §4 fine-tune them for your voice.
 - **Sends** sit at 100% unless a sheet says otherwise, and return faders set the wet level (D21).
 - **EQ on parallel tracks and returns** stays at Output 0 dB. Its cuts are part of each sheet's level math, so don't level-match it (D24).
@@ -348,11 +352,14 @@ Every preset sheet uses these sections, in this order:
 
 ### 5.7 · Building and ear-checking
 
-Each sheet's Ear checks table is its build order. Work down it one stage at a time:
-1. Loop 8 bars that hold both rap and melody, with the beat playing quietly underneath.
-2. Add the stage and set it from the sheet.
-3. Switch it off and on again: a plugin with its slot's green switch, a parallel track or return with its mute. Every stage is level-matched (§4) except the Pro-L 2 stages, which add gain on purpose. So the change should be in tone, control or space, not loudness. If a level-matched stage gets louder, fix its output first.
-4. Listen for the change the table describes. If you don't hear it, re-check that stage before adding the next one.
+Each sheet's Ear checks table is its build order:
+1. Set every fader and pan from the sheet's Track map. Then mute every track the table hasn't reached yet (PAR, FX, DBL IN L / R and DBL), and unmute each one at its own stage. Park tracks with mutes, not solo: depending on your settings, un-soloing in FL can unmute every track.
+2. Loop 8 bars that hold both rap and melody, with the beat playing quietly underneath.
+3. Add one stage and set it from the sheet.
+4. Switch it off and on to hear what it adds. Use the slot's green switch for a plugin on LEAD, DBL or a PAR track. For a return's reverb or delay, use the return's mute instead: bypassing a 100%-wet plugin sends the dry vocal through.
+5. Listen for the change the table names. If you don't hear it, re-check that stage before adding the next one.
+
+Most stages are level-matched (§4), so the change should be in tone, control or space, not loudness. Three kinds change level on purpose: the Pro-L 2 stages, EQ on parallel tracks and returns (Output 0 dB, D24), and duckers. If any other stage gets louder, fix its output first.
 
 The blend and the key moves come last, in that order (D24).
 

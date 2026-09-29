@@ -19,7 +19,7 @@ Upfront, gritty and rock-coded: amp-driven snarl, biting mids and a classic slap
 | Density | 12–14 dB total including saturation: the most compressed of the five |
 | Grit | Crunch (Q25): moderate saturation in the lead, plus a parallel British Rock amp layer 6–10 dB under the lead |
 | Space | A ~100 ms slapback plus a small live room of about 0.7 s. Wet 2/5 |
-| Width | The narrowest of the five. Lead, crunch and slap centered. Doubles at L/R 60. Room about 70% wide |
+| Width | The narrowest of the five. Lead, crunch and slap centered. Doubles at L/R 60. Room a little narrower than full stereo |
 | Placement | On top |
 | Tune | Fast: retune 10–15, humanize around 15, Flex-Tune 15–20 so yells and rap pass naturally |
 
@@ -65,7 +65,7 @@ Upfront, gritty and rock-coded: amp-driven snarl, biting mids and a classic slap
 | 6 | Fresh Air | Mid Air 30% · High Air 20% · Trim to level-match | Upper-mid bite with a little air. Kept at 30% because the mic already peaks at 4 kHz |
 | 7 | Pro-Q | Bell 3 kHz, Q 1.2, +1 dB · High Shelf 10 kHz, +1 dB | Final bite, kept small because the mic already lifts 4 kHz |
 | 8 | Pro-DS | Single Vocal · Split Band · Threshold −30 dB, for 3–6 dB on S's · Range 10 dB · detection 5–11 kHz · Lookahead 5 ms | Distortion, air and the 10 kHz shelf all sharpen S's |
-| 9 | Pro-MB | 1 band, 2–5 kHz · Compress mode · Range −6 dB (negative = downward, so the band's gain dips, never rises) · Ratio 4:1 · Attack 20% · Release 30% · Knee 6 dB · Lookahead 2 ms · Threshold lowered until only yells trigger 3–6 dB | Clamps upper-mid harshness only when a yell spikes (Q26). Pro-MB's times are percentages, and these give a fast grab with a quick recovery |
+| 9 | Pro-MB | 1 band, 2–5 kHz · Compress mode · Range −6 dB (negative = downward, so the band's gain dips, never rises) · Ratio 4:1 · Attack 20% · Release 30% · Knee 6 dB · Lookahead 2 ms · Threshold: loop the biggest yell, start at 0 dB and lower it until the yell shows 3–6 dB, then check that a normal loud line shows 0 dB. With no yells in the song, leave it where normal lines show 0 dB | Clamps upper-mid harshness only when a yell spikes (Q26). Pro-MB's times are percentages, and these give a fast grab with a quick recovery |
 | 10 | Pro-L 2 | Punchy style · Gain about +10 dB, adjusted until the loudest lines show 2–3 dB GR · Output −3.0 dBFS · Lookahead 1 ms | The last catch for yells (Q26). Punchy suits a single rock vocal |
 
 **Density check** (slots 2 + 4 + 5 + 10, on the loudest lines): about 5.5 + 2 + 3.5 + 2.5 dB, roughly 13.5 dB total (target 12–14). Pro-MB only adds on yells.
@@ -80,7 +80,7 @@ Upfront, gritty and rock-coded: amp-driven snarl, biting mids and a classic slap
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-G | Classic style · Threshold −24 dB · Ratio ∞:1 · Range 15–20 dB · Attack 0.5 ms · Hold 80–100 ms · Release 150 ms · Lookahead 0 ms | The amp only gets voice. The feed is the compressed, limited lead, which lifts breaths to roughly −33 to −23 dBFS, hence the high threshold. The partial range and the longer hold and release let word tails fade instead of chopping. Loop a breathy phrase and move the threshold until Pro-G's meter shows the full range on breaths and none on words |
+| 1 | Pro-G | Classic style · Threshold −24 dB · Ratio ∞:1 · Range 18 dB · Attack 0.5 ms · Hold 90 ms · Release 150 ms · Lookahead 0 ms | The amp only gets voice. The feed is the compressed, limited lead, which lifts breaths to roughly −33 to −23 dBFS, so the threshold starts near the top of that range. The partial range and the longer hold and release let word tails fade instead of chopping. Loop a breathy phrase and move the threshold until Pro-G's meter shows the full range on breaths and none on words |
 | 2 | Pro-Q | Low Cut 250 Hz, 12 dB/oct · Output 0 dB | Tight distortion: the low end stays out of the amp. The gentle slope keeps a little chest in the snarl |
 | 3 | Saturn 2 | 1 band · British Rock (Amp) · Drive 45% · Mix 100% · HQ on · Level to match | The crunch (Q25) |
 | 4 | Pro-Q | Bell 5 kHz, Q 3, −3 dB (slide it to wherever fizz sits) · High Cut 7 kHz, 24 dB/oct · Output 0 dB | Snarl without fizz |
@@ -104,7 +104,7 @@ Four layers, no second chain:
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Timeless 3 | Sync off · 100 ms on both sides · Ping Pong off · Feedback 5% · Tape mode · Drive 20% · Filters: High Pass 300 Hz, Low Pass 5 kHz · Dry off · Wet 0 dB · no ducking | Phase 1's classic slapback. It's part of the sound, so it doesn't duck. Drive gives the tape color, and the High Pass keeps the slap off the body. Both sides share one time, so the slap is centered and needs no mono fix |
+| 1 | Timeless 3 | Delay Sync off · Delay Time 100 ms · Delay Time Pan centered, so both sides match · Ping Pong off · Feedback 5% · Tape mode · Drive 20% · Filters: High Pass 300 Hz, Low Pass 5 kHz (default slopes) · Mix 100% · Wet Level 0 dB · no ducking | Phase 1's classic slapback. It's part of the sound, so it doesn't duck. Drive gives the tape color, and the High Pass keeps the slap off the body. Both sides share one time, so the slap is centered and needs no mono fix |
 
 **Level:** fader at −14 dB.
 
@@ -112,8 +112,8 @@ Four layers, no second chain:
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-R 2 | Modern style · Space 0.7 s · Decay Rate 100% · Predelay 10 ms · Brightness 0% · Character 60% · Distance 40% · Thickness 30% · Stereo Width 70% · Mix 100% · Ducking off | Phase 1's small live room. The high Character makes it lively |
-| 2 | Pro-Q | Low Cut 250 Hz, 12 dB/oct · Low Cut 400 Hz on Side only · Output 0 dB | Keeps the room off the body, with mono lows (D7) |
+| 1 | Pro-R 2 | Modern style · Space 0.7 s · Decay Rate 100% · Predelay 10 ms · Brightness 0% · Character 60% · Distance 40% · Thickness 30% · Stereo Width 35% · Mix 100% · Ducking off | Phase 1's small live room. The high Character makes it lively, and 35% keeps it a little narrower than full stereo (50%) |
+| 2 | Pro-Q | Low Cut 250 Hz, 12 dB/oct · Low Cut 400 Hz, 12 dB/oct, on Side only · Output 0 dB | Keeps the room off the body, with mono lows (D7) |
 
 **Level:** fader at −16 dB.
 
@@ -132,7 +132,7 @@ VOX GROUP stays empty.
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
 | 1 | Pro-Q | Low Cut 130 Hz, 18 dB/oct · Bell 400 Hz, Q 1.4, dynamic −3 dB | The lead carries the body |
-| 2 | Pro-G | Classic style · Threshold about −35 dB · Ratio ∞:1 · Range 15–20 dB · Attack 0.5 ms · Hold 80–100 ms · Release 150 ms · Lookahead 0 ms | The 10:1 compressor and the amp after it lift everything quiet, so breaths go down first. Solo DBL and move the threshold until breaths stay down while every word opens it |
+| 2 | Pro-G | Classic style · Threshold about −35 dB · Ratio ∞:1 · Range 18 dB · Attack 0.5 ms · Hold 90 ms · Release 150 ms · Lookahead 0 ms | The 10:1 compressor and the amp after it lift everything quiet, so breaths go down first. Loop a breathy phrase and move the threshold until Pro-G's meter shows the full range on breaths and none on words |
 | 3 | Pro-C | Punch style · Ratio 10:1 · Attack 0.5 ms · Release 40 ms · Knee 3 dB · Threshold about −19 dB, for 7–9 dB GR · Gain to level-match | Rock doubles sit flat and dense |
 | 4 | Saturn 2 | 1 band · British Rock (Amp) · Drive 35% · Mix 60% · HQ on · Level to match | More amp than the lead, for a gang-vocal edge (upgrade) |
 | 5 | Pro-Q | Bell 3.5 kHz, Q 1.0, −2 dB · High Cut 8 kHz, 12 dB/oct | Less presence than the lead, so the lead stays in front |
@@ -145,16 +145,17 @@ VOX GROUP stays empty.
 
 | # | Move | Track › Parameter | From → To | When | Why |
 |---|---|---|---|---|---|
-| 1 | Crunch push | PAR · CRUNCH › fader | −5 dB → −2 dB | Hooks, with 1-beat ramps | More snarl where the energy peaks |
-| 2 | Yell guard | PAR · CRUNCH › fader | −5 dB → −9 dB (or −2 → −6 inside a hook) | The biggest yell of the song, only if needed. Draw it in the same clip as the pushes (foundation §5.3) | The chain already handles yells (Q26). This is the safety for one that still spikes |
+| 1 | Crunch push | PAR · CRUNCH › fader | −5 dB → −3 dB | Hooks, with 1-beat ramps | More snarl where the energy peaks |
+| 2 | Yell guard | PAR · CRUNCH › fader | −5 dB → −9 dB (or −3 → −7 inside a hook) | The biggest yell of the song, only if needed, with 1/16-note ramps. Draw it in the same clip as the pushes (foundation §5.3) | The chain already handles yells (Q26). This is the safety for one that still spikes |
 
 ## Ear checks
 
-Build in this order, one stage at a time, and switch each stage off and on to hear what it adds (foundation §5.7).
+Build in this order, one stage at a time (foundation §5.7).
+Include the song's biggest yell in the loop, or loop it separately for stages 4, 11 and 12.
 
 | # | Stage | You should hear |
 |---|---|---|
-| 1 | Template and input (foundation §2, §4) | The loudest lines peak around −10 dBFS on VOX IN. Mute LEAD for a moment and the full-level lead should disappear. If it keeps playing, VOX IN still routes to Master |
+| 1 | Template and input (foundation §2, §4, §5.7) | The loudest lines peak around −10 dBFS on VOX IN. With the unbuilt tracks muted, mute LEAD for a moment and the vocal should go silent. If it keeps playing, VOX IN still routes to Master |
 | 2 | VOX IN 1–3 | Tuned, but yells and rap lines still bend naturally. Breaths dip a little, words don't |
 | 3 | LEAD 1 · Pro-Q | A tighter low end, and box eases on close words |
 | 4 | LEAD 2 · Pro-C | Rock pump: the front edge of every syllable and yell gets grabbed |
@@ -165,28 +166,28 @@ Build in this order, one stage at a time, and switch each stage off and on to he
 | 9 | LEAD 7 · Pro-Q | A final small bite |
 | 10 | LEAD 8 · Pro-DS | S's back under control after all that bite |
 | 11 | LEAD 9 · Pro-MB | Yells lose their harsh edge, and normal lines are untouched |
-| 12 | LEAD 10 · Pro-L 2 | The lead comes up about 10 dB, and even the biggest yells stay under the ceiling |
+| 12 | LEAD 10 · Pro-L 2 | The lead comes up about 10 dB, and even the biggest yells stay under the ceiling. If Master clips, pull VOX GROUP down for now. The blend sets it properly |
 | 13 | PAR · CRUNCH 1 · Pro-G | On a breathy phrase, Pro-G's meter shows the full range on breaths and none on words |
 | 14 | PAR · CRUNCH 2–3, fader at 0 dB for the check | An amp-driven snarl on top of the lead, with no low-end mud |
 | 15 | PAR · CRUNCH 4–5 | The fizz disappears and the snarl stays even |
 | 16 | PAR · CRUNCH, back at −5 dB | Edge and attitude without pulling focus (the support test) |
 | 17 | FX · SLAP | One tight, warm 100 ms slap, centered |
 | 18 | FX · ROOM | A small, lively room around the voice |
-| 19 | VOX BUS | Lead and crunch hit together |
-| 20 | DBL IN L / R | Each double snaps to the same notes as the lead, on its own side |
-| 21 | DBL | Dense, amped doubles with no breath noise, a step behind, 6–10 dB under |
-| 22 | Blend (foundation §4) | The lead on top, gritty and upfront, with the narrowest image of the five |
+| 19 | DBL IN L / R, with DBL's fader at 0 dB for the check | Each double snaps to the same notes as the lead, on its own side. Mute DBL for a moment and both doubles should go silent. If they keep playing, a DBL IN track still routes to Master |
+| 20 | DBL, fader back at −8 dB | Dense, amped doubles with no breath noise, just behind the lead, 6–10 dB under |
+| 21 | VOX BUS | Lead, crunch and doubles hit together |
+| 22 | Blend (foundation §4) | The lead on top, gritty and upfront: lead, crunch and slap dead center, doubles at L/R 60, the room only a little wider |
 | 23 | Key moves | More snarl on hooks. The yell guard pulls the crunch back on the biggest yell |
 | 24 | Translation (foundation §5.4) | Every check in [Translation notes](#translation-notes) passes |
 
 ## Translation notes
 
-Run the checks in foundation §5.4. What to watch for in this preset:
+Run the checks in foundation §5.4. A fix on a control with key moves goes into its automation clip (foundation §5.3). What to watch for in this preset:
 
 | Check | Watch for | Fix |
 |---|---|---|
-| Mono | The room going hollow. Everything else is already centered | Lower the room's Stereo Width to 50% |
-| Quiet | The crunch covering words | Lower PAR · CRUNCH's clip 1–2 dB |
-| Small speaker | Crunch fizz, which phones show first | Slide the crunch's 5 kHz notch onto it, or lower its High Cut to 6 kHz |
-| **Loud (biggest risk)** | Harshness at volume from grit plus bite | Lower LEAD slot 9's threshold until yells show 4–6 dB, then slide the crunch's fizz notch onto the harsh spot |
+| Mono | The room going hollow. Lead, crunch and slap are centered, and the doubles fold down cleanly | Lower the room's Stereo Width to 25% |
+| Quiet | The crunch covering words | Lower PAR · CRUNCH's automation clip 1–2 dB |
+| Small speaker | Crunch fizz, which phones show first | Slide the crunch's 5 kHz bell (PAR · CRUNCH slot 4) onto it, or lower its High Cut to 6 kHz |
+| **Loud (biggest risk)** | Harshness at volume from grit plus bite | Lower LEAD slot 9's threshold 2–3 dB more, so yells use the full 6 dB Range. If the crunch is the harsh part, add a second bell in PAR · CRUNCH slot 4 (Q 3, −2 dB) on that spot and leave the 5 kHz bell on the fizz. If normal lines are harsh too, set LEAD slot 7's 3 kHz bell to 0 dB |
 | Headphones | The slap reading as a separate echo instead of part of the voice | Lower FX · SLAP 2 dB |

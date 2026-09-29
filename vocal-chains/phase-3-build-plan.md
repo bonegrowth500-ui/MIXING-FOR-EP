@@ -143,7 +143,7 @@ If a manual can't be reached, the sheets use only controls I'm certain exist, an
 
 ---
 
-## Step 5 · Final Cut
+## Step 5 · Final Cut ✅
 
 *Polish and ship.*
 
@@ -311,3 +311,41 @@ Slots, sends, sidechains and delay compensation all check out. Updated load:
 Audit script, final run: structure, toolkit, value ranges, negative Pro-MB Range, Pro-MB times in %, Pro-R 2 styles, DBL ending in Pro-L 2, decision refs, links and anchors all pass.
 
 Still open, and none of them blocks a build: the ends of the Throat range (the sheets use only 100 and 120), some FL panel wording, Pro-R 2's Ducking unit and maximum Decay Rate (both have a fallback in the sheets), and the scales on Pitcher's knobs (the sheets give positions).
+
+### Step 5 · Final cut log
+
+**5A · Consistency pass.** One field order per plugin type in every sheet:
+- Pro-L 2: style, Gain, Output, Lookahead.
+- Pro-DS: mode, band mode, threshold with its target, Range, detection, Lookahead. The doubles' de-essers now name a target (5–8 dB on S's) and a lookahead too.
+- Auto-Tune: transposing tracks list their controls in the same order as VOX IN, with Natural Vibrato 0 and Classic Mode off.
+- Timeless 3: sync and time first, then the time mode, the filters, Mix and Wet Level. Ducking points to the foundation's how-to.
+- Pro-Q: bands in frequency order, and every Side-only cut has a slope. Zero Latency and the default Q are stated once in the reading guide (foundation §5.6), and every parallel or return EQ row shows Output 0 dB (D24).
+
+Also standardized: the per-song key-move step, the VOX IN expander's reason, the density checks (with the slots they add up), and the doubles' send lines. Two doubled low cuts came out: Neon Bleach's delay and Rockstar Grit's slap already high-pass inside Timeless, the same fix Phantom Twin got in Step 4. Rockstar Grit's slap return drops to one slot.
+
+**5B · Ear checks.** Every sheet now has a build-order table of 22–24 stages, one line each on what you should hear change. The shared routine is foundation §5.7:
+- Park unbuilt tracks with mutes.
+- Loop 8 bars of rap and melody.
+- Add one stage, switch it off and on, and listen for the change the table names.
+
+Translation notes became check / watch for / fix tables in the §5.4 order, with each preset's biggest risk marked.
+
+**5C · Cold read.** Five fresh reviewers each built one preset from its sheet and the foundation, as an intermediate FL user. Every finding was checked against FabFilter's and Image-Line's documentation through web search before it was fixed. The four blockers:
+- **Timeless 3's controls.** It has one Delay Time knob with a pan ring, a Mix slider and a Wet Level knob. It has no left and right time knobs and no Dry control. Every delay row now uses the real controls, with Mix at 100% on returns. Phantom Twin gets its 1/4 and dotted 1/8 from sync 1/4, Delay Offset 75%, and the left side lengthened to 133%.
+- **Pro-R 2's width scale.** Stereo Width reaches full stereo at 50%, and 100% is dual mono. Every reverb width was halved to keep its intent, and the mono fixes now narrow below 50%.
+- **The doubles' routing.** The wiring steps left the doubles' Master route on. The DBL IN tracks now use Route to this track only, and sends go in last.
+- **Pitcher's octave.** Plain MIDI mode keeps only the note name, so the 3rd line now runs in Octaves mode. The stem render clears the loop selection first.
+
+Also fixed:
+- The build order: unbuilt tracks stay muted, returns are switched with their mute, VOX BUS is set after the doubles, and no check relies on solo.
+- Pro-C's Auto Gain stays off, and Vampire Haze's ducker gets a starting threshold.
+- The dynamic-EQ shorthand is defined.
+- Silk Stack's fallback is re-leveled for where its limiter sits.
+- Key-move timing is clearer.
+- Translation fixes point at automation clips.
+- Rockstar Grit's yell clamp has a set-up routine.
+- Wording that tripped a cold reader was rewritten.
+
+Audit script, final run: structure, toolkit, value ranges, negative Pro-MB Range, Pro-MB times in %, Pro-R 2 styles and widths, Timeless controls, Pro-L 2 field order, parallel and return EQ at Output 0 dB, DBL ending in Pro-L 2, ear-check order, translation rows, decision refs, links and anchors all pass.
+
+**5D · Ship.** README updated, and everything committed and pushed.

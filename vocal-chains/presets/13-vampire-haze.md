@@ -2,7 +2,7 @@
 
 Dark, gothic and drenched: an empty cathedral at 3 AM, with the top rolled soft and long, heavy tails.
 
-**Status:** dialed in (Step 3). Stress-tested in Step 4.
+**Status:** dialed in (Step 3) and stress-tested (Step 4).
 **Placement:** leans into the beat (D6) · **Tune:** Fast · **Builds on:** [foundation](00-foundation.md) (see §5.6 for how to read the settings)
 
 ## Per-song setup
@@ -63,7 +63,7 @@ Dark, gothic and drenched: an empty cathedral at 3 AM, with the top rolled soft 
 | 5 | Pro-C | Opto style · Ratio 3:1 · Attack 10 ms · Release Auto · Knee 18 dB · Threshold about −19 dB, for 2–3 dB GR · Gain to level-match | A steady level into the hall means steady tails |
 | 6 | Pro-Q | High Shelf 8 kHz, Q 0.7, −5 dB · High Cut 10 kHz, 12 dB/oct | The dark half of the tone curve (Q24). About −9 dB at 13 kHz, but only about −0.5 dB at 4 kHz, so the words stay clear |
 | 7 | Pro-DS | Single Vocal · Split Band · Threshold −32 dB, for 3–5 dB on S's · Range 10 dB · detection 4.5–10 kHz · Lookahead 5 ms | S's in a long hall and in the throws turn into splashes, so they're caught before the sends. The detection sits a little lower to match the darker tone |
-| 8 | Pro-MB | Band 1: 150–450 Hz · Compress mode · Range −4 dB · Ratio 3:1 · Attack 10 ms · Release 150 ms. Band 2: 2.5–5 kHz · Compress mode · Range −3 dB · Ratio 3:1 · Attack 2 ms · Release 80 ms. Negative Range = downward. Each threshold set so the band only acts when it builds | Keeps the added warmth and room box from blooming into boom on low notes, before any of it reaches the hall (band 1). Band 2 catches upper-mid spikes |
+| 8 | Pro-MB | Band 1: 150–450 Hz · Compress mode · Range −4 dB · Ratio 3:1 · Attack 40% · Release 50%. Band 2: 2.5–5 kHz · Compress mode · Range −3 dB · Ratio 3:1 · Attack 20% · Release 30%. Negative Range = downward. Pro-MB's times are percentages: slower on the low band, faster on the upper one. Each threshold set so the band only acts when it builds | Keeps the added warmth and room box from blooming into boom on low notes, before any of it reaches the hall (band 1). Band 2 catches upper-mid spikes |
 | 9 | Pro-Q | Bell 1.2 kHz, Q 1.0, −1 dB | Takes a little forwardness out of the mids, so the lead leans back into the beat without losing the 2–4 kHz words |
 | 10 | Pro-L 2 | Transparent style · Gain about +10 dB, adjusted until the loudest lines show 1–2 dB GR · Output −3.0 dBFS · Lookahead 3 ms | Keeps what goes into the hall and throws consistent |
 

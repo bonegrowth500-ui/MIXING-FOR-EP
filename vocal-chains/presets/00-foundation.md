@@ -58,10 +58,11 @@ This environment's network policy blocked the manufacturers' sites, so confirmat
 | **Pro-G** | Styles: Classic, Clean, Vocal, Guitar, Upward, plus Ducking. Threshold, Ratio (1:1 to ∞:1, acting as a gate above about 5:1), Range (the maximum attenuation), Attack, Hold, Release, Knee, Lookahead | Confirmed |
 | **Pro-MB** | Up to 6 bands. Downward and upward compression and expansion | Confirmed |
 | | Range sign: in Compress mode, a negative Range compresses downward (normal) and a positive Range compresses upward. Sheets only use negative Range | Confirmed |
+| | Attack and Release read 0–100% (program-dependent), not ms | Confirmed |
 | **Saturn 2** | 28 styles. Names confirmed: Warm Tape, Clean Tube, Warm Tube · "Subtle" versions of Tape, Tube and Saturation · Transformer: Subtle, Gentle, Warm · Amp: British Rock, British Pop, American Tweed, American Plexi · FX: Foldback, Breakdown | Confirmed |
 | | Per band: Drive in % (output compensates automatically as Drive rises), Feedback, Dynamics (left = gate/expand, right = compress), Tone (bass/mid/treble/presence), Mix in %, Level (−inf to +36 dB). Up to 6 bands | Confirmed |
 | **Timeless 3** | Two delay lines, 5 ms–5 s, host sync (type "d" or "t" for dotted/triplet). Tape / Stretch time modes. Ping Pong (start L or R). Feedback, Cross Feedback Mix, feedback invert. Six feedback-path filters. Feedback FX: Drive, Lo-Fi, Diffuse, Dynamics, Pitch. Dry and Wet levels. Modulation, including an envelope follower whose attack and release you set by dragging its envelope dots. Ducking = the envelope follower pulling the Wet level down | Confirmed |
-| **Pro-R 2** | Space (stepless room model + decay time, from about 0.2 s up to about 10 s). Decay Rate 25–400% of the Space's decay. Style (includes Plate and Vintage). Predelay 0–500 ms with sync. Character, Distance, Thickness, Stereo Width and Mix in %, Brightness in ±%. Ducking (a range knob that triggers on the plugin's own input), Auto Gate, Freeze | Confirmed |
+| **Pro-R 2** | Space (stepless room model + decay time, from about 0.2 s up to about 10 s). Decay Rate 25–400% of the Space's decay. Style: Modern, Vintage or Plate. Predelay 0–500 ms with sync. Character, Distance, Thickness, Stereo Width and Mix in %, Brightness in ±%. Ducking (a range knob that triggers on the plugin's own input), Auto Gate, Freeze | Confirmed |
 | | Ducking's unit. Whether every version reaches 400% Decay Rate (one source says 50–200%). Sheets note a 200% fallback | Check |
 | | Decay-rate EQ, post EQ | Known |
 
@@ -80,11 +81,11 @@ This environment's network policy blocked the manufacturers' sites, so confirmat
 | Pitcher | Modes include MIDI (pitch set by incoming notes), Octaves and Harmonize (up to 4 voices). Speed, a formant (gender) control, key/scale, and a low-frequency detection setting (about 80 Hz for lower voices, 110 Hz for higher) | Confirmed |
 | NewTone | Detects and edits notes, and exports them as a MIDI score to a channel | Confirmed |
 | Vintage Chorus | Juno-6 chorus. Modes I / II (Shift+click for I+II), Mix (wet/dry), Time 1 / Time 2, Feedback, H Pass on the wet signal, LR Phase, Invert Wet | Confirmed |
-| Automation clips | Right-click any control → Create automation clip | Known |
+| Automation clips | Mixer controls: right-click → Create automation clip. Plugin controls: move the control, then Tools › Last tweaked › Create automation clip | Confirmed |
 
 ### To confirm on screen
 
-Step 4B re-checked this list and confirmed four items: Saturn 2's style labels, Auto-Tune's Retune Speed range, Pro-MB's Range sign and Vintage Chorus's Mix control. These are still open:
+Step 4 re-checked this list and confirmed six items: Saturn 2's style labels, Auto-Tune's Retune Speed range, Pro-MB's Range sign and time units, Pro-R 2's style names and Vintage Chorus's Mix control. These are still open:
 - The ends of Auto-Tune Artist's Throat range (the sheets only use 100 and 120)
 - FL's wording for the sidechain wrapper panel and the PDC menu
 - Pro-R 2's Ducking unit and its maximum Decay Rate (the sheets note a fallback)
@@ -131,6 +132,12 @@ LEAD / DBL sends ─► FX returns ───────────────
 
 Most returns duck themselves (D15). Pro-R 2 has a Ducking knob, and Timeless 3 can pull its own Wet level down with its envelope follower. Both react to the signal arriving at the return, so they need no extra routing.
 
+To set up Timeless 3's ducking:
+1. In the modulation section, add an Envelope Follower source.
+2. Drag the source's drag button onto the Wet level knob. That creates a modulation slot.
+3. In the slot, click the +/- button so the follower pulls the Wet level down. Then, while the vocal plays, raise the slot's Level slider until the Wet knob dips by about the sheet's depth (for example −12 dB).
+4. Drag the dots in the follower's envelope display to set attack short and release to the sheet's value.
+
 When a sheet uses Pro-C ducking instead:
 1. Select VOX IN, right-click the switch under the FX track, and choose **Sidechain to this track**.
 2. On that FX track, open Pro-C, click the wrapper cog (top-left) and map the sidechain input to VOX IN.
@@ -165,7 +172,7 @@ The key comes from VOX IN because LEAD already sends audio to the return, and "S
 
 - **DBL IN L / DBL IN R:** three fixed slots each: rumble cut → gentle expander → Auto-Tune Artist with the lead's key, scale and retune (D19).
 - **DBL:** the doubles' character chain. Up to 10 slots, using only what it needs (see 5.2).
-- **PAR and FX:** as many slots as each needs. A ducked return ends with Pro-C.
+- **PAR and FX:** as many slots as each needs. A return that ducks with Pro-C puts it last (see Ducking a return).
 - **VOX BUS:** 1–3 slots of glue. **VOX GROUP:** empty unless a sheet needs one slot.
 
 ### Names and colors
@@ -285,7 +292,11 @@ DBL mirrors the lead's job at lower focus:
 
 ### 5.3 · Key-move format
 
-Each sheet lists 2–4 moves in this form (D9). To make one, right-click the control and choose **Create automation clip**.
+Each sheet lists 2–4 moves in this form (D9). Draw them only after the blend is final (the §4 tests). Once a control has an automation clip, the clip owns it, so later level changes go into the clip, not the fader (D24).
+- For mixer faders and send knobs, right-click the control and choose **Create automation clip**.
+- For a control inside a plugin (Fresh Air, Pro-R 2, Pro-Q, Pro-L 2), move it once, then use **Tools › Last tweaked › Create automation clip**. If that doesn't catch it, find the plugin under Browser › Current project and right-click the parameter there.
+- Keep one clip per control. If two moves touch the same control, draw them in the same clip.
+- The From values are the sheet's starting levels. If your blend moved a fader, shift the whole move by the same amount (a fader blended 2 dB lower runs the move 2 dB lower).
 
 | # | Move | Track › Parameter | From → To | When | Why |
 |---|---|---|---|---|---|
@@ -327,6 +338,9 @@ Every preset sheet uses these sections, in this order:
 - **Dynamic EQ bands** use threshold Auto. If your Pro-Q has no Auto, set the threshold so the band only moves on the loudest lines.
 - **Faders** are starting values. The blend tests in §4 fine-tune them for your voice.
 - **Sends** sit at 100% unless a sheet says otherwise, and return faders set the wet level (D21).
+- **EQ on parallel tracks and returns** stays at Output 0 dB. Its cuts are part of each sheet's level math, so don't level-match it (D24).
+- **LEAD's fader stays at 0 dB.** PAR tracks fed from LEAD are post-fader, so moving it would change how they gate, drive and compress. Balance with the other faders, and set the overall vocal level on VOX GROUP (D24).
+- **Pro-R 2 Ducking** values are in dB. If your knob reads in %, raise it until the tails drop clearly under the words and bloom in the gaps.
 - **Ramps** in key moves are the automation clip's shape: "1-beat ramp" means the move takes one beat to get there.
 - **Optional extras** from Pro-Q 4 and Pro-C 3 are never needed (D1).
 
@@ -361,12 +375,15 @@ Every preset sheet uses these sections, in this order:
 - [Production Expert: Saturn 2](https://www.production-expert.com/production-expert-1/2020/5/19/saturn-2-from-fabfilter-new-version-offers-everything-for-saturation-and-distortion-from-subtle-to-wild)
 - [Sage Audio: How to use Saturn 2](https://www.sageaudio.com/articles/how-to-use-fabfilter-saturn-2)
 - [Timeless 3 Help: Delay controls](https://www.fabfilter.com/help/timeless/using/delaycontrols)
+- [Timeless 3 Help: Envelope follower](https://www.fabfilter.com/help/timeless/using/ef)
+- [Timeless 3 Help: Drag-and-drop modulation slots](https://www.fabfilter.com/help/timeless/using/modulationslots)
 - [Music Connection: Timeless 3](https://www.musicconnection.com/new-toys-fabfilter-timeless-3-delay-plugin/)
 - [Pro-R 2 Help: Main controls](https://www.fabfilter.com/help/pro-r/using/maincontrols)
 - [Production Expert: Pro-R 2 first look](https://www.production-expert.com/production-expert-1/new-features-fabfilter-pro-r-2-first-look)
 
 **FL Studio:**
 - [Mixer Explained](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/mixer.htm)
+- [Automation Clips](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/playlist_automationclip.htm)
 - [Fruity Send](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Send.htm)
 - [Ringmod: Sidechain routing guide](https://ringmodsidechain.com/tutorials/sidechain-routing-in-fl-studio-complete-guide)
 - [MusicProductionWiki: How to sidechain in FL Studio](https://musicproductionwiki.com/articles/how-to-sidechain-in-fl-studio)

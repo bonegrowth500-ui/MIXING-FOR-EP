@@ -2,7 +2,7 @@
 
 Glossy, very bright and expensive: a hard-tuned lead right in your face, with crystalline air on top.
 
-**Status:** dialed in (Step 3). Stress-tested in Step 4.
+**Status:** dialed in (Step 3) and stress-tested (Step 4).
 **Placement:** on top, the most upfront of the five (D6) · **Tune:** Hard · **Builds on:** [foundation](00-foundation.md) (see §5.6 for how to read the settings)
 
 ## Per-song setup

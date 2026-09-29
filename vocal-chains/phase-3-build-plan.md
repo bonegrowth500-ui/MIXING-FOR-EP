@@ -112,7 +112,7 @@ If a manual can't be reached, the sheets use only controls I'm certain exist, an
 
 ---
 
-## Step 4 · Stress Test
+## Step 4 · Stress Test ✅
 
 *Prove the build without ears.*
 
@@ -188,6 +188,7 @@ Judgment calls made inside the spec where it leaves room. New ones get added as 
 | D21 | Sends sit at 100% unless a sheet sets another percentage, and return faders set the wet level. Routes are post-fader, so doubles and parallel layers feed the returns less on their own. | FL's send knob reads in percent and its dB mapping isn't confirmed. Faders read in dB, so they're exact. |
 | D22 | When a return's send already sits at 100%, a throw rides that return's fader instead (Phantom Twin). A return built only for throws rides its send up from 0% (Vampire Haze). | A send can't go past 100%, and a dedicated throw return stays silent until it's needed. |
 | D23 | Every DBL chain ends with the same Pro-L 2 peak stage as its lead (−3 dBFS ceiling, 1–2 dB GR). | The lead's limiter lifts it about 10 dB. Without a matching stage, the doubles would sit about 18 dB under instead of 6–10. |
+| D24 | Level rules that protect each sheet's math. EQ on parallel tracks and returns stays at Output 0 dB. LEAD's fader stays at 0 dB. Key moves get drawn after the blend is final, and a control with an automation clip gets changed in its clip. | The EQ cuts are counted in the fader values. PAR tracks fed from LEAD are post-fader, so LEAD's fader changes what they gate, drive and compress. An automation clip overrides its control, so blend changes made on the control afterward get lost. |
 
 ---
 
@@ -246,3 +247,67 @@ The closest pairs, and what keeps them apart:
 | Rockstar Grit | 3 | 10 | 3 + 3 | 5 | 5 | 2 + 2 | 1 | 3 | 1 | 3 |
 
 No track exceeds 10 slots. The heaviest song runs four Auto-Tune instances plus Pitcher, or two Pro-R 2 instances. That's a normal load for a modern computer, and within the maxed-out scope.
+
+### Step 4 · Verification log
+
+**4A · Spec trace.** Every answer lands somewhere concrete:
+
+| Spec | Where it's implemented |
+|---|---|
+| Q1–Q5 | Foundation §1–2. Audit: every slot uses FL stock, Auto-Tune Artist, Fresh Air or FabFilter |
+| Q6–Q8 | Zone map (foundation §3), Alto/Tenor input, body support and saturation in every LEAD, box control, the gentle expander |
+| Q9 | LEAD, DBL IN L/R and DBL in every sheet. No ad-lib chains |
+| Q10 | No tracking or low-latency versions |
+| Q11 | Standalone sheets with their own returns |
+| Q12 | LEAD uses 10 of 10 slots in all five |
+| Q13 | Flex-Tune/Humanize base, self-ducking beds, harmonies off on raps, hall eases, bed dips |
+| Q14 | Placement per sheet (D6) |
+| Q15 | Mono rules (D7), an actionable translation note per sheet, foundation §5.4 test |
+| Q16 | 2–3 key moves per sheet |
+| Q17–Q18 | Demon fader −15 dB under a Pro-L 2 ceiling. Transpose −12, Formant on, Throat 120 |
+| Q19–Q20 | Fresh Air 25% / 55% plus a 12 kHz shelf. Ducked 1/8 ping-pong, no throws |
+| Q21–Q22 | Octave via Auto-Tune and 3rd via Pitcher (or NewTone), both made from the tuned lead |
+| Q23–Q24 | 2.5 s dark hall plus a near-frozen throw return. Shelf −5 dB at 8 kHz, high cut at 10 kHz |
+| Q25–Q26 | British Rock crunch layer. Four-layer yell control, no second chain |
+| Q27 | An upgrades list in every sheet |
+| Q28 | Markdown sheets in this repo |
+
+Out-of-scope sweep: clean. The only master-track touch is the mono test's temporary stereo-separation check.
+
+**4B · Technical audit.** Web searches corrected five plugin facts, and the sheets now match:
+- Timeless 3 ducks its Wet level, not a Mix control.
+- Pro-R 2's Decay Rate runs 25–400%, and its styles are Modern, Vintage and Plate. The three returns that said "Default" now say Modern.
+- Pro-MB: a positive Range compresses upward, so every band now uses a negative Range. Attack and Release read in %, so Rockstar Grit and Vampire Haze now use % values.
+- Controls inside plugins get automated through Tools › Last tweaked, not a right-click. The foundation and the sheets say so.
+- Also confirmed: Saturn 2's style labels (British Rock included), Auto-Tune's 0–400 Retune range and Vintage Chorus's Mix control.
+
+Slots, sends, sidechains and delay compensation all check out. Updated load:
+
+| | VOX IN | LEAD | DBL IN L/R | DBL | Parallel | Returns | VOX BUS | Auto-Tune | Pro-R 2 | Saturn 2 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Phantom Twin | 3 | 10 | 3 + 3 | 7 | 6 | 3 + 2 | 1 | 4 | 1 | 3 |
+| Neon Bleach | 3 | 10 | 3 + 3 | 7 | 4 | 2 + 3 | 1 | 4 | 1 | 2 |
+| Silk Stack | 3 | 10 | 3 + 3 | 6 | 4 + 4 | 2 | 1 | 4, plus Pitcher | 1 | 2 |
+| Vampire Haze | 3 | 10 | 3 + 3 | 6 | — | 3 + 3 | 1 | 3 | 2 | 3 |
+| Rockstar Grit | 3 | 10 | 3 + 3 | 7 | 5 | 2 + 2 | 1 | 3 | 1 | 3 |
+
+**4C · Signal math.** Four real errors, all fixed:
+- **Lead limiter gain.** Loudness-matched stages leave peaks around −14 to −12 dBFS, so every LEAD Pro-L 2 now starts near +10 dB (foundation §4 expects +8 to +13).
+- **Doubles level.** Without a matching limiter, the doubles would have sat about 18 dB under the lead. Every DBL chain now ends with Pro-L 2 (D23).
+- **Parallel EQ losses.** High-pass trims weren't counted in the fader values. Every level line now counts them, and parallel and return EQ stays at Output 0 dB (D24).
+- **Gate thresholds.** A −45 dB expander sat below breath level, so all five VOX INs now use −35 dB. The demon gate is −35 dB and the crunch gate −24 dB, set for the level each one is fed.
+
+**4D · Sonic logic and translation.** Sibilance on bright returns gets a de-esser (Neon Bleach's plate, Phantom Twin's delay). Boosts that came after a de-esser moved in front of it (Rockstar Grit). Gates guard every distortion stage, including Rockstar Grit's amp-driven doubles. Every translation note now ends in a check and a fix instead of "Step 4 checks it."
+
+**4E · Fidelity and distinctness.** All five still match their Phase 1 identities and Step 2 positions. Neon Bleach keeps the most presence, Vampire Haze the darkest top, Silk Stack the most width and Rockstar Grit the most density.
+
+**4F · Fresh-eyes review.** Five reviewer agents, one per sheet. Every finding was checked against the spec, the 1A notes or a search, and the confirmed ones were applied:
+- **Phantom Twin:** body bell +2.5 dB (nets +2 after slot 9), demon compressor makeup about +5–6 dB, a de-esser ahead of the delay, a duplicate delay high-pass removed, the demon room's width named in the notes, and moves drawn after the blend (D24).
+- **Neon Bleach:** plate de-esser, re-leveled octave-up ghost and delay, key-move values matched to the new faders.
+- **Silk Stack:** a full 3rd-line procedure (tuned stem from bar 1, cleanup before transposing, the harmonic-minor exception), a fallback that keeps its own channel and adds a Pro-L 2 stage, harmonies panned L35 / R35, Pitcher at half speed.
+- **Vampire Haze:** low-mid control on the lead and the hall, a 10 kHz high cut, and throws that duck and fade out.
+- **Rockstar Grit:** softer crunch gate and high-pass, re-leveled crunch moves in one clip, LEAD slots 7–9 reordered, a gate on the doubles, and a reason the doubles skip the slap.
+
+Audit script, final run: structure, toolkit, value ranges, negative Pro-MB Range, Pro-MB times in %, Pro-R 2 styles, DBL ending in Pro-L 2, decision refs, links and anchors all pass.
+
+Still open, and none of them blocks a build: the ends of the Throat range (the sheets use only 100 and 120), some FL panel wording, Pro-R 2's Ducking unit and maximum Decay Rate (both have a fallback in the sheets), and the scales on Pitcher's knobs (the sheets give positions).

@@ -1,0 +1,362 @@
+# Foundation
+
+Shared ground rules for all five presets. Each preset sheet builds on the template here and spells out every one of its own settings. Decision numbers (D#) point to the [build plan](../phase-3-build-plan.md#decisions).
+
+---
+
+## 1 · Toolkit reference
+
+The controls the sheets can use, with how sure each one is:
+- **Confirmed:** checked against a published source during this step.
+- **Known:** a long-standing control that wasn't re-sourced.
+- **Check:** the exact label or range couldn't be confirmed. Glance at your screen the first time you use it.
+
+This environment's network policy blocked the manufacturers' sites, so confirmation came through web search. Sources are at the bottom.
+
+**Versions (D1):** Pro-C and Pro-Q both had recent major releases. Core settings stick to what Pro-C 2 and Pro-Q 3 share with the new versions, and anything newer is marked optional. Every other plugin targets its current version.
+
+### Auto-Tune Artist
+
+| Control | Notes | Status |
+|---|---|---|
+| Input Type | Soprano · Alto/Tenor · Low Male · Instrument · Bass Instrument | Confirmed |
+| Key / Scale | Set per song | Known |
+| Retune Speed | In ms. 0 = instant, robotic snap | Confirmed (sheets stay at 50 or below) |
+| Humanize | Applies a slower retune only to sustained notes | Confirmed |
+| Flex-Tune | 0 pulls every note to target. Higher values let more natural movement through. Modern algorithm only | Confirmed |
+| Natural Vibrato | Scales the singer's own vibrato | Known |
+| Formant | Keeps the natural vocal character when pitch shifts | Confirmed |
+| Throat | Only active with Formant on. 100 = neutral, higher = longer throat (deeper), lower = shorter (younger) | Confirmed (range ends: Check; sheets stay within 80–140) |
+| Transpose | ±12 semitones, in semitone steps | Confirmed |
+| Classic Mode | The Auto-Tune 5 sound. Turns off Formant, Throat, Transpose and Flex-Tune | Confirmed |
+| Tracking | Pitch-detection sensitivity | Known |
+
+### Fresh Air
+
+| Control | Notes | Status |
+|---|---|---|
+| Mid Air | Presence, roughly 2–5 kHz | Confirmed (band is approximate) |
+| High Air | Top-end sheen, roughly 10 kHz and up | Confirmed (band is approximate) |
+| Link | Locks both knobs together | Confirmed |
+| Trim | Output level match | Confirmed |
+| Scale | 0–100% on both knobs | Confirmed |
+
+### FabFilter
+
+| Plugin | Controls the sheets use | Status |
+|---|---|---|
+| **Pro-Q 3/4** | Shapes: Bell, Low/High Shelf, Low/High Cut, Notch, Band Pass, Tilt Shelf, Flat Tilt. Cut slopes 6–96 dB/oct. Per-band Stereo/Left/Right/Mid/Side. Zero Latency / Natural Phase / Linear Phase. Output gain | Known |
+| | Dynamic EQ per band (range + threshold) | Confirmed |
+| | Per-band dynamic attack/release is Pro-Q 4 only (50% = auto): optional | Confirmed |
+| **Pro-C 2/3** | Styles in both versions: Clean, Classic, Opto, Vocal, Mastering, Bus, Punch, Pumping | Confirmed |
+| | Pro-C 3-only styles (Versatile, Smooth, Vari-Mu, Op-El, Upward, TTM): optional | Confirmed |
+| | Knee 0–72 dB · Attack 0.005–250 ms · Lookahead 0–20 ms · Hold 0–500 ms · Range · Dry gain · external side chain and side-chain EQ (Expert mode) | Confirmed |
+| | Threshold, Ratio, Release (+ Auto), makeup Gain | Known |
+| **Pro-DS** | Single Vocal / Allround. Wide Band / Split Band (linear phase). Threshold (down to −INF in Single Vocal), Range, detection HP/LP filters, Lookahead up to 15 ms, stereo link with mid/side | Confirmed |
+| **Pro-L 2** | Styles: Transparent, Punchy, Dynamic, Allround, Aggressive, Modern, Safe, Bus | Confirmed |
+| | Gain, Output Level (ceiling), Lookahead, Attack, Release, True Peak | Known |
+| **Pro-G** | Styles: Classic, Clean, Vocal, Guitar, Upward, plus Ducking. Threshold, Ratio, Range, Attack, Hold, Release, Knee, Lookahead | Confirmed |
+| **Pro-MB** | Up to 6 bands. Downward and upward compression and expansion | Confirmed |
+| | Which sign of Range gives upward vs. downward: Check. Sheets only use downward compression | Check |
+| **Saturn 2** | 28 styles. Names confirmed: Warm Tape, Clean Tube, Warm Tube · "Subtle" versions of Tape, Tube and Saturation · Transformer: Subtle, Gentle, Warm · Amp: British Rock, British Pop, American Tweed, American Plexi · FX: Foldback, Breakdown | Confirmed (exact label wording: Check) |
+| | Per band: Drive, Feedback, Dynamics (left = gate/expand, right = compress), Tone (bass/mid/treble/presence), Mix, Level (−inf to +36 dB). Up to 6 bands | Confirmed |
+| **Timeless 3** | Two delay lines, 5 ms–5 s, host sync (type "d" or "t" for dotted/triplet). Tape / Stretch time modes. Ping Pong (start L or R). Feedback, Cross Feedback Mix, feedback invert. Six feedback-path filters. Feedback FX: Drive, Lo-Fi, Diffuse, Dynamics, Pitch. Mix. Modulation, including an envelope follower | Confirmed |
+| **Pro-R 2** | Space (stepless room model + decay time). Decay Rate 50–200%. Style (includes Plate and Vintage). Predelay 0–500 ms with sync. Character, Brightness, Distance, Thickness, Stereo Width, Mix. Ducking, Auto Gate, Freeze | Confirmed |
+| | Decay-rate EQ, post EQ | Known |
+
+### FL Studio
+
+| Feature | Notes | Status |
+|---|---|---|
+| Mixer slots | 10 effect slots per track | Known |
+| Routes | Post-fader. The send knob appears above a route's switch once it's on | Confirmed |
+| Fruity Send | A pre-fader tap from inside a track's effect stack | Confirmed |
+| Sidechain to this track | Makes a connection with its audio send at zero, so it only carries a sidechain key | Confirmed |
+| Sidechain into VST plugins | Plugin wrapper settings (cog, top-left) → map the sidechain input. In the FabFilter plugin, set the side chain to External | Confirmed (panel wording: Check) |
+| Stereo separation knob | Center = off. Turn right to merge to mono | Confirmed |
+| Plugin delay compensation | Automatic mode in the mixer menu. Covers sends and wet/dry paths | Confirmed (menu wording: Check) |
+| Audio clips | Channel Settings → Precomputed effects → Normalize (peaks to 0 dB). Channel volume knob in the Channel Rack | Confirmed |
+| Pitcher | Speed, key/scale, formant, and a harmonizer with up to 4 voices driven by MIDI | Confirmed |
+| NewTone | Detects and edits notes, and exports them as a MIDI score to a channel | Confirmed |
+| Vintage Chorus | Juno-6 chorus. Modes I / II / I+II, plus free delay times, LFO rate/shape and wet polarity | Confirmed |
+| Automation clips | Right-click any control → Create automation clip | Known |
+
+### To confirm on screen
+
+These couldn't be pinned down here and get re-checked in Step 4B:
+- Saturn 2's exact style labels
+- Auto-Tune Artist's maximum Retune Speed and the ends of the Throat range
+- Pro-MB's Range sign
+- FL's wording for the sidechain wrapper panel and the PDC menu
+
+---
+
+## 2 · FL routing template
+
+Every preset is built on this map. A preset only adds the parallel tracks and returns it needs.
+
+```
+lead clips ──► VOX IN ──► LEAD ──────────────► VOX BUS ──► VOX GROUP ──► Master
+                  │                              ▲            ▲
+                  └──► PAR tracks ───────────────┤            │
+double clips ──► DBL ────────────────────────────┘            │
+LEAD / DBL sends ──► FX returns ──────────────────────────────┘
+```
+
+| Track | Job | Gets audio from | Routes to | Slots |
+|---|---|---|---|---|
+| VOX IN | Tune and split. Every layer made from the lead starts here | Lead audio clips | LEAD and PAR tracks, never Master | 3, fixed (D13) |
+| LEAD | The character chain | VOX IN | VOX BUS, plus post-fader sends to FX | All 10 |
+| DBL | Doubles, with their own tuning | Double audio clips | VOX BUS, plus sends to FX | Up to 10 |
+| PAR · *name* | Parallel layers (demon, harmonies, crunch) | VOX IN or LEAD, per sheet | VOX BUS | As needed |
+| FX · *name* | Delay, reverb and throw returns | Sends from LEAD (and DBL where a sheet says) | VOX GROUP (D14) | As needed |
+| VOX BUS | Glue for the dry layers | LEAD, DBL, PAR | VOX GROUP | 1–3 |
+| VOX GROUP | One fader for the whole vocal | VOX BUS and FX | Master | 0–1 |
+
+### Wiring it
+
+1. Put the vocal block on consecutive free inserts, in the table's order, with these names.
+2. In the Channel Rack, point every lead audio clip channel to VOX IN and every double to DBL.
+3. Select VOX IN, right-click the route switch under LEAD, and choose **Route to this track only**. That removes its Master route. Then left-click the switch under each PAR track it feeds.
+4. Do the same for LEAD, DBL and PAR → VOX BUS, FX → VOX GROUP, and VOX BUS → VOX GROUP. VOX GROUP keeps its Master route.
+5. For sends, select LEAD and left-click the switch under each FX track, then set the level on the knob above it. Routes are post-fader, so moving LEAD's fader moves its sends too.
+6. Leave VOX IN's fader at its default. Everything downstream follows it.
+
+### Ducking a return
+
+1. Select VOX IN, right-click the switch under the FX track, and choose **Sidechain to this track**.
+2. On that FX track, open Pro-C, click the wrapper cog (top-left) and map the sidechain input to VOX IN.
+3. In Pro-C's Expert mode, set the side chain to External.
+
+The key comes from VOX IN because LEAD already sends audio to the return, and "Sidechain to this track" works by zeroing a connection's audio send (D15).
+
+### Delay compensation
+
+- Keep FL's plugin delay compensation on **Automatic** (mixer menu). Never add manual PDC to a vocal track, or the delay doubles up.
+- Parallel layers only meet at VOX BUS, and nothing latency-heavy goes straight to Master. This follows Image-Line's own advice for parallel paths.
+- Parallel copies at the same pitch as the lead connect through mixer routes only, never Fruity Send. Its tap sits mid-chain, ahead of the source track's later plugins, which makes the two paths harder to keep locked.
+- Where a plugin offers a latency choice on a parallel track, pick zero latency (D18).
+
+### Slot budget
+
+- **VOX IN:** three fixed slots: rumble cut → gentle expander → Auto-Tune Artist (D13).
+- **LEAD:** all 10 slots. The default order of jobs is below. A sheet can move a job, and says why when it does.
+
+| Slot | Job | Typical tool |
+|---|---|---|
+| 1 | Corrective EQ: low cut, box, resonances | Pro-Q (dynamic bands) |
+| 2 | Compressor 1: peak catcher | Pro-C |
+| 3 | Tone EQ: body support, shape | Pro-Q |
+| 4 | Saturation: density and harmonics | Saturn 2 |
+| 5 | Compressor 2: leveler | Pro-C |
+| 6 | Presence and air (or darkening) | Fresh Air / Pro-Q |
+| 7 | De-esser, after the brightness | Pro-DS |
+| 8 | Dynamic control: harshness, yells | Pro-Q dynamic / Pro-MB |
+| 9 | Polish EQ: final tilt, placement | Pro-Q |
+| 10 | Peak control | Pro-L 2 |
+
+- **DBL:** up to 10 slots. Its front end mirrors VOX IN (see 5.2).
+- **PAR and FX:** as many slots as each needs. A ducked return ends with Pro-C.
+- **VOX BUS:** 1–3 slots of glue. **VOX GROUP:** empty unless a sheet needs one slot.
+
+### Names and colors
+
+- **Names:** VOX IN · LEAD · DBL · PAR · DEMON / OCT / 3RD / CRUNCH · FX · DELAY / VERB / THROW · VOX BUS · VOX GROUP
+- **Colors:** VOX IN grey. LEAD, DBL and PAR in the preset's color (DBL lighter, PAR darker). FX teal. Buses white.
+
+---
+
+## 3 · Source profile
+
+**The voice:** between mid and high, leans thin (Q6, Q8).
+**The mic:** the LCT 440 PURE is flat through the lows and mids, then rises gently from about 1.25 kHz, with a 3.5 dB peak at 4 kHz and a 5 dB peak at 13 kHz.
+**The room:** DIY-treated bedroom (Q7).
+
+What that means for every chain:
+1. **The mic already supplies presence and air.** Brightness moves mostly shape and control rather than boost.
+2. **The real need is body and density.** That comes from three things working together: EQ support in the body zone, harmonic saturation, and compression. The low cut stays conservative.
+3. **The room adds some low-mid boxiness and short reflections, not long tails.** Box gets a dynamic cut. Breaths and room between phrases get tamed gently.
+
+### Zone map
+
+| Zone | Range | Policy |
+|---|---|---|
+| Rumble | Below 60 Hz | Cut on VOX IN at 60 Hz, 12 dB/oct. Nothing vocal lives here |
+| Low cut | 70–100 Hz | Lead low cut at 75–90 Hz, 12–18 dB/oct. Never above 100 Hz on the lead |
+| Body | 150–300 Hz | Broad support of +1.5 to +3 dB where the voice's weight peaks, usually 180–250 Hz, plus saturation. To find it, sweep a narrow boost through 150–300 Hz and stop where it gains chest without boom |
+| Box | 300–500 Hz | Dynamic cut of −2 to −4 dB, only when it builds (close takes, low notes) |
+| Honk | 800 Hz–1.5 kHz | Leave it, because a nasal edge suits this lane. Dynamic −1 to −2 dB only if a note pokes out |
+| Presence | 2–5 kHz | The mic already adds about 3.5 dB at 4 kHz. Add sparingly, and control 3–5 kHz dynamically on yells |
+| Sibilance | 5–10 kHz | Pro-DS detection lives here. Mid-high voices usually center around 6–8 kHz. Find the exact spot with Pro-DS's audition |
+| Air | 10–16 kHz | The mic already adds about 5 dB at 13 kHz. Use Fresh Air or a high shelf in moderation, with the de-esser after it |
+
+**Auto-Tune input type:** Alto/Tenor.
+
+**Breath and room:** a gentle expander on VOX IN, with no more than 6 dB of reduction and never a hard gate. Breaths get reduced, not removed, because some of that energy belongs in this style. Obvious noises like chair creaks get cut by hand.
+
+---
+
+## 4 · Gain and dynamics standard
+
+### Input level
+
+- **Target:** the loudest lines peak around **−10 dBFS** on VOX IN's meter, which puts the average near −18 dBFS. Every threshold and drive amount in the sheets assumes this, so the presets behave the same from song to song.
+- **How:** use the volume knobs on the audio clip channels in the Channel Rack. Normalize (Channel Settings → Precomputed effects) only on clips that hold a whole section. Never normalize short phrase clips one by one, because that flattens the contrast between quiet and loud lines (D17).
+
+### Between stages
+
+- Level-match each plugin so its output lands where its input was, using the plugin's own output control: Pro-Q Output, Pro-C Gain, Saturn Level, Fresh Air Trim, Pro-L 2 Gain. The exception is when a sheet says otherwise.
+- Keep peaks between stages around −12 to −6 dBFS. Only the LEAD's final limiter works up to its ceiling.
+
+### Compression budget (LEAD, on the loudest lines)
+
+| Stage | Job | Gain reduction |
+|---|---|---|
+| Compressor 1 | Peak catcher, fast | 3–6 dB on peaks |
+| Saturation | Density, soft peak rounding | About 1–2 dB, effective |
+| Compressor 2 | Leveler, slower | 2–4 dB, steady |
+| Pro-L 2 | Peak control | 1–3 dB, peaks only |
+| **Total** | | **About 8–14 dB, with no single stage over 6 dB** |
+
+Each sheet sets its own total within this range. Smoother presets sit low and grittier ones sit high.
+
+### Blend references
+
+Levels here are measured against LEAD at VOX BUS, on the peak meters and by ear.
+
+| Layer | Level vs. LEAD | Test |
+|---|---|---|
+| Ghost | −18 to −12 dB | Muting it makes the lead feel smaller. Unmuted, you don't hear a second voice |
+| Support (harmonies, crunch) | −12 to −6 dB | It adds size or edge without pulling focus |
+| Doubles (DBL) | −10 to −6 dB | The lead still owns the center |
+
+### Ceilings and headroom
+
+- **Pro-L 2 at the end of LEAD:** output ceiling −3 dBFS. Raise its Gain until the loudest lines show 1–3 dB of reduction.
+- **VOX BUS:** glue only, no limiter.
+- **VOX GROUP:** with the beat at its usual level, set the fader where the vocal sits right. Its peaks should stay at or below −6 dBFS so the master has room.
+
+---
+
+## 5 · Shared conventions
+
+### 5.1 · Auto-Tune base
+
+Every preset's VOX IN starts from this and changes only what its sheet lists.
+
+| Control | Base | Why |
+|---|---|---|
+| Input Type | Alto/Tenor | Fits a mid-high voice |
+| Key / Scale | The song's key | Per-song setup |
+| Algorithm | Modern (Classic Mode off) | Classic turns off Flex-Tune, Formant, Throat and Transpose (D16) |
+| Retune Speed | Hard 0–5 · Fast 10–20 · Medium 25–40 | Set by each preset's tune style |
+| Humanize | 10–30 | Held notes breathe instead of freezing |
+| Flex-Tune | 10–30 | Rapped syllables pass more naturally while sung notes still snap. Hard presets sit at the low end |
+| Natural Vibrato | 0 | Leaves the voice's own vibrato alone |
+| Formant | Off on VOX IN | Only transposing tracks turn it on |
+| Throat | 100 | Neutral unless a sheet says otherwise |
+| Transpose | 0 on VOX IN | Only transposing tracks use it |
+| Tracking | Default | Adjust only if detection glitches on raspy or breathy parts |
+
+### 5.2 · Doubles baseline
+
+DBL mirrors the lead's job at lower focus:
+- **Front end:** the same three jobs as VOX IN: rumble cut, gentle expander, then Auto-Tune with the lead's exact key, scale and retune, so the doubles lock to the same notes.
+- **Low cut:** 100–140 Hz, higher than the lead. The lead carries the body, and stacked low-mids would blur it.
+- **Tone:** 1–3 dB less at 3–5 kHz and above 10 kHz than the lead. Fresh Air lower or off.
+- **De-essing:** harder than the lead (deeper Pro-DS range), because S's stack up across takes.
+- **Compression:** tighter than the lead. A steady level blends better.
+- **Pan:** a pair at L/R 70–100. A single double sits in the center with its fader 2–3 dB lower.
+- **Sends:** 6 dB lower than the lead's, to the same returns.
+- **Level:** 6–10 dB under LEAD.
+- Doubles never feed PAR tracks.
+
+### 5.3 · Key-move format
+
+Each sheet lists 2–4 moves in this form (D9). To make one, right-click the control and choose **Create automation clip**.
+
+| # | Move | Track › Parameter | From → To | When | Why |
+|---|---|---|---|---|---|
+| e.g. | Throw | LEAD › send to FX · THROW | 0% → 100% → 0% | Last word of bar 8 | Lifts the line ending |
+
+### 5.4 · Mono and translation test
+
+Run it once per preset after dialing in, then once per song.
+
+| Check | How | Pass |
+|---|---|---|
+| Mono | Turn the master track's stereo separation knob fully right, then back to center afterward | The lead doesn't dip or change tone, doubles and returns don't vanish or go hollow, and nothing swirls |
+| Quiet | Monitor very low | Every word still comes through |
+| Small speaker | Phone speaker or earbuds | Presence intact, S's not piercing, body still there |
+| Loud | Car or monitors at volume | No boom in the low-mids, no harsh edge |
+| Headphones | Good headphones | Returns and doubles support the lead without distracting |
+
+### 5.5 · Chain-sheet template
+
+Every preset sheet uses these sections, in this order:
+1. **Header:** identity and placement (D6)
+2. **Per-song setup** (D11)
+3. **Track map:** the template tracks it uses, routes and send levels
+4. **VOX IN:** the three slots, with this preset's Auto-Tune settings
+5. **LEAD:** all 10 slots as Slot · Plugin · Settings · Why
+6. **Parallel tracks**
+7. **FX returns**
+8. **Buses**
+9. **DBL**
+10. **Key moves**
+11. **Ear checks** (added in Step 5)
+12. **Translation notes**
+
+---
+
+## Sources
+
+**Auto-Tune Artist:**
+- [Antares: Introduction to AutoTune Artist](https://www.antarestech.com/blog/tutorial-introduction-to-auto-tune-artist)
+- [Antares: AutoTune Best Practices](https://help.antarestech.com/hc/en-us/articles/42858099043092-AutoTune-Best-Practices)
+- [Auto-Tune Artist User Guide (PDF)](https://antares-web-frontend.sfo3.cdn.digitaloceanspaces.com/documentation/pdfs/Auto-Tune_Artist_Manual.pdf)
+- [Auto-Tune Pro X User Guide 10.0 (PDF)](https://antares-web-frontend.sfo3.cdn.digitaloceanspaces.com/documentation/pdfs/Auto-Tune_Pro_X_User_Guide_10.0.pdf)
+- [Antares: Throat](https://www.antarestech.com/product/throat/)
+- [Sweetwater: Auto-Tune Quickstart](https://www.sweetwater.com/sweetcare/articles/auto-tune-quickstart-guide/)
+
+**Fresh Air:**
+- [Slate Digital Docs: Fresh Air](https://docs.slatedigital.com/FreshAir/Fresh%20Air.html)
+- [bchillmix: Fresh Air vs. stock exciter](https://bchillmix.com/blogs/news/fresh-air-vs-stock-exciter-for-brighter-vocals)
+
+**FabFilter:**
+- [FabFilter releases Pro-C 3](https://www.fabfilter.com/news/1768435200/fabfilter-releases-pro-c-3-compressor-plug-in)
+- [Pro-C 3 Help: Style and character](https://www.fabfilter.com/help/pro-c/using/styleandcharacter)
+- [MusicTech: Pro-C 3](https://musictech.com/news/gear/fabfilter-pro-c-3/)
+- [Pro-C 2 manual (PDF)](https://www.fabfilter.com/downloads/pdf/help/ffproc2-manual.pdf)
+- [Pro-Q 4 Help: Dynamic EQ](https://www.fabfilter.com/help/pro-q/using/dynamic-eq)
+- [Pro-DS Help: Basic controls](https://www.fabfilter.com/help/pro-ds/using/basiccontrols)
+- [Production Expert: Pro-L 2 styles](https://www.production-expert.com/production-expert-1/fabfilter-pro-l-2-for-music-mastering-in-2026-which-style-and-why-it-matters)
+- [Pro-G Help: Time controls, Style and Knee](https://www.fabfilter.com/help/pro-g/using/timecontrols)
+- [Pro-MB Help: Basic band controls](https://www.fabfilter.com/help/pro-mb/using/basicbandcontrols)
+- [Saturn 2 Help: Band controls](https://www.fabfilter.com/help/saturn/using/bandcontrols)
+- [FabFilter releases Saturn 2](https://www.fabfilter.com/press/1589878800/fabfilter-releases-fabfilter-saturn-2-distortion-and-saturation-plug-in)
+- [Production Expert: Saturn 2](https://www.production-expert.com/production-expert-1/2020/5/19/saturn-2-from-fabfilter-new-version-offers-everything-for-saturation-and-distortion-from-subtle-to-wild)
+- [Sage Audio: How to use Saturn 2](https://www.sageaudio.com/articles/how-to-use-fabfilter-saturn-2)
+- [Timeless 3 Help: Delay controls](https://www.fabfilter.com/help/timeless/using/delaycontrols)
+- [Music Connection: Timeless 3](https://www.musicconnection.com/new-toys-fabfilter-timeless-3-delay-plugin/)
+- [Pro-R 2 Help: Main controls](https://www.fabfilter.com/help/pro-r/using/maincontrols)
+- [Production Expert: Pro-R 2 first look](https://www.production-expert.com/production-expert-1/new-features-fabfilter-pro-r-2-first-look)
+
+**FL Studio:**
+- [Mixer Explained](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/mixer.htm)
+- [Fruity Send](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Send.htm)
+- [Ringmod: Sidechain routing guide](https://ringmodsidechain.com/tutorials/sidechain-routing-in-fl-studio-complete-guide)
+- [MusicProductionWiki: How to sidechain in FL Studio](https://musicproductionwiki.com/articles/how-to-sidechain-in-fl-studio)
+- [Black Ghost Audio: Sidechain with Pro-C 2](https://www.blackghostaudio.com/blog/how-to-apply-sidechain-compression-using-fabfilters-pro-c-2)
+- [Image-Line: PDC made simple](https://www.image-line.com/fl-studio-news/plugin-delay-compensation-pdc-made-simple)
+- [Image-Line forum: Automatic PDC](https://forum.image-line.com/viewtopic.php?t=9549)
+- [Image-Line forum: Stereo separation knob](https://forum.image-line.com/viewtopic.php?t=270585)
+- [Pitcher](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Pitcher.htm)
+- [Vintage Chorus](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Vintage%20Chorus.htm)
+- [ask.video: NewTone](https://ask.video/article/audio-software/audio-editing-pitch-correction-using-fl-studios-newtone-)
+- [BarrettArtists: Normalizing in FL Studio](https://www.barrettartists.com/fl-studio-how-to-normalize-audio/)
+
+**Lewitt LCT 440 PURE:**
+- [RecordingHacks](https://recordinghacks.com/microphones/Lewitt/LCT-440-Pure)
+- [Sound On Sound review](https://www.soundonsound.com/reviews/lewitt-lct-440-pure)
+- [Recording Magazine review](https://www.recordingmag.com/resources/featured-reviews/lewitt-lct-440-pure/)

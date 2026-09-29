@@ -25,7 +25,7 @@ All in `vocal-chains/presets/`:
 
 ---
 
-## Step 1 · Ground Truth
+## Step 1 · Ground Truth ✅
 
 *Verify the toolkit and lock the shared foundation before any preset gets a setting.*
 
@@ -165,7 +165,7 @@ Judgment calls made inside the spec where it leaves room. New ones get added as 
 
 | # | Call | Why |
 |---|---|---|
-| D1 | Settings only use features that exist in both the current and previous major version of each plugin. Version-only extras are marked optional. | Works on whichever versions are installed. |
+| D1 | *(Refined in Step 1.)* Pro-C and Pro-Q both had recent major releases (Pro-C 3 in January 2026, Pro-Q 4 in December 2024). Their core settings only use features shared with Pro-C 2 and Pro-Q 3, and newer extras are marked optional. Every other plugin targets its current version, since none has had a new major version in over two years. | Works on whichever versions are installed, without giving up features that have been stable for years. |
 | D2 | Tune once, upstream. Each preset gets a source track (VOX IN) with Auto-Tune and shared cleanup, feeding the lead and every parallel path. The lead's 10 slots hold the character chain. | Every layer carries the same tuned audio, so tuned and untuned copies can never clash. |
 | D3 | Vocal buses count as part of the chain. Dry layers glue on a vocal bus, and returns join them at a vocal group. The master and mix bus stay untouched. | Parallel paths need a shared glue point. Mastering stays out of scope. |
 | D4 | Doubles are built for a stereo pair (L/R), with a single-double fallback. | Covers both common ways of tracking doubles. |
@@ -177,3 +177,9 @@ Judgment calls made inside the spec where it leaves room. New ones get added as 
 | D10 | Input level is set with clip gain on the audio. | Consistent levels into every chain, without using a slot. |
 | D11 | Per-song setup is limited to: an input level check, the Auto-Tune key and scale, Silk Stack's harmony line, and placing the key moves. | Keeps the presets set-and-go. |
 | D12 | Each sheet is complete for its song. The foundation holds only shared procedures. | One preset per song means one sheet per song. |
+| D13 | VOX IN always holds exactly three slots: rumble cut → gentle expander → Auto-Tune Artist. | Covers what every branch needs and nothing more, so all branches stay pitch- and phase-locked. |
+| D14 | FX returns route to VOX GROUP, not VOX BUS. | Keeps the bus glue from pumping reverb and delay tails. |
+| D15 | Return ducking is keyed from VOX IN over a sidechain-only connection. | LEAD already feeds the returns, and "Sidechain to this track" works by zeroing a connection's audio send. |
+| D16 | Auto-Tune runs in the Modern algorithm (Classic Mode off) unless a sheet says otherwise. | Classic turns off Flex-Tune, Formant, Throat and Transpose. |
+| D17 | Levels are set with the audio clip channels' volume knobs. Only whole-section clips get normalized, never short phrase clips one by one. *(Refines D10.)* | Keeps the contrast between quiet and loud lines. |
+| D18 | Where a plugin offers a latency choice on a parallel track, it runs at zero latency, and FL's automatic PDC handles the rest. *(Refines D5.)* | The simplest way to keep parallel layers locked to the lead. |

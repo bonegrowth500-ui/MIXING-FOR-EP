@@ -38,8 +38,8 @@ Lush, wide and choir-like: the lead blooms into harmonies made from itself, with
 |---|---|---|---|---|
 | VOX IN | Lead clips | LEAD | — | 0 dB |
 | LEAD | VOX IN | VOX BUS, and PAR · OCT and PAR · 3RD at 100% | FX · HALL 50% | 0 dB |
-| PAR · OCT | LEAD | VOX BUS | FX · HALL 100% | −11 dB |
-| PAR · 3RD | LEAD, with its pitch set by the 3RD LINE channel | VOX BUS | FX · HALL 100% | −9 dB |
+| PAR · OCT | LEAD | VOX BUS | FX · HALL 100% | −8 dB |
+| PAR · 3RD | LEAD, with its pitch set by the 3RD LINE channel | VOX BUS | FX · HALL 100% | −6 dB |
 | DBL IN L / R | Left / right double clips | DBL | — | 0 dB, panned L80 / R80 |
 | DBL | DBL IN L, DBL IN R | VOX BUS | FX · HALL 50% | −8 dB |
 | FX · HALL | Sends | VOX GROUP | — | −10 dB |
@@ -71,7 +71,7 @@ Plus one Channel Rack channel, **3RD LINE**: a MIDI Out channel that holds the 3
 | 7 | Pro-DS | Single Vocal · Split Band · Threshold −28 dB, for 3–5 dB on S's · Range 8 dB · detection 5–11 kHz · Lookahead 10 ms | Every S here gets copied into two harmonies, so it's caught before the split. The longer lookahead keeps it smooth |
 | 8 | Pro-Q | Bell 3.5 kHz, Q 1.2, dynamic −3 dB | Belted notes stay smooth |
 | 9 | Pro-Q | Tilt Shelf 1 kHz, −1.5 dB | A warm tilt that eases presence about 1 dB around 3–4 kHz: clear but embedded |
-| 10 | Pro-L 2 | Transparent style · Gain +1 dB, raised until the loudest lines show 1–2 dB GR · Output −3.0 dBFS · Lookahead 3 ms | Protects the harmony feed and the hall from spikes |
+| 10 | Pro-L 2 | Transparent style · Gain about +10 dB, adjusted until the loudest lines show 1–2 dB GR · Output −3.0 dBFS · Lookahead 3 ms | Protects the harmony feed and the hall from spikes |
 
 **Density check:** about 3.5 + 1.5 + 2.5 + 1.5 dB, roughly 9 dB total (target 8–10).
 
@@ -88,9 +88,9 @@ Plus one Channel Rack channel, **3RD LINE**: a MIDI Out channel that holds the 3
 | 1 | Auto-Tune Artist | Alto/Tenor · Chromatic · Retune Speed 50 · Flex-Tune 100 · Humanize 0 · Transpose −12 · Formant on · Throat 100 | A natural lower voice rather than a monster, the opposite of Phantom Twin's demon. It shifts without re-tuning (D20) |
 | 2 | Pro-Q | Low Cut 120 Hz, 18 dB/oct · High Shelf 6 kHz, −3 dB · Zero Latency | Low-mid weight without sub mud, softer on top |
 | 3 | Pro-C | Vocal style · Ratio 3:1 · Attack 10 ms · Release 100 ms · Knee 12 dB · Threshold about −10 dB, for 3–4 dB GR · Gain to level-match | Support layers stay put |
-| 4 | Vintage Chorus | Mode I · wet/dry around the middle | Phase 1: wide chorus on the harmonies only |
+| 4 | Vintage Chorus | Mode I · Mix 50% · H Pass 250 Hz | Phase 1: wide chorus on the harmonies only. H Pass keeps the chorus off the low end, which keeps the lows clean and mono-safe |
 
-**Level:** fader at −11 dB (10–12 dB under LEAD).
+**Level:** fader at −8 dB. The 120 Hz high-pass trims about 3 dB first, so that lands about 11 dB under LEAD (target 10–12).
 
 ### PAR · 3RD (3rd up)
 
@@ -99,15 +99,15 @@ Plus one Channel Rack channel, **3RD LINE**: a MIDI Out channel that holds the 3
 | 1 | Pitcher | MIDI mode · Speed fully up · formant control on, nudged slightly toward the male side · low-frequency setting 80 Hz · MIDI input port matching 3RD LINE | Moves the lead to its in-key 3rd, note by note. The formant nudge offsets the upward shift, so the harmony doesn't sound smaller than you |
 | 2 | Pro-Q | Low Cut 200 Hz, 18 dB/oct · Bell 3.5 kHz, Q 1.0, −2 dB · Zero Latency | Sits behind the lead |
 | 3 | Pro-C | Vocal style · Ratio 3:1 · Attack 10 ms · Release 100 ms · Knee 12 dB · Threshold about −10 dB, for 3–4 dB GR · Gain to level-match | Support layers stay put |
-| 4 | Vintage Chorus | Mode II · wet/dry around the middle | A different mode from PAR · OCT, so the two harmonies spread instead of stacking |
+| 4 | Vintage Chorus | Mode II · Mix 50% · H Pass 250 Hz | A different mode from PAR · OCT, so the two harmonies spread instead of stacking |
 
-**Level:** fader at −9 dB (8–10 dB under LEAD).
+**Level:** fader at −6 dB. The 200 Hz high-pass trims about 3 dB first, so that lands about 9 dB under LEAD (target 8–10).
 
 ### Making the 3rd line (per song)
 
 1. Add a MIDI Out channel named 3RD LINE. Set its port and Pitcher's MIDI input port to the same number (port 10, for example).
 2. Open the lead vocal in NewTone and send its notes to 3RD LINE as a MIDI score.
-3. In the piano roll, select all notes and move them up 4 semitones. With the song's scale highlighted, move any note that lands outside the key down 1 semitone. That leaves a true in-key 3rd above every note.
+3. In the piano roll, select all notes and move them up 4 semitones. With the song's scale highlighted, move any note that lands outside the key down 1 semitone. That leaves a true in-key 3rd above every note. Then run Tools › Quick legato, so each note runs into the next with no gaps inside a phrase.
 4. Delete the notes on rap sections.
 
 **Fallback:** duplicate the lead's clips, open them in NewTone, raise each note to its in-key 3rd, and point that clip channel at PAR · 3RD. Remove LEAD's route to PAR · 3RD. That audio skips LEAD's processing, so the slots change to:
@@ -134,7 +134,7 @@ Plus one Channel Rack channel, **3RD LINE**: a MIDI Out channel that holds the 3
 
 | Track | Slot | Plugin | Settings | Why |
 |---|---|---|---|---|
-| VOX BUS | 1 | Pro-C | Opto style · Ratio 2:1 · Attack 30 ms · Release Auto · Knee 18 dB · Threshold about −12 dB, for 1–2 dB GR · Gain to level-match | The lead, both harmonies and the doubles sing as one choir |
+| VOX BUS | 1 | Pro-C | Opto style · Ratio 2:1 · Attack 30 ms · Release Auto · Knee 18 dB · Threshold about −10 dB, for 1–2 dB GR · Gain to level-match | The lead, both harmonies and the doubles sing as one choir |
 
 VOX GROUP stays empty.
 
@@ -149,6 +149,7 @@ VOX GROUP stays empty.
 | 3 | Saturn 2 | 1 band · Warm Tube · Drive 25% · Mix 40% · HQ on · Level to match | Matches the lead's warmth |
 | 4 | Pro-DS | Single Vocal · Split Band · Threshold −30 dB · Range 10 dB · detection 5–11 kHz | S's stack across takes and harmonies |
 | 5 | Pro-Q | Bell 3.5 kHz, Q 1.0, −2 dB · High Shelf 10 kHz, −2 dB | Warmer and less present than the lead, so the lead stays in front |
+| 6 | Pro-L 2 | Transparent style · Output −3.0 dBFS · Gain about +10 dB, for 1–2 dB GR · Lookahead 3 ms | Brings the doubles up to the lead's level, so the −8 dB fader really puts them 6–10 dB under (D23) |
 
 **Level:** fader at −8 dB (6–10 dB under LEAD). **Send:** FX · HALL at 50%, like LEAD's.
 
@@ -156,7 +157,7 @@ VOX GROUP stays empty.
 
 | # | Move | Track › Parameter | From → To | When | Why |
 |---|---|---|---|---|---|
-| 1 | Harmony ride | PAR · OCT and PAR · 3RD › faders | −11 dB and −9 dB → off (−∞), then back | Off for rap sections, back for sung lines, with 1-beat ramps | Keeps the stack on the melodies. The 3RD line is already empty there, so this also covers anything Pitcher passes through without notes |
+| 1 | Harmony ride | PAR · OCT and PAR · 3RD › faders | −8 dB and −6 dB → off (−∞), then back | Off for rap sections, back for sung lines, with 1-beat ramps | Keeps the stack on the melodies. The 3RD line is already empty there, so this also covers anything Pitcher passes through without notes |
 | 2 | Hall swell | LEAD › send to FX · HALL | 50% → 100% → 50% | Last line of each hook | The hook exhales into the hall |
 
 ## Ear checks

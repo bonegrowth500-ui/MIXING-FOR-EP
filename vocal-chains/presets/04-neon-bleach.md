@@ -35,7 +35,7 @@ Glossy, very bright and expensive: a hard-tuned lead right in your face, with cr
 |---|---|---|---|---|
 | VOX IN | Lead clips | LEAD | — | 0 dB |
 | LEAD | VOX IN | VOX BUS, and PAR · OCT UP at 100% | FX · DELAY 100%, FX · PLATE 100% | 0 dB |
-| PAR · OCT UP | LEAD | VOX BUS | FX · PLATE 100% | −18 dB |
+| PAR · OCT UP | LEAD | VOX BUS | FX · PLATE 100% | −14 dB |
 | DBL IN L / R | Left / right double clips | DBL | — | 0 dB, panned L90 / R90 |
 | DBL | DBL IN L, DBL IN R | VOX BUS | FX · DELAY 100%, FX · PLATE 100% | −8 dB |
 | FX · DELAY | Sends | VOX GROUP | — | −16 dB |
@@ -66,7 +66,7 @@ Sends are post-fader, so tracks that sit lower (DBL, PAR) automatically feed the
 | 7 | Pro-Q | High Shelf 12 kHz, Q 0.7, +2 dB | Finishes the air. With Fresh Air, that's about +4–6 dB of top end beyond the mic's own |
 | 8 | Pro-DS | Single Vocal · Split Band · Threshold −30 dB, for 3–6 dB on S's · Range 10 dB · detection 5–12 kHz · Lookahead 5 ms | Catches the S's both air stages lifted |
 | 9 | Pro-Q | Bell 3.8 kHz, Q 1.5, dynamic −3 dB | Clamps loud notes that turn glassy under hard tune, only when they spike |
-| 10 | Pro-L 2 | Modern style · Gain +2 dB, raised until the loudest lines show 1–3 dB GR · Output −3.0 dBFS · Lookahead 2 ms | Holds the most upfront lead of the five flat |
+| 10 | Pro-L 2 | Modern style · Gain about +10 dB, adjusted until the loudest lines show 1–3 dB GR · Output −3.0 dBFS · Lookahead 2 ms | Holds the most upfront lead of the five flat |
 
 **Density check:** about 5 + 1.5 + 3.5 + 2 dB on the loudest lines, roughly 12 dB total (target 11–13).
 
@@ -83,9 +83,9 @@ Sends are post-fader, so tracks that sit lower (DBL, PAR) automatically feed the
 | 1 | Auto-Tune Artist | Alto/Tenor · Chromatic · Retune Speed 50 · Flex-Tune 100 · Humanize 0 · Transpose +12 · Formant on · Throat 100 | Shifts up an octave without re-tuning. Formant keeps it a voice, not a chipmunk (D20) |
 | 2 | Pro-Q | Low Cut 400 Hz, 24 dB/oct · High Shelf 9 kHz, −3 dB · Zero Latency | Shimmer only: no low-mid clutter, no hiss |
 | 3 | Pro-C | Clean style · Ratio 4:1 · Attack 5 ms · Release 80 ms · Knee 12 dB · Threshold about −12 dB, for 4–6 dB GR · Gain to level-match | A ghost has to stay constant |
-| 4 | Vintage Chorus | Mode I · wet/dry around the middle | Phase 1's "tucked wide". Mode I is the gentlest, widest Juno setting |
+| 4 | Vintage Chorus | Mode I · Mix 50% | Phase 1's "tucked wide". Mode I is the gentlest, widest Juno setting |
 
-**Level:** fader at −18 dB, which is its verse level. The key move lifts it to −14 dB on hooks. Both stay inside the ghost range (foundation §4).
+**Level:** fader at −14 dB, its verse level. The 400 Hz high-pass trims about 4 dB first, so that lands about 18 dB under LEAD. The key move lifts it to −10 dB on hooks, about 14 dB under. Fine-tune with the ghost test (foundation §4).
 
 **Buildable:** yes. Transpose +12 is within Auto-Tune's ±12, Formant needs the Modern algorithm (D16), and Vintage Chorus is FL stock (foundation §1).
 
@@ -113,7 +113,7 @@ Sends are post-fader, so tracks that sit lower (DBL, PAR) automatically feed the
 
 | Track | Slot | Plugin | Settings | Why |
 |---|---|---|---|---|
-| VOX BUS | 1 | Pro-C | Bus style · Ratio 2:1 · Attack 30 ms · Release Auto · Knee 12 dB · Threshold about −12 dB, for 1–2 dB GR · Gain to level-match | Glues the lead, ghost and doubles into one gloss |
+| VOX BUS | 1 | Pro-C | Bus style · Ratio 2:1 · Attack 30 ms · Release Auto · Knee 12 dB · Threshold about −10 dB, for 1–2 dB GR · Gain to level-match | Glues the lead, ghost and doubles into one gloss |
 
 VOX GROUP stays empty.
 
@@ -129,6 +129,7 @@ VOX GROUP stays empty.
 | 4 | Fresh Air | Mid Air 15% · High Air 35% · Trim to level-match | Bright, but a step behind the lead |
 | 5 | Pro-DS | Single Vocal · Split Band · Threshold −32 dB · Range 12 dB · detection 5–12 kHz | Very bright doubles stack S's fastest |
 | 6 | Pro-Q | Bell 4 kHz, Q 1.0, −2 dB · High Shelf 10 kHz, −2 dB | Tone offset that keeps the lead in front |
+| 7 | Pro-L 2 | Modern style · Output −3.0 dBFS · Gain about +10 dB, for 1–2 dB GR · Lookahead 2 ms | Brings the doubles up to the lead's level, so the −8 dB fader really puts them 6–10 dB under (D23) |
 
 **Level:** fader at −8 dB (6–10 dB under LEAD). **Sends:** FX · DELAY and FX · PLATE at 100%. Because sends are post-fader, they automatically land 6–10 dB below LEAD's.
 
@@ -138,7 +139,7 @@ No throws here: Q20 chose a soft bed.
 
 | # | Move | Track › Parameter | From → To | When | Why |
 |---|---|---|---|---|---|
-| 1 | Ghost opens | PAR · OCT UP › fader | −18 dB → −14 dB | Hooks, with 1-beat ramps in and out | More gloss where it counts, cleaner verses |
+| 1 | Ghost opens | PAR · OCT UP › fader | −14 dB → −10 dB | Hooks, with 1-beat ramps in and out | More gloss where it counts, cleaner verses |
 | 2 | Air lift | LEAD › Fresh Air High Air | 55% → 65% | Hooks | Extra shine on the hook |
 | 3 | Bed dips | LEAD › send to FX · DELAY | 100% → 50% | Dense rap lines | Keeps fast bars clear |
 

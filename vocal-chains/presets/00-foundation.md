@@ -21,7 +21,7 @@ This environment's network policy blocked the manufacturers' sites, so confirmat
 |---|---|---|
 | Input Type | Soprano · Alto/Tenor · Low Male · Instrument · Bass Instrument | Confirmed |
 | Key / Scale | Set per song | Known |
-| Retune Speed | In ms. 0 = instant, robotic snap | Confirmed (sheets stay at 50 or below) |
+| Retune Speed | In ms, 0–400. 0 = instant, robotic snap | Confirmed |
 | Humanize | Applies a slower retune only to sustained notes | Confirmed |
 | Flex-Tune | 0 pulls every note to target. Higher values let more natural movement through. Modern algorithm only | Confirmed |
 | Natural Vibrato | Scales the singer's own vibrato | Known |
@@ -46,7 +46,7 @@ This environment's network policy blocked the manufacturers' sites, so confirmat
 | Plugin | Controls the sheets use | Status |
 |---|---|---|
 | **Pro-Q 3/4** | Shapes: Bell, Low/High Shelf, Low/High Cut, Notch, Band Pass, Tilt Shelf, Flat Tilt. Cut slopes 6–96 dB/oct. Per-band Stereo/Left/Right/Mid/Side. Zero Latency / Natural Phase / Linear Phase. Output gain | Known |
-| | Dynamic EQ per band (range + threshold) | Confirmed |
+| | Dynamic EQ per band: range, plus a threshold that can run on Auto (Pro-Q 3 and 4) | Confirmed |
 | | Per-band dynamic attack/release is Pro-Q 4 only (50% = auto): optional | Confirmed |
 | **Pro-C 2/3** | Styles in both versions: Clean, Classic, Opto, Vocal, Mastering, Bus, Punch, Pumping | Confirmed |
 | | Pro-C 3-only styles (Versatile, Smooth, Vari-Mu, Op-El, Upward, TTM): optional | Confirmed |
@@ -57,8 +57,8 @@ This environment's network policy blocked the manufacturers' sites, so confirmat
 | | Gain, Output Level (ceiling), Lookahead, Attack, Release, True Peak | Known |
 | **Pro-G** | Styles: Classic, Clean, Vocal, Guitar, Upward, plus Ducking. Threshold, Ratio (1:1 to ∞:1, acting as a gate above about 5:1), Range (the maximum attenuation), Attack, Hold, Release, Knee, Lookahead | Confirmed |
 | **Pro-MB** | Up to 6 bands. Downward and upward compression and expansion | Confirmed |
-| | Which sign of Range gives upward vs. downward: Check. Sheets only use downward compression | Check |
-| **Saturn 2** | 28 styles. Names confirmed: Warm Tape, Clean Tube, Warm Tube · "Subtle" versions of Tape, Tube and Saturation · Transformer: Subtle, Gentle, Warm · Amp: British Rock, British Pop, American Tweed, American Plexi · FX: Foldback, Breakdown | Confirmed (exact label wording: Check) |
+| | Range sign: in Compress mode, a negative Range compresses downward (normal) and a positive Range compresses upward. Sheets only use negative Range | Confirmed |
+| **Saturn 2** | 28 styles. Names confirmed: Warm Tape, Clean Tube, Warm Tube · "Subtle" versions of Tape, Tube and Saturation · Transformer: Subtle, Gentle, Warm · Amp: British Rock, British Pop, American Tweed, American Plexi · FX: Foldback, Breakdown | Confirmed |
 | | Per band: Drive in % (output compensates automatically as Drive rises), Feedback, Dynamics (left = gate/expand, right = compress), Tone (bass/mid/treble/presence), Mix in %, Level (−inf to +36 dB). Up to 6 bands | Confirmed |
 | **Timeless 3** | Two delay lines, 5 ms–5 s, host sync (type "d" or "t" for dotted/triplet). Tape / Stretch time modes. Ping Pong (start L or R). Feedback, Cross Feedback Mix, feedback invert. Six feedback-path filters. Feedback FX: Drive, Lo-Fi, Diffuse, Dynamics, Pitch. Dry and Wet levels. Modulation, including an envelope follower whose attack and release you set by dragging its envelope dots. Ducking = the envelope follower pulling the Wet level down | Confirmed |
 | **Pro-R 2** | Space (stepless room model + decay time, from about 0.2 s up to about 10 s). Decay Rate 25–400% of the Space's decay. Style (includes Plate and Vintage). Predelay 0–500 ms with sync. Character, Distance, Thickness, Stereo Width and Mix in %, Brightness in ±%. Ducking (a range knob that triggers on the plugin's own input), Auto Gate, Freeze | Confirmed |
@@ -79,18 +79,16 @@ This environment's network policy blocked the manufacturers' sites, so confirmat
 | Audio clips | Channel Settings → Precomputed effects → Normalize (peaks to 0 dB). Channel volume knob in the Channel Rack | Confirmed |
 | Pitcher | Modes include MIDI (pitch set by incoming notes), Octaves and Harmonize (up to 4 voices). Speed, a formant (gender) control, key/scale, and a low-frequency detection setting (about 80 Hz for lower voices, 110 Hz for higher) | Confirmed |
 | NewTone | Detects and edits notes, and exports them as a MIDI score to a channel | Confirmed |
-| Vintage Chorus | Juno-6 chorus. Modes I / II / I+II, plus free delay times, LFO rate/shape and wet polarity | Confirmed |
+| Vintage Chorus | Juno-6 chorus. Modes I / II (Shift+click for I+II), Mix (wet/dry), Time 1 / Time 2, Feedback, H Pass on the wet signal, LR Phase, Invert Wet | Confirmed |
 | Automation clips | Right-click any control → Create automation clip | Known |
 
 ### To confirm on screen
 
-These couldn't be pinned down here and get re-checked in Step 4B:
-- Saturn 2's exact style labels
-- Auto-Tune Artist's maximum Retune Speed and the ends of the Throat range
-- Pro-MB's Range sign
+Step 4B re-checked this list and confirmed four items: Saturn 2's style labels, Auto-Tune's Retune Speed range, Pro-MB's Range sign and Vintage Chorus's Mix control. These are still open:
+- The ends of Auto-Tune Artist's Throat range (the sheets only use 100 and 120)
 - FL's wording for the sidechain wrapper panel and the PDC menu
-- Pro-R 2's Ducking unit and its maximum Decay Rate
-- The scales on Pitcher's Speed and formant controls, and the name of Vintage Chorus's wet/dry control
+- Pro-R 2's Ducking unit and its maximum Decay Rate (the sheets note a fallback)
+- The scales on Pitcher's Speed and formant controls (the sheets describe positions, not numbers)
 
 ---
 
@@ -243,7 +241,7 @@ Levels here are measured against LEAD at VOX BUS, on the peak meters and by ear.
 
 ### Ceilings and headroom
 
-- **Pro-L 2 at the end of LEAD:** output ceiling −3 dBFS. Raise its Gain until the loudest lines show 1–3 dB of reduction.
+- **Pro-L 2 at the end of LEAD:** output ceiling −3 dBFS. Raise its Gain until the loudest lines show 1–3 dB of reduction. Expect about +8 to +13 dB: every stage before it is level-matched by loudness, which leaves peaks around −14 to −12 dBFS by the time they arrive. The doubles end with the same stage (D23), so their fader offsets hold.
 - **VOX BUS:** glue only, no limiter.
 - **VOX GROUP:** with the beat at its usual level, set the fader where the vocal sits right. Its peaks should stay at or below −6 dBFS so the master has room.
 
@@ -279,6 +277,7 @@ DBL mirrors the lead's job at lower focus:
 - **Tone:** 1–3 dB less at 3–5 kHz and above 10 kHz than the lead. Fresh Air lower or off.
 - **De-essing:** harder than the lead (deeper Pro-DS range), because S's stack up across takes.
 - **Compression:** tighter than the lead. A steady level blends better.
+- **Peak control:** the last slot is Pro-L 2 at −3 dBFS, like the lead, so the DBL fader's offset means what it says (D23).
 - **Pan:** a pair at L/R 60–90, set per sheet. A single double uses DBL IN L, centered, with its fader 2–3 dB lower.
 - **Sends:** 6 dB lower than the lead's, to the same returns.
 - **Level:** 6–10 dB under LEAD.

@@ -62,9 +62,9 @@ Dark, gothic and drenched: an empty cathedral at 3 AM, with the top rolled soft 
 | 5 | Pro-C | Opto style · Ratio 3:1 · Attack 10 ms · Release Auto · Knee 18 dB · Threshold about −19 dB, for 2–3 dB GR · Gain to level-match | A steady level into the hall means steady tails |
 | 6 | Pro-Q | High Shelf 8 kHz, Q 0.7, −5 dB · High Cut 14 kHz, 12 dB/oct | The dark half of the tone curve (Q24), leaving 2–4 kHz alone |
 | 7 | Pro-DS | Single Vocal · Split Band · Threshold −32 dB, for 3–5 dB on S's · Range 10 dB · detection 4.5–10 kHz · Lookahead 5 ms | S's in a long hall and in the throws turn into splashes, so they're caught before the sends. The detection sits a little lower to match the darker tone |
-| 8 | Pro-MB | Band 1: 150–450 Hz · Compress, downward · Ratio 3:1 · Range 4 dB · Attack 10 ms · Release 150 ms. Band 2: 2.5–5 kHz · Compress, downward · Ratio 3:1 · Range 3 dB · Attack 2 ms · Release 80 ms. Each threshold set so the band only acts when it builds | Warmth, room box and long tails can add up to boom (band 1). Band 2 catches upper-mid spikes |
+| 8 | Pro-MB | Band 1: 150–450 Hz · Compress mode · Range −4 dB · Ratio 3:1 · Attack 10 ms · Release 150 ms. Band 2: 2.5–5 kHz · Compress mode · Range −3 dB · Ratio 3:1 · Attack 2 ms · Release 80 ms. Negative Range = downward. Each threshold set so the band only acts when it builds | Warmth, room box and long tails can add up to boom (band 1). Band 2 catches upper-mid spikes |
 | 9 | Pro-Q | Bell 1.2 kHz, Q 1.0, −1 dB | Takes a little forwardness out of the mids, so the lead leans back into the beat without losing the 2–4 kHz words |
-| 10 | Pro-L 2 | Transparent style · Gain +2 dB, raised until the loudest lines show 1–2 dB GR · Output −3.0 dBFS · Lookahead 3 ms | Keeps what goes into the hall and throws consistent |
+| 10 | Pro-L 2 | Transparent style · Gain about +10 dB, adjusted until the loudest lines show 1–2 dB GR · Output −3.0 dBFS · Lookahead 3 ms | Keeps what goes into the hall and throws consistent |
 
 **Density check:** about 4 + 1.5 + 2.5 + 1.5 dB, roughly 9.5 dB total (target 9–11). Pro-MB only adds when a band builds.
 
@@ -103,7 +103,7 @@ None. This preset's character lives in the space, so it doesn't need a parallel 
 
 | Track | Slot | Plugin | Settings | Why |
 |---|---|---|---|---|
-| VOX BUS | 1 | Pro-C | Opto style · Ratio 2:1 · Attack 30 ms · Release Auto · Knee 18 dB · Threshold about −12 dB, for 1–2 dB GR · Gain to level-match | Glues the lead and doubles before the space takes over |
+| VOX BUS | 1 | Pro-C | Opto style · Ratio 2:1 · Attack 30 ms · Release Auto · Knee 18 dB · Threshold about −10 dB, for 1–2 dB GR · Gain to level-match | Glues the lead and doubles before the space takes over |
 
 VOX GROUP stays empty.
 
@@ -118,6 +118,7 @@ VOX GROUP stays empty.
 | 3 | Saturn 2 | 1 band · Warm Tape · Drive 25% · Mix 60% · HQ on · Level to match | Matches the lead's grain |
 | 4 | Pro-Q | High Shelf 7 kHz, −6 dB · Bell 3 kHz, Q 1.0, −1.5 dB | Darker than the lead, so the lead stays in front |
 | 5 | Pro-DS | Single Vocal · Split Band · Threshold −32 dB · Range 12 dB · detection 4.5–10 kHz | S's stack up across takes, and the hall exaggerates them |
+| 6 | Pro-L 2 | Transparent style · Output −3.0 dBFS · Gain about +10 dB, for 1–2 dB GR · Lookahead 3 ms | Brings the doubles up to the lead's level, so the −8 dB fader really puts them 6–10 dB under (D23) |
 
 **Level:** fader at −8 dB (6–10 dB under LEAD). **Send:** FX · HALL only, at 100%, which lands 6–10 dB below LEAD's because sends are post-fader. Throws stay a solo-voice moment.
 

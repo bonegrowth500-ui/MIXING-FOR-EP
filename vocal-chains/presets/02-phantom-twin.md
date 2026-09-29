@@ -67,7 +67,7 @@ Sends are post-fader. The demon's send leaves an already quiet track, so FX · V
 | 7 | Pro-DS | Single Vocal · Split Band · Threshold −30 dB, for 3–5 dB on S's · Range 8 dB · detection 5–11 kHz · Lookahead 5 ms | Catches the S's the air stage lifted |
 | 8 | Pro-Q | Bell 3.8 kHz, Q 1.5, dynamic −3 dB | Keeps loud hard-tuned notes from turning sharp |
 | 9 | Pro-Q | Bell 300 Hz, Q 1.0, −1 dB · High Shelf 10 kHz, +1 dB | Leaves a little low-mid room for the demon and adds angel sheen: maximum contrast between the two |
-| 10 | Pro-L 2 | Allround style · Gain +2 dB, raised until the loudest lines show 1–3 dB GR · Output −3.0 dBFS · Lookahead 2 ms | Keeps the lead on top without spikes |
+| 10 | Pro-L 2 | Allround style · Gain about +10 dB, adjusted until the loudest lines show 1–3 dB GR · Output −3.0 dBFS · Lookahead 2 ms | Keeps the lead on top without spikes |
 
 **Density check:** about 4.5 + 1 + 3 + 2 dB, roughly 10.5 dB total (target 10–12).
 
@@ -81,12 +81,12 @@ Sends are post-fader. The demon's send leaves an already quiet track, so FX · V
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-G | Classic style · Threshold −38 dB · Ratio ∞:1 · Range 40 dB · Attack 0.5 ms · Hold 40 ms · Release 80 ms · Lookahead 0 ms | Silence between words, so the distortion only ever sees voice. Set it to open on every word and stay shut on breaths |
+| 1 | Pro-G | Classic style · Threshold −35 dB · Ratio ∞:1 · Range 40 dB · Attack 0.5 ms · Hold 40 ms · Release 80 ms · Lookahead 0 ms | Silence between words, so the distortion only ever sees voice. Set it to open on every word and stay shut on breaths |
 | 2 | Auto-Tune Artist | Alto/Tenor · Chromatic · Retune Speed 50 · Flex-Tune 100 · Humanize 0 · Transpose −12 · Formant on · Throat 120 | An octave down with a longer throat, so the voice gets darker and bigger (Q18). It shifts without re-tuning (D20) |
 | 3 | Pro-C | Clean style · Ratio 8:1 · Attack 2 ms · Release 60 ms · Knee 6 dB · Threshold about −20 dB, for 8–10 dB GR · Gain to bring it back up | Feeds the distortion a steady level, so the grit doesn't come and go |
 | 4 | Saturn 2 | 1 band · Warm Tube · Drive 60% · Mix 100% · Tone: Presence −3 dB · HQ on · Level to match | Heavy, dark grit. A tube style keeps it from sounding like a guitar amp, which is Rockstar Grit's color |
 | 5 | Pro-Q | Low Cut 150 Hz, 24 dB/oct · High Cut 3 kHz, 24 dB/oct · Zero Latency | Keeps the twin under the lead's presence and out of the beat's sub |
-| 6 | Pro-L 2 | Aggressive style · Output −6.0 dBFS · Gain set for 2–3 dB GR · Lookahead 0 ms | A ceiling, so the twin can never poke out on a loud word (Q17). Aggressive suits a distorted source and works without lookahead |
+| 6 | Pro-L 2 | Aggressive style · Output −6.0 dBFS · Gain about +8 dB, adjusted for 2–3 dB GR · Lookahead 0 ms | A ceiling, so the twin can never poke out on a loud word (Q17). Aggressive suits a distorted source and works without lookahead |
 
 **Level:** fader at −15 dB. Adjust until it passes the ghost test (foundation §4): 12–18 dB under LEAD. Mono (D7).
 
@@ -116,7 +116,7 @@ Sends are post-fader. The demon's send leaves an already quiet track, so FX · V
 
 | Track | Slot | Plugin | Settings | Why |
 |---|---|---|---|---|
-| VOX BUS | 1 | Pro-C | Bus style · Ratio 2:1 · Attack 30 ms · Release Auto · Knee 12 dB · Threshold about −12 dB, for 1–2 dB GR · Gain to level-match | The angel, the demon and the doubles read as one performance |
+| VOX BUS | 1 | Pro-C | Bus style · Ratio 2:1 · Attack 30 ms · Release Auto · Knee 12 dB · Threshold about −10 dB, for 1–2 dB GR · Gain to level-match | The angel, the demon and the doubles read as one performance |
 
 VOX GROUP stays empty.
 
@@ -132,6 +132,7 @@ VOX GROUP stays empty.
 | 4 | Fresh Air | Mid Air 10% · High Air 25% · Trim to level-match | Bright, but a step behind |
 | 5 | Pro-DS | Single Vocal · Split Band · Threshold −32 dB · Range 10 dB · detection 5–11 kHz | S's stack up across takes |
 | 6 | Pro-Q | Bell 4 kHz, Q 1.0, −2 dB · High Shelf 10 kHz, −2 dB | Tone offset that keeps the lead in front |
+| 7 | Pro-L 2 | Allround style · Output −3.0 dBFS · Gain about +10 dB, for 1–2 dB GR · Lookahead 2 ms | Brings the doubles up to the lead's level, so the −8 dB fader really puts them 6–10 dB under (D23) |
 
 **Level:** fader at −8 dB (6–10 dB under LEAD). **Send:** FX · DELAY at 100%, which lands 6–10 dB below LEAD's because sends are post-fader.
 

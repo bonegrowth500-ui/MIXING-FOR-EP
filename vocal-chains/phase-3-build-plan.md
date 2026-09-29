@@ -187,6 +187,7 @@ Judgment calls made inside the spec where it leaves room. New ones get added as 
 | D20 | Transposing tracks (the demon and the octave layers) run Auto-Tune on Chromatic with minimal correction and Formant on. Only VOX IN and the DBL IN tracks need the song's key. | Their input is already tuned, so they only shift pitch. Fewer places to set a key means fewer per-song mistakes. |
 | D21 | Sends sit at 100% unless a sheet sets another percentage, and return faders set the wet level. Routes are post-fader, so doubles and parallel layers feed the returns less on their own. | FL's send knob reads in percent and its dB mapping isn't confirmed. Faders read in dB, so they're exact. |
 | D22 | When a return's send already sits at 100%, a throw rides that return's fader instead (Phantom Twin). A return built only for throws rides its send up from 0% (Vampire Haze). | A send can't go past 100%, and a dedicated throw return stays silent until it's needed. |
+| D23 | Every DBL chain ends with the same Pro-L 2 peak stage as its lead (−3 dBFS ceiling, 1–2 dB GR). | The lead's limiter lifts it about 10 dB. Without a matching stage, the doubles would sit about 18 dB under instead of 6–10. |
 
 ---
 

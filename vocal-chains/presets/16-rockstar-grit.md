@@ -37,7 +37,7 @@ Upfront, gritty and rock-coded: amp-driven snarl, biting mids and a classic slap
 |---|---|---|---|---|
 | VOX IN | Lead clips | LEAD | — | 0 dB |
 | LEAD | VOX IN | VOX BUS, and PAR · CRUNCH at 100% | FX · SLAP 100%, FX · ROOM 100% | 0 dB |
-| PAR · CRUNCH | LEAD | VOX BUS | — | −8 dB |
+| PAR · CRUNCH | LEAD | VOX BUS | — | −4 dB |
 | DBL IN L / R | Left / right double clips | DBL | — | 0 dB, panned L60 / R60 |
 | DBL | DBL IN L, DBL IN R | VOX BUS | FX · ROOM 100% | −8 dB |
 | FX · SLAP | Sends | VOX GROUP | — | −14 dB |
@@ -62,11 +62,11 @@ Upfront, gritty and rock-coded: amp-driven snarl, biting mids and a classic slap
 | 3 | Pro-Q | Bell 200 Hz, Q 0.8, +1.5 dB · Bell 1.5 kHz, Q 1.0, +2 dB | Body, plus the snarl zone where the grit will bite |
 | 4 | Saturn 2 | 1 band · Warm Tube · Drive 30% · Mix 50% · HQ on · Level to match | The first half of the crunch. A tube here, so the parallel amp layer adds a different color |
 | 5 | Pro-C | Classic style · Ratio 4:1 · Attack 5 ms · Release 100 ms · Knee 12 dB · Threshold about −19 dB, for 3–4 dB GR · Gain to level-match | Keeps the saturated line steady |
-| 6 | Fresh Air | Mid Air 35% · High Air 20% · Trim to level-match | Upper-mid bite with a little air |
+| 6 | Fresh Air | Mid Air 30% · High Air 20% · Trim to level-match | Upper-mid bite with a little air. Kept at 30% because the mic already peaks at 4 kHz |
 | 7 | Pro-DS | Single Vocal · Split Band · Threshold −30 dB, for 3–6 dB on S's · Range 10 dB · detection 5–11 kHz · Lookahead 5 ms | Distortion and air both sharpen S's |
-| 8 | Pro-MB | 1 band, 2–5 kHz · Compress, downward (the band's gain dips, never rises) · Ratio 4:1 · Range 6 dB · Attack 2 ms · Release 80 ms · Knee 6 dB · Lookahead 2 ms · Threshold lowered until only yells trigger 3–6 dB | Clamps upper-mid harshness only when a yell spikes (Q26) |
-| 9 | Pro-Q | Bell 3 kHz, Q 1.2, +1.5 dB · High Shelf 10 kHz, +1 dB | Final bite, kept small because the mic already lifts 4 kHz |
-| 10 | Pro-L 2 | Punchy style · Gain +3 dB, raised until the loudest lines show 2–3 dB GR · Output −3.0 dBFS · Lookahead 1 ms | The last catch for yells (Q26). Punchy suits a single rock vocal |
+| 8 | Pro-MB | 1 band, 2–5 kHz · Compress mode · Range −6 dB (negative = downward, so the band's gain dips, never rises) · Ratio 4:1 · Attack 2 ms · Release 80 ms · Knee 6 dB · Lookahead 2 ms · Threshold lowered until only yells trigger 3–6 dB | Clamps upper-mid harshness only when a yell spikes (Q26) |
+| 9 | Pro-Q | Bell 3 kHz, Q 1.2, +1 dB · High Shelf 10 kHz, +1 dB | Final bite, kept small because the mic already lifts 4 kHz |
+| 10 | Pro-L 2 | Punchy style · Gain about +10 dB, adjusted until the loudest lines show 2–3 dB GR · Output −3.0 dBFS · Lookahead 1 ms | The last catch for yells (Q26). Punchy suits a single rock vocal |
 
 **Density check:** about 5.5 + 2 + 3.5 + 2.5 dB, roughly 13.5 dB total (target 12–14). Pro-MB only adds on yells.
 
@@ -80,13 +80,13 @@ Upfront, gritty and rock-coded: amp-driven snarl, biting mids and a classic slap
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-G | Classic style · Threshold −30 dB · Ratio ∞:1 · Range 40 dB · Attack 0.5 ms · Hold 40 ms · Release 80 ms · Lookahead 0 ms | The distortion only ever sees voice. The feed is the compressed lead, so breaths sit higher than on a raw vocal, which is why this threshold sits above the demon's |
+| 1 | Pro-G | Classic style · Threshold −24 dB · Ratio ∞:1 · Range 40 dB · Attack 0.5 ms · Hold 40 ms · Release 80 ms · Lookahead 0 ms | The distortion only ever sees voice. The feed is the compressed, limited lead, which lifts breaths to roughly −33 to −23 dBFS, so this threshold sits well above the demon's |
 | 2 | Pro-Q | Low Cut 250 Hz, 24 dB/oct · Zero Latency | Tight distortion: no low end going into the amp |
 | 3 | Saturn 2 | 1 band · British Rock (Amp) · Drive 45% · Mix 100% · HQ on · Level to match | The crunch (Q25) |
 | 4 | Pro-Q | High Cut 7 kHz, 24 dB/oct · Bell 5 kHz, Q 3, −3 dB (slide it to wherever fizz sits) · Zero Latency | Snarl without fizz |
 | 5 | Pro-C | Classic style · Ratio 4:1 · Attack 5 ms · Release 80 ms · Knee 12 dB · Threshold about −10 dB, for 3–4 dB GR · Gain to level-match | Keeps the snarl a constant support layer |
 
-**Level:** fader at −8 dB. Adjust until it adds edge without pulling focus: 6–10 dB under LEAD. Mono (D7). It's at the same pitch as the lead, so it connects through mixer routes only and relies on FL's automatic delay compensation (D5, D18).
+**Level:** fader at −4 dB. The 250 Hz high-pass trims about 4 dB first, so that lands about 8 dB under LEAD. Adjust until it adds edge without pulling focus: 6–10 dB under. Mono (D7). It's at the same pitch as the lead, so it connects through mixer routes only and relies on FL's automatic delay compensation (D5, D18).
 
 **Buildable:** yes. Saturn 2's British Rock amp style is confirmed (its exact on-screen label is a Check item), and Pro-G, Pro-Q and Pro-C are confirmed (foundation §1).
 
@@ -122,7 +122,7 @@ Four layers, no second chain:
 
 | Track | Slot | Plugin | Settings | Why |
 |---|---|---|---|---|
-| VOX BUS | 1 | Pro-C | Punch style · Ratio 2:1 · Attack 20 ms · Release Auto · Knee 6 dB · Threshold about −12 dB, for 1–2 dB GR · Gain to level-match | Punchy rock glue for the lead, crunch and doubles |
+| VOX BUS | 1 | Pro-C | Punch style · Ratio 2:1 · Attack 20 ms · Release Auto · Knee 6 dB · Threshold about −10 dB, for 1–2 dB GR · Gain to level-match | Punchy rock glue for the lead, crunch and doubles |
 
 VOX GROUP stays empty.
 
@@ -137,6 +137,7 @@ VOX GROUP stays empty.
 | 3 | Saturn 2 | 1 band · British Rock (Amp) · Drive 35% · Mix 60% · HQ on · Level to match | More amp than the lead, for a gang-vocal edge (upgrade) |
 | 4 | Pro-Q | Bell 3.5 kHz, Q 1.0, −2 dB · High Cut 8 kHz, 12 dB/oct | Less presence than the lead, so the lead stays in front |
 | 5 | Pro-DS | Single Vocal · Split Band · Threshold −32 dB · Range 12 dB · detection 5–11 kHz | Crunch sharpens S's, and they stack across takes |
+| 6 | Pro-L 2 | Punchy style · Output −3.0 dBFS · Gain about +10 dB, for 1–2 dB GR · Lookahead 1 ms | Brings the doubles up to the lead's level, so the −8 dB fader really puts them 6–10 dB under (D23) |
 
 **Level:** fader at −8 dB (6–10 dB under LEAD). **Send:** FX · ROOM at 100%, which lands 6–10 dB below LEAD's because sends are post-fader.
 
@@ -144,8 +145,8 @@ VOX GROUP stays empty.
 
 | # | Move | Track › Parameter | From → To | When | Why |
 |---|---|---|---|---|---|
-| 1 | Crunch push | PAR · CRUNCH › fader | −8 dB → −5 dB | Hooks, with 1-beat ramps | More snarl where the energy peaks |
-| 2 | Yell guard | PAR · CRUNCH › fader | −8 dB → −12 dB | The biggest yell of the song, only if needed | The chain already handles yells (Q26). This is the safety for one that still spikes |
+| 1 | Crunch push | PAR · CRUNCH › fader | −4 dB → −1 dB | Hooks, with 1-beat ramps | More snarl where the energy peaks |
+| 2 | Yell guard | PAR · CRUNCH › fader | −4 dB → −8 dB | The biggest yell of the song, only if needed | The chain already handles yells (Q26). This is the safety for one that still spikes |
 
 ## Ear checks
 

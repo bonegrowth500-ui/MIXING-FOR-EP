@@ -96,18 +96,20 @@ These couldn't be pinned down here and get re-checked in Step 4B:
 Every preset is built on this map. A preset only adds the parallel tracks and returns it needs.
 
 ```
-lead clips ──► VOX IN ──► LEAD ──────────────► VOX BUS ──► VOX GROUP ──► Master
-                  │                              ▲            ▲
-                  └──► PAR tracks ───────────────┤            │
-double clips ──► DBL ────────────────────────────┘            │
-LEAD / DBL sends ──► FX returns ──────────────────────────────┘
+lead clips ─► VOX IN ─► LEAD ─────────► VOX BUS ─► VOX GROUP ─► Master
+                │        │                 ▲           ▲
+                └────────┴─► PAR tracks ───┤           │
+double L ─► DBL IN L ─┐                    │           │
+double R ─► DBL IN R ─┴─► DBL ─────────────┘           │
+LEAD / DBL sends ─► FX returns ────────────────────────┘
 ```
 
 | Track | Job | Gets audio from | Routes to | Slots |
 |---|---|---|---|---|
-| VOX IN | Tune and split. Every layer made from the lead starts here | Lead audio clips | LEAD and PAR tracks, never Master | 3, fixed (D13) |
-| LEAD | The character chain | VOX IN | VOX BUS, plus post-fader sends to FX | All 10 |
-| DBL | Doubles, with their own tuning | Double audio clips | VOX BUS, plus sends to FX | Up to 10 |
+| VOX IN | Tune and split. Every layer made from the lead starts here | Lead audio clips | LEAD and any PAR track fed before the character chain. Never Master | 3, fixed (D13) |
+| LEAD | The character chain | VOX IN | VOX BUS, any PAR track fed after the character chain, and post-fader sends to FX | All 10 |
+| DBL IN L / DBL IN R | Tune each double on its own and pan it | One side's double clips | DBL | 3 each, fixed (D19) |
+| DBL | The doubles' character chain | DBL IN L and DBL IN R | VOX BUS, plus sends to FX | Up to 10 |
 | PAR · *name* | Parallel layers (demon, harmonies, crunch) | VOX IN or LEAD, per sheet | VOX BUS | As needed |
 | FX · *name* | Delay, reverb and throw returns | Sends from LEAD (and DBL where a sheet says) | VOX GROUP (D14) | As needed |
 | VOX BUS | Glue for the dry layers | LEAD, DBL, PAR | VOX GROUP | 1–3 |
@@ -116,19 +118,24 @@ LEAD / DBL sends ──► FX returns ──────────────
 ### Wiring it
 
 1. Put the vocal block on consecutive free inserts, in the table's order, with these names.
-2. In the Channel Rack, point every lead audio clip channel to VOX IN and every double to DBL.
+2. In the Channel Rack, point every lead audio clip channel to VOX IN, left doubles to DBL IN L and right doubles to DBL IN R. With a single double, use DBL IN L only.
 3. Select VOX IN, right-click the route switch under LEAD, and choose **Route to this track only**. That removes its Master route. Then left-click the switch under each PAR track it feeds.
-4. Do the same for LEAD, DBL and PAR → VOX BUS, FX → VOX GROUP, and VOX BUS → VOX GROUP. VOX GROUP keeps its Master route.
-5. For sends, select LEAD and left-click the switch under each FX track, then set the level on the knob above it. Routes are post-fader, so moving LEAD's fader moves its sends too.
-6. Leave VOX IN's fader at its default. Everything downstream follows it.
+4. Route LEAD to VOX BUS with **Route to this track only**, then left-click the switch under each PAR track fed from LEAD.
+5. Route DBL IN L and DBL IN R to DBL. Pan them with their own mixer pan knobs. A single double stays centered.
+6. Use **Route to this track only** for DBL and PAR → VOX BUS, FX → VOX GROUP, and VOX BUS → VOX GROUP. VOX GROUP keeps its Master route.
+7. For sends, select LEAD and left-click the switch under each FX track, then set the level on the knob above it. Routes are post-fader, so moving LEAD's fader moves its sends too.
+8. Leave VOX IN's fader at its default. Everything downstream follows it.
 
 ### Ducking a return
 
+Most returns duck themselves (D15). Pro-R 2 has a Ducking knob, and Timeless 3 can pull its own Mix down with its envelope follower. Both react to the signal arriving at the return, so they need no extra routing.
+
+When a sheet uses Pro-C ducking instead:
 1. Select VOX IN, right-click the switch under the FX track, and choose **Sidechain to this track**.
 2. On that FX track, open Pro-C, click the wrapper cog (top-left) and map the sidechain input to VOX IN.
 3. In Pro-C's Expert mode, set the side chain to External.
 
-The key comes from VOX IN because LEAD already sends audio to the return, and "Sidechain to this track" works by zeroing a connection's audio send (D15).
+The key comes from VOX IN because LEAD already sends audio to the return, and "Sidechain to this track" works by zeroing a connection's audio send.
 
 ### Delay compensation
 
@@ -155,13 +162,14 @@ The key comes from VOX IN because LEAD already sends audio to the return, and "S
 | 9 | Polish EQ: final tilt, placement | Pro-Q |
 | 10 | Peak control | Pro-L 2 |
 
-- **DBL:** up to 10 slots. Its front end mirrors VOX IN (see 5.2).
+- **DBL IN L / DBL IN R:** three fixed slots each: rumble cut → gentle expander → Auto-Tune Artist with the lead's key, scale and retune (D19).
+- **DBL:** the doubles' character chain. Up to 10 slots, using only what it needs (see 5.2).
 - **PAR and FX:** as many slots as each needs. A ducked return ends with Pro-C.
 - **VOX BUS:** 1–3 slots of glue. **VOX GROUP:** empty unless a sheet needs one slot.
 
 ### Names and colors
 
-- **Names:** VOX IN · LEAD · DBL · PAR · DEMON / OCT / 3RD / CRUNCH · FX · DELAY / VERB / THROW · VOX BUS · VOX GROUP
+- **Names:** VOX IN · LEAD · DBL IN L / DBL IN R · DBL · PAR · DEMON / OCT / OCT UP / 3RD / CRUNCH · FX · DELAY / PLATE / HALL / VERB / ROOM / SLAP / THROW · VOX BUS · VOX GROUP
 - **Colors:** VOX IN grey. LEAD, DBL and PAR in the preset's color (DBL lighter, PAR darker). FX teal. Buses white.
 
 ---
@@ -247,7 +255,7 @@ Every preset's VOX IN starts from this and changes only what its sheet lists.
 | Control | Base | Why |
 |---|---|---|
 | Input Type | Alto/Tenor | Fits a mid-high voice |
-| Key / Scale | The song's key | Per-song setup |
+| Key / Scale | The song's key, on VOX IN and both DBL IN tracks | Per-song setup |
 | Algorithm | Modern (Classic Mode off) | Classic turns off Flex-Tune, Formant, Throat and Transpose (D16) |
 | Retune Speed | Hard 0–5 · Fast 10–20 · Medium 25–40 | Set by each preset's tune style |
 | Humanize | 10–30 | Held notes breathe instead of freezing |
@@ -258,15 +266,17 @@ Every preset's VOX IN starts from this and changes only what its sheet lists.
 | Transpose | 0 on VOX IN | Only transposing tracks use it |
 | Tracking | Default | Adjust only if detection glitches on raspy or breathy parts |
 
+**Transposing tracks** (the demon and the octave layers) are different. They run on Chromatic with minimal correction (high Flex-Tune) and Formant on. Their input is already tuned, so they only shift pitch, and they never need the song's key (D20).
+
 ### 5.2 · Doubles baseline
 
 DBL mirrors the lead's job at lower focus:
-- **Front end:** the same three jobs as VOX IN: rumble cut, gentle expander, then Auto-Tune with the lead's exact key, scale and retune, so the doubles lock to the same notes.
+- **Front end (DBL IN L / DBL IN R):** the same three jobs as VOX IN, one track per double: rumble cut, gentle expander, then Auto-Tune with the lead's exact key, scale and retune. Each double gets its own Auto-Tune because it only follows one voice at a time (D19). Panning happens on these tracks.
 - **Low cut:** 100–140 Hz, higher than the lead. The lead carries the body, and stacked low-mids would blur it.
 - **Tone:** 1–3 dB less at 3–5 kHz and above 10 kHz than the lead. Fresh Air lower or off.
 - **De-essing:** harder than the lead (deeper Pro-DS range), because S's stack up across takes.
 - **Compression:** tighter than the lead. A steady level blends better.
-- **Pan:** a pair at L/R 70–100. A single double sits in the center with its fader 2–3 dB lower.
+- **Pan:** a pair at L/R 60–90, set per sheet. A single double uses DBL IN L, centered, with its fader 2–3 dB lower.
 - **Sends:** 6 dB lower than the lead's, to the same returns.
 - **Level:** 6–10 dB under LEAD.
 - Doubles never feed PAR tracks.
@@ -302,7 +312,7 @@ Every preset sheet uses these sections, in this order:
 6. **Parallel tracks**
 7. **FX returns**
 8. **Buses**
-9. **DBL**
+9. **DBL:** the DBL IN tracks and the DBL chain
 10. **Key moves**
 11. **Ear checks** (added in Step 5)
 12. **Translation notes**

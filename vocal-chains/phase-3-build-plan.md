@@ -61,7 +61,7 @@ If a manual can't be reached, the sheets use only controls I'm certain exist, an
 
 ---
 
-## Step 2 · Blueprints
+## Step 2 · Blueprints ✅
 
 *Design all five signal flows on paper before dialing any numbers.*
 
@@ -179,7 +179,67 @@ Judgment calls made inside the spec where it leaves room. New ones get added as 
 | D12 | Each sheet is complete for its song. The foundation holds only shared procedures. | One preset per song means one sheet per song. |
 | D13 | VOX IN always holds exactly three slots: rumble cut → gentle expander → Auto-Tune Artist. | Covers what every branch needs and nothing more, so all branches stay pitch- and phase-locked. |
 | D14 | FX returns route to VOX GROUP, not VOX BUS. | Keeps the bus glue from pumping reverb and delay tails. |
-| D15 | Return ducking is keyed from VOX IN over a sidechain-only connection. | LEAD already feeds the returns, and "Sidechain to this track" works by zeroing a connection's audio send. |
+| D15 | *(Refined in Step 2.)* Returns duck themselves where the plugin can: Pro-R 2's Ducking knob, or Timeless 3's envelope follower on its Mix. When a sheet uses Pro-C ducking instead, the key comes from VOX IN over a sidechain-only connection. | No extra routing in the common case. The VOX IN key avoids zeroing LEAD's audio send. |
 | D16 | Auto-Tune runs in the Modern algorithm (Classic Mode off) unless a sheet says otherwise. | Classic turns off Flex-Tune, Formant, Throat and Transpose. |
 | D17 | Levels are set with the audio clip channels' volume knobs. Only whole-section clips get normalized, never short phrase clips one by one. *(Refines D10.)* | Keeps the contrast between quiet and loud lines. |
-| D18 | Where a plugin offers a latency choice on a parallel track, it runs at zero latency, and FL's automatic PDC handles the rest. *(Refines D5.)* | The simplest way to keep parallel layers locked to the lead. |
+| D18 | *(Refined in Step 2. Refines D5.)* Parallel tracks pick zero latency wherever it costs nothing audible: Pro-Q on Zero Latency, lookahead at 0. Distortion stages keep Saturn's HQ oversampling on, and FL's automatic PDC handles that latency. | Keeps parallel layers locked without making the distortion grainy. |
+| D19 | Each double gets its own front-end track (DBL IN L / DBL IN R: rumble cut, expander, Auto-Tune) and is panned there. Both then feed DBL for the shared character chain. A single double uses DBL IN L, centered. | Auto-Tune follows one voice at a time. Two takes summed on one track can't each lock to the lead's notes. |
+| D20 | Transposing tracks (the demon and the octave layers) run Auto-Tune on Chromatic with minimal correction and Formant on. Only VOX IN and the DBL IN tracks need the song's key. | Their input is already tuned, so they only shift pitch. Fewer places to set a key means fewer per-song mistakes. |
+
+---
+
+## Logs
+
+### Step 2 · Blueprint cross-check (2D)
+
+**Distinctness.** Where each preset sits:
+
+| | Phantom Twin | Neon Bleach | Silk Stack | Vampire Haze | Rockstar Grit |
+|---|---|---|---|---|---|
+| Top end | Bright | Very bright (brightest) | Warm, silky | Dark (darkest) | Mid-forward bite |
+| Density (total GR) | 10–12 dB | 11–13 dB | 8–10 dB (smoothest) | 9–11 dB | 12–14 dB (densest) |
+| Grit | Demon only | Hidden | Warm tube | Tape and a dirty hall | Crunch (grittiest) |
+| Space | Bright delay + dark room | Ducked ping-pong + plate | Lush hall | Dark hall + throws (wettest) | Slap + small room |
+| Width | Medium | Wide doubles + ghost | Widest | Wide tails | Narrowest |
+| Placement | On top | Most upfront | Balanced | Leans in | On top |
+| Parallel layer | Octave-down demon: dark, distorted, ghost | Octave-up ghost: clean, airy, wide | 3rd up + octave down: support, chorused | None | Same-pitch amp crunch |
+| Tune | Hard | Hard | Medium | Fast | Fast |
+
+The closest pairs, and what keeps them apart:
+- **Phantom Twin vs. Neon Bleach** (both hard-tuned and bright): different brightness levels, opposite ghost layers (dark distorted octave down vs. clean airy octave up), and different spaces (a 1/4 stereo delay plus a dark room vs. a ducked 1/8 ping-pong plus a plate).
+- **Silk Stack vs. Vampire Haze** (both hall-driven): warm and silky vs. dark, a clean hall vs. saturated fog, harmonies vs. throws, balanced vs. leaning in.
+- **Rockstar Grit vs. Phantom Twin** (both have a distorted parallel layer): same-pitch snarl vs. an octave-down ghost, narrowest vs. medium width, slap and room vs. delay and dark room.
+
+**Spec coverage:**
+
+| Spec | Where it lands |
+|---|---|
+| Q1–Q5 toolkit | Every slot uses FL stock, Auto-Tune Artist, Fresh Air or FabFilter (audited: nothing else) |
+| Q6–Q8 source | Foundation §3. Every LEAD has body support (slot 3) and saturation (slot 4) |
+| Q9 lead + doubles | Every sheet has LEAD, DBL IN L/R and DBL (D19) |
+| Q10 mix versions | No tracking versions. Delay compensation on Automatic |
+| Q11 one per song | Standalone sheets with their own returns (D12) |
+| Q12 maxed out | LEAD uses 10/10 slots in all five, plus parallel and return tracks as needed |
+| Q13 rap + melody | The Auto-Tune base (foundation §5.1), self-ducking beds, Silk Stack's harmonies on sung lines only, Vampire Haze's hall eases and Neon Bleach's bed dips on rap |
+| Q14 placement | D6, set per sheet through presence, density and wet level |
+| Q15 translation | D7 mono rules, a translation note per sheet, and the foundation §5.4 test |
+| Q16 key moves | 2–3 per sheet (audited) |
+| Q17–Q18 | Phantom Twin's demon engine |
+| Q19–Q20 | Neon Bleach's air stages and soft bed |
+| Q21–Q22 | Silk Stack's harmony engine |
+| Q23–Q24 | Vampire Haze's hall, throws and dark tone |
+| Q25–Q26 | Rockstar Grit's crunch engine and four-layer yell control |
+| Q27 | An upgrades list in every sheet |
+| Q28 | These sheets |
+
+**Slots and CPU (audited):**
+
+| | VOX IN | LEAD | DBL IN L/R | DBL | Parallel | Returns | VOX BUS | Auto-Tune | Pro-R 2 | Saturn 2 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Phantom Twin | 3 | 10 | 3 + 3 | 6 | 6 | 2 + 2 | 1 | 4 | 1 | 3 |
+| Neon Bleach | 3 | 10 | 3 + 3 | 6 | 4 | 2 + 2 | 1 | 4 | 1 | 2 |
+| Silk Stack | 3 | 10 | 3 + 3 | 5 | 4 + 4 | 2 | 1 | 4, plus Pitcher | 1 | 2 |
+| Vampire Haze | 3 | 10 | 3 + 3 | 5 | — | 3 + 2 | 1 | 3 | 2 | 3 |
+| Rockstar Grit | 3 | 10 | 3 + 3 | 5 | 5 | 2 + 2 | 1 | 3 | 1 | 3 |
+
+No track exceeds 10 slots. The heaviest song runs four Auto-Tune instances plus Pitcher, or two Pro-R 2 instances. That's a normal load for a modern computer, and within the maxed-out scope.

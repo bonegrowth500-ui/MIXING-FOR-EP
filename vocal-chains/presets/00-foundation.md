@@ -328,13 +328,14 @@ Every preset sheet uses these sections, in this order:
 9. **Buses**
 10. **DBL:** the DBL IN tracks and the DBL chain
 11. **Key moves**
-12. **Ear checks** (added in Step 5)
-13. **Translation notes**
+12. **Ear checks:** the build order, with one line per stage on what you should hear change (§5.7)
+13. **Translation notes:** the §5.4 checks for this preset, each with what to watch for and the fix. The biggest risk is marked
 
 ### 5.6 · Reading the settings
 
 - **GR** means gain reduction on the loudest lines. Each threshold is a starting point for the GR written next to it.
 - **Level-match** means setting the plugin's output so bypassing it doesn't change loudness.
+- **Pro-Q** runs in Zero Latency, its default mode, on every track (D18). A band with no Q listed keeps the default Q.
 - **Dynamic EQ bands** use threshold Auto. If your Pro-Q has no Auto, set the threshold so the band only moves on the loudest lines.
 - **Faders** are starting values. The blend tests in §4 fine-tune them for your voice.
 - **Sends** sit at 100% unless a sheet says otherwise, and return faders set the wet level (D21).
@@ -342,7 +343,18 @@ Every preset sheet uses these sections, in this order:
 - **LEAD's fader stays at 0 dB.** PAR tracks fed from LEAD are post-fader, so moving it would change how they gate, drive and compress. Balance with the other faders, and set the overall vocal level on VOX GROUP (D24).
 - **Pro-R 2 Ducking** values are in dB. If your knob reads in %, raise it until the tails drop clearly under the words and bloom in the gaps.
 - **Ramps** in key moves are the automation clip's shape: "1-beat ramp" means the move takes one beat to get there.
+- **Wet 2/5** and similar scores in Sound targets are the Phase 1 meters (0 = dry, 5 = drenched). They describe the overall space, not a knob.
 - **Optional extras** from Pro-Q 4 and Pro-C 3 are never needed (D1).
+
+### 5.7 · Building and ear-checking
+
+Each sheet's Ear checks table is its build order. Work down it one stage at a time:
+1. Loop 8 bars that hold both rap and melody, with the beat playing quietly underneath.
+2. Add the stage and set it from the sheet.
+3. Switch it off and on again: a plugin with its slot's green switch, a parallel track or return with its mute. Every stage is level-matched (§4) except the Pro-L 2 stages, which add gain on purpose. So the change should be in tone, control or space, not loudness. If a level-matched stage gets louder, fix its output first.
+4. Listen for the change the table describes. If you don't hear it, re-check that stage before adding the next one.
+
+The blend and the key moves come last, in that order (D24).
 
 ---
 

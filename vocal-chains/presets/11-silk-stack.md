@@ -2,7 +2,7 @@
 
 Lush, wide and choir-like: the lead blooms into harmonies made from itself, with warm mids and a silky top.
 
-**Status:** dialed in (Step 3) and stress-tested (Step 4).
+**Status:** final. Dialed in (Step 3), stress-tested (Step 4) and cold-read (Step 5).
 **Placement:** balanced (D6) · **Tune:** Medium · **Builds on:** [foundation](00-foundation.md) (see §5.6 for how to read the settings)
 
 ## Per-song setup
@@ -10,7 +10,7 @@ Lush, wide and choir-like: the lead blooms into harmonies made from itself, with
 1. **Input level:** loudest lines peak around −10 dBFS on VOX IN, DBL IN L and DBL IN R (foundation §4).
 2. **Key and scale:** set the song's key on the Auto-Tune in VOX IN, DBL IN L and DBL IN R. PAR · OCT stays on Chromatic (D20), and Pitcher follows the 3rd line instead of a key.
 3. **The 3rd line:** see [Making the 3rd line](#making-the-3rd-line-per-song).
-4. **Key moves:** place the harmony rides and the hall swells (see [Key moves](#key-moves)).
+4. **Key moves:** after the blend (foundation §4), place the harmony rides and the hall swells (see [Key moves](#key-moves)).
 
 ## Sound targets
 
@@ -54,15 +54,15 @@ Plus one Channel Rack channel, **3RD LINE**: a MIDI Out channel that holds the 3
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-Q | Low Cut 60 Hz, 12 dB/oct · Zero Latency | Rumble only |
-| 2 | Pro-G | Vocal style · Threshold −35 dB · Ratio 2:1 · Range 6 dB · Attack 1 ms · Hold 50 ms · Release 150 ms · Lookahead 2 ms | Breaths would be copied into both harmonies. Taking them down here fixes all three voices at once |
+| 1 | Pro-Q | Low Cut 60 Hz, 12 dB/oct | Rumble only |
+| 2 | Pro-G | Vocal style · Threshold −35 dB · Ratio 2:1 · Range 6 dB · Attack 1 ms · Hold 50 ms · Release 150 ms · Lookahead 2 ms | Breaths would be copied into both harmonies. Taking them down here fixes all three voices at once. The threshold sits just above typical breaths, so they dip by up to 6 dB while words don't. Lower it if word tails get clipped |
 | 3 | Auto-Tune Artist | Alto/Tenor · song's key and scale · Retune Speed 30 · Humanize 25 · Flex-Tune 25 · Natural Vibrato 0 · Formant off · Classic Mode off | Smooth correction that keeps slides silky. The harmonies inherit it |
 
 ## LEAD
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-Q | Low Cut 75 Hz, 12 dB/oct · Bell 400 Hz, Q 1.4, dynamic −3 dB · Zero Latency | Keeps the natural weight a lush sound needs |
+| 1 | Pro-Q | Low Cut 75 Hz, 12 dB/oct · Bell 400 Hz, Q 1.4, dynamic −3 dB · optional: a narrow dynamic cut on any ringing resonance | Keeps the natural weight a lush sound needs |
 | 2 | Pro-C | Vocal style · Ratio 3:1 · Attack 5 ms · Release 80 ms · Knee 12 dB · Threshold about −15 dB, for 3–4 dB GR · Gain to level-match | A slower, gentler grab: silk, not snap |
 | 3 | Pro-Q | Bell 220 Hz, Q 0.7, +2.5 dB | Phase 1's rich warm mids start here |
 | 4 | Saturn 2 | 1 band · Warm Tube · Drive 25% · Mix 40% · HQ on · Level to match | Phase 1's warmth and density. The harmonies share it because they're fed from here |
@@ -73,7 +73,7 @@ Plus one Channel Rack channel, **3RD LINE**: a MIDI Out channel that holds the 3
 | 9 | Pro-Q | Tilt Shelf 1 kHz, −1.5 dB | A warm tilt that eases presence about 1 dB around 3–4 kHz: clear but embedded |
 | 10 | Pro-L 2 | Transparent style · Gain about +10 dB, adjusted until the loudest lines show 1–2 dB GR · Output −3.0 dBFS · Lookahead 3 ms | Protects the harmony feed and the hall from spikes |
 
-**Density check:** about 3.5 + 1.5 + 2.5 + 1.5 dB, roughly 9 dB total (target 8–10).
+**Density check** (slots 2 + 4 + 5 + 10, on the loudest lines): about 3.5 + 1.5 + 2.5 + 1.5 dB, roughly 9 dB total (target 8–10).
 
 **Order notes:** LEAD is also the source for both harmonies, so every stage here shapes three voices. That's why de-essing and peak control come before the split.
 
@@ -85,8 +85,8 @@ Plus one Channel Rack channel, **3RD LINE**: a MIDI Out channel that holds the 3
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Auto-Tune Artist | Alto/Tenor · Chromatic · Retune Speed 50 · Flex-Tune 100 · Humanize 0 · Transpose −12 · Formant on · Throat 100 | A natural lower voice rather than a monster, the opposite of Phantom Twin's demon. It shifts without re-tuning (D20) |
-| 2 | Pro-Q | Low Cut 120 Hz, 18 dB/oct · High Shelf 6 kHz, −3 dB · Zero Latency | Low-mid weight without sub mud, softer on top |
+| 1 | Auto-Tune Artist | Alto/Tenor · Chromatic · Retune Speed 50 · Humanize 0 · Flex-Tune 100 · Natural Vibrato 0 · Transpose −12 · Formant on · Throat 100 · Classic Mode off | A natural lower voice rather than a monster, the opposite of Phantom Twin's demon. It shifts without re-tuning (D20) |
+| 2 | Pro-Q | Low Cut 120 Hz, 18 dB/oct · High Shelf 6 kHz, −3 dB · Output 0 dB | Low-mid weight without sub mud, softer on top |
 | 3 | Pro-C | Vocal style · Ratio 3:1 · Attack 10 ms · Release 100 ms · Knee 12 dB · Threshold about −10 dB, for 3–4 dB GR · Gain to level-match | Support layers stay put |
 | 4 | Vintage Chorus | Mode I · Mix 50% · H Pass 250 Hz | Phase 1: wide chorus on the harmonies only. H Pass keeps the chorus off the low end, which keeps the lows clean and mono-safe |
 
@@ -97,7 +97,7 @@ Plus one Channel Rack channel, **3RD LINE**: a MIDI Out channel that holds the 3
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
 | 1 | Pitcher | MIDI mode · Speed about halfway · formant control on, nudged slightly toward the male side · low-frequency setting 80 Hz · MIDI input port matching 3RD LINE | Moves the lead to its in-key 3rd, note by note. Halfway speed glides between notes the way Medium tuning does, where fully up jumps in steps. The formant nudge offsets the upward shift, so the harmony doesn't sound smaller than you |
-| 2 | Pro-Q | Low Cut 200 Hz, 18 dB/oct · Bell 3.5 kHz, Q 1.0, −2 dB · Zero Latency | Sits behind the lead |
+| 2 | Pro-Q | Low Cut 200 Hz, 18 dB/oct · Bell 3.5 kHz, Q 1.0, −2 dB · Output 0 dB | Sits behind the lead |
 | 3 | Pro-C | Vocal style · Ratio 3:1 · Attack 10 ms · Release 100 ms · Knee 12 dB · Threshold about −10 dB, for 3–4 dB GR · Gain to level-match | Support layers stay put |
 | 4 | Vintage Chorus | Mode II · Mix 50% · H Pass 250 Hz | A different mode from PAR · OCT, so the two harmonies spread instead of stacking |
 
@@ -115,7 +115,7 @@ Plus one Channel Rack channel, **3RD LINE**: a MIDI Out channel that holds the 3
 If the lead's takes change later, render a new stem and redo the line.
 
 **Fallback** (if Pitcher tracks your voice poorly): load the same VOX IN stem into NewTone, raise each note to its in-key 3rd (the step 5 rule), export the result and drop it on the Playlist at bar 1. It lands on its own channel. Point that channel at PAR · 3RD and remove LEAD's route to PAR · 3RD. The stem already carries VOX IN's tuning and expander, but it skips LEAD, so the slots change to:
-1. Pro-Q: Low Cut 200 Hz, 18 dB/oct · Bell 3.5 kHz, −2 dB
+1. Pro-Q: Low Cut 200 Hz, 18 dB/oct · Bell 3.5 kHz, Q 1.0, −2 dB · Output 0 dB
 2. Pro-C: Vocal · Ratio 4:1 · about 6 dB GR · Gain to level-match
 3. Saturn 2: Warm Tube · Drive 25% · Mix 40%
 4. Pro-DS: Single Vocal · Threshold −30 dB · Range 8 dB
@@ -131,7 +131,7 @@ If the lead's takes change later, render a new stem and redo the line.
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
 | 1 | Pro-R 2 | Modern style · Space 3.0 s · Decay Rate 100% · Predelay 70 ms · Brightness −10% · Character 30% · Distance 40% · Thickness 20% · Stereo Width 100% · Mix 100% · Ducking about 4 dB | Phase 1's lush hall. Pre-delay and light ducking keep the words upfront (D15) |
-| 2 | Pro-Q | Low Cut 250 Hz, 12 dB/oct · Low Cut 400 Hz on Side only · High Shelf 9 kHz, −3 dB · Zero Latency | A silky, clean tail with mono lows. Vampire Haze gets the dirty one |
+| 2 | Pro-Q | Low Cut 250 Hz, 12 dB/oct · Low Cut 400 Hz on Side only · High Shelf 9 kHz, −3 dB · Output 0 dB | A silky, clean tail with mono lows. Vampire Haze gets the dirty one |
 
 **Level:** fader at −10 dB.
 
@@ -149,14 +149,14 @@ VOX GROUP stays empty.
 
 | Slot | Plugin | Settings | Why |
 |---|---|---|---|
-| 1 | Pro-Q | Low Cut 120 Hz, 12 dB/oct · Bell 400 Hz, Q 1.4, dynamic −3 dB · Zero Latency | The lead and the octave carry the low mids |
+| 1 | Pro-Q | Low Cut 120 Hz, 12 dB/oct · Bell 400 Hz, Q 1.4, dynamic −3 dB | The lead and the octave carry the low mids |
 | 2 | Pro-C | Opto style · Ratio 4:1 · Attack 10 ms · Release Auto · Knee 18 dB · Threshold about −20 dB, for 5–6 dB GR · Gain to level-match | Tighter than the lead, so the doubles blend |
 | 3 | Saturn 2 | 1 band · Warm Tube · Drive 25% · Mix 40% · HQ on · Level to match | Matches the lead's warmth |
-| 4 | Pro-DS | Single Vocal · Split Band · Threshold −30 dB · Range 10 dB · detection 5–11 kHz | S's stack across takes and harmonies |
+| 4 | Pro-DS | Single Vocal · Split Band · Threshold −30 dB, for 5–8 dB on S's · Range 10 dB · detection 5–11 kHz · Lookahead 10 ms | S's stack across takes and harmonies |
 | 5 | Pro-Q | Bell 3.5 kHz, Q 1.0, −2 dB · High Shelf 10 kHz, −2 dB | Warmer and less present than the lead, so the lead stays in front |
-| 6 | Pro-L 2 | Transparent style · Output −3.0 dBFS · Gain about +10 dB, for 1–2 dB GR · Lookahead 3 ms | Brings the doubles up to the lead's level, so the −8 dB fader really puts them 6–10 dB under (D23) |
+| 6 | Pro-L 2 | Transparent style · Gain about +10 dB, for 1–2 dB GR · Output −3.0 dBFS · Lookahead 3 ms | Brings the doubles up to the lead's level, so the −8 dB fader really puts them 6–10 dB under (D23) |
 
-**Level:** fader at −8 dB (6–10 dB under LEAD). **Send:** FX · HALL at 50%, like LEAD's.
+**Level:** fader at −8 dB (6–10 dB under LEAD). **Send:** FX · HALL at 50%, like LEAD's. Sends are post-fader, so it lands 6–10 dB below LEAD's.
 
 ## Key moves
 
@@ -167,10 +167,43 @@ VOX GROUP stays empty.
 
 ## Ear checks
 
-Added in Step 5.
+Build in this order, one stage at a time, and switch each stage off and on to hear what it adds (foundation §5.7).
+
+| # | Stage | You should hear |
+|---|---|---|
+| 1 | Template and input (foundation §2, §4) | The loudest lines peak around −10 dBFS on VOX IN. Mute LEAD for a moment and the full-level lead should disappear. If it keeps playing, VOX IN still routes to Master |
+| 2 | VOX IN 1–3 | Notes land in tune, but slides stay smooth and silky. Breaths dip a little, words don't |
+| 3 | LEAD 1 · Pro-Q | Box eases on close words, and the natural weight stays |
+| 4 | LEAD 2 · Pro-C | A gentle hold on peaks. Still soft, no snap |
+| 5 | LEAD 3 · Pro-Q | Rich, warm mids: fuller and rounder |
+| 6 | LEAD 4 · Saturn 2 | Warmer and denser, with no audible dirt |
+| 7 | LEAD 5 · Pro-C | A silky, even line |
+| 8 | LEAD 6 · Fresh Air | A touch of top without edge |
+| 9 | LEAD 7 · Pro-DS | S's soften smoothly, with no lisp |
+| 10 | LEAD 8 · Pro-Q | Belted notes stay smooth |
+| 11 | LEAD 9 · Pro-Q | A little warmer and more embedded, with the words still clear |
+| 12 | LEAD 10 · Pro-L 2 | The lead comes up about 10 dB, with no audible limiting |
+| 13 | PAR · OCT 1, fader at 0 dB for the check | A natural lower voice an octave down, not a monster |
+| 14 | PAR · OCT 2–4 | Low-mid weight with no sub mud, soft on top and steady, spreading wide to the right |
+| 15 | PAR · 3RD 1, fader at 0 dB for the check | An in-key 3rd above every sung note, gliding between notes like the lead. A wrong note means the 3RD LINE needs a fix |
+| 16 | PAR · 3RD 2–4 | It sits behind the lead, steady, spreading wide to the left |
+| 17 | Both harmonies, back at −8 / −6 dB | The stack adds size and color without pulling focus, and the lead stays clear (the support test) |
+| 18 | FX · HALL | A lush 3 s hall that starts just after each word and dips slightly while you sing. The harmonies sit deeper in it than the lead |
+| 19 | VOX BUS | Lead and harmonies sing as one choir |
+| 20 | DBL IN L / R | Each double snaps to the same notes as the lead, wide on its side |
+| 21 | DBL | Warm, wide doubles a step behind the lead, 6–10 dB under |
+| 22 | Blend (foundation §4) | Balanced: the lead clear but embedded in the harmonies and the hall |
+| 23 | Key moves | The harmonies drop out on raps and return on melodies. The last hook line exhales into the hall |
+| 24 | Translation (foundation §5.4) | Every check in [Translation notes](#translation-notes) passes |
 
 ## Translation notes
 
-- **Mono:** this preset's biggest risk, because it's the widest. Run the mono test (foundation §5.4) on a hook. The hall will narrow, but the harmonies still have to be heard. If they thin out or swirl, lower both choruses' Mix toward 30% and check again.
-- **Small speakers:** the warmth below 300 Hz fades on phones. Presence is only eased by about 1 dB, so the words still read.
-- **Loud playback:** the octave's high-pass keeps it clear of the 808.
+Run the checks in foundation §5.4. What to watch for in this preset:
+
+| Check | Watch for | Fix |
+|---|---|---|
+| **Mono (biggest risk)** | The harmonies thinning or swirling as the choruses fold. The hall narrowing is fine | Lower both choruses' Mix toward 30% |
+| Quiet | The hall washing over words | Lower FX · HALL 2 dB |
+| Small speaker | A dull lead once the warmth below 300 Hz fades | Ease LEAD slot 9's tilt to −1 dB |
+| Loud | Low-mid build-up from the lead and the octave. The octave's high-pass already keeps it off the 808 | Lower PAR · OCT's clip 1–2 dB |
+| Headphones | A 3rd that lands on a wrong note or smears between notes | Fix the note in 3RD LINE. If it smears, turn Pitcher's Speed up a little |
